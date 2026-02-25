@@ -280,11 +280,11 @@ def parse_row(cells: list) -> dict | None:
         # 4: Koscher lePessach flags
         # (column count varies — be defensive)
 
-        name = cells[0].get_text(strip=True) if len(cells) > 0 else ""
-        manufacturer = cells[1].get_text(strip=True) if len(cells) > 1 else ""
-        certificate = cells[2].get_text(strip=True) if len(cells) > 2 else ""
-        milchig_raw = cells[3].get_text(strip=True) if len(cells) > 3 else ""
-        pessach_raw = cells[4].get_text(strip=True) if len(cells) > 4 else ""
+        name = cells[1].get_text(strip=True) if len(cells) > 1 else ""
+        manufacturer = cells[2].get_text(strip=True) if len(cells) > 2 else ""
+        certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
+        milchig_raw = cells[4].get_text(strip=True) if len(cells) > 4 else ""
+        pessach_raw = cells[5].get_text(strip=True) if len(cells) > 5 else ""
 
         if not name or not manufacturer:
             return None
