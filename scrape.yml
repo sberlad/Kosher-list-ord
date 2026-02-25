@@ -1,0 +1,77 @@
+name: Scrape ORD Kosher List
+
+on:
+  schedule:
+    # Every Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run scraper
+        run: python scraper/scraper.py
+
+      - name: Show sample output
+        run: |
+          echo "========================================="
+          echo "MANIFEST"
+          echo "========================================="
+          cat scraper/output/manifest.json
+
+          echo ""
+          echo "========================================="
+          echo "FIRST 5 PRODUCTS"
+          echo "========================================="
+          python3 -c "
+          import json
+          with open('scraper/output/kosher_list.json') as f:
+              data = json.load(f)
+          for p in data['products'][:5]:
+              print(json.dumps(p, ensure_ascii=False, indent=2))
+          "
+
+          echo ""
+          echo "========================================="
+          echo "MANUFACTURER INDEX (first 10 entries)"
+          echo "========================================="
+          python3 -c "
+          import json
+          with open('scraper/output/kosher_list.json') as f:
+              data = json.load(f)
+          index = data['manufacturer_index']
+          for i, (k, v) in enumerate(index.items()):
+              if i >= 10: break
+              print(f'{k}: {v[:3]}')
+          "
+
+      - name: Check if output changed
+        id: diff
+        run: |
+          git diff --quiet scraper/output/ || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push updated data
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scraper/output/kosher_list.json scraper/output/manifest.json
+          git commit -m "chore: update kosher list $(date -u '+%Y-%m-%d')"
+          git push
+
+      - name: No changes detected
+        if: steps.diff.outputs.changed != 'true'
+        run: echo "Kosher list unchanged — no commit needed."
