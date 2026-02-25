@@ -1,5 +1,6 @@
 # Kosher Scanner App
 
+
 An iOS & Android app that scans product barcodes and checks them against the
 [ORD (Orthodoxe Rabbinerkonferenz Deutschland) Koscherliste](https://koscherliste.ordonline.de/).
 
