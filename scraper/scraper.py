@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-“””
+"""
 ORD Koscherliste Scraper
 Scrapes https://koscherliste.ordonline.de/koscherliste/ and outputs:
 
