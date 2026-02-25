@@ -46,7 +46,7 @@ jobs:
       - name: Check if output changed
         id: diff
         run: |
-          git diff --quiet scraper/output/ || echo "changed=true" >> $GITHUB_OUTPUT
+          git status --short scraper/output/ | grep -q . && echo "changed=true" >> $GITHUB_OUTPUT || true
 
       - name: Commit and push updated data
         if: steps.diff.outputs.changed == 'true'
