@@ -8,8 +8,8 @@ on:
 jobs:
   scrape:
   runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  permissions:
+    contents: write
 
 
     steps:
