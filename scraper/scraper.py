@@ -281,7 +281,7 @@ def parse_row(cells: list) -> dict | None:
         # 5: Pessach (tick image + optional text notes)
         # 6: Hersteller (manufacturer)
 
-        name = cells[1].get_text(strip=True) if len(cells) > 1 else ""
+        name = cells[1].get_text(strip=True).strip('"').strip() if len(cells) > 1 else ""
         weitere_kategorien = cells[2].get_text(strip=True) if len(cells) > 2 else ""
         certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
         manufacturer = cells[6].get_text(strip=True) if len(cells) > 6 else ""
@@ -307,7 +307,10 @@ def parse_row(cells: list) -> dict | None:
         }
 
         if dairy_note:
-            product["dairy_note"] = dairy_note      # e.g. "Chalaw Stam", "Chalav Yisrael"
+        # Normalise variants
+          if dairy_note.lower() in ("chalaw stam", "chemat stam", "chalav stam"):
+            dairy_note = "Chalaw Stam"
+            product["dairy_note"] = dairy_note
         if pessach_note:
             product["pessach_note"] = pessach_note  # e.g. "Kitniyot", "Gebruchts"
 
