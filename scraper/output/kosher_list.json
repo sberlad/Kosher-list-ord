@@ -1,7 +1,7 @@
 {
   "version": "2026-02-26",
-  "generated_at": "2026-02-26T12:58:27.096715+00:00",
-  "product_count": 1934,
+  "generated_at": "2026-02-26T13:19:55.168603+00:00",
+  "product_count": 1932,
   "products": [
     {
       "name": "Apfelessig, klar",
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "name": "Mövenpick Gourmet Jam 250g , Raspberry Fruit Spread",
+      "name": "\"Mövenpick Gourmet Jam 250g , Raspberry Fruit Spread\"\"\"",
       "manufacturer": "Mövenpick",
       "certificate": "",
       "weitere_kategorien": "MarmeladeFrucht",
@@ -686,7 +686,7 @@
       ]
     },
     {
-      "name": "Backmischung für Crepes 2x4",
+      "name": "Backmischung für Crepes 2x",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -698,7 +698,7 @@
       ]
     },
     {
-      "name": "Backmischung für Eierkuchen 2x4",
+      "name": "Backmischung für Eierkuchen 2x",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -710,7 +710,7 @@
       ]
     },
     {
-      "name": "Backmischung für Hefeplinsen 2x4",
+      "name": "Backmischung für Hefeplinsen 2x",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -722,7 +722,7 @@
       ]
     },
     {
-      "name": "Backmischung für Kaiserschmarren 2x2-3",
+      "name": "Backmischung für Kaiserschmarren 2x2-",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -770,7 +770,7 @@
       ]
     },
     {
-      "name": "Backmischung für Quarkkeulchen 4x4",
+      "name": "Backmischung für Quarkkeulchen 4x",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -914,7 +914,7 @@
       ]
     },
     {
-      "name": "Gro·mutters Back-Idee",
+      "name": "Großmutters Back-Idee",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -1035,7 +1035,7 @@
       ]
     },
     {
-      "name": "Klö·e Halb&Halb   3x4",
+      "name": "Klöße Halb&Halb   3x",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -1046,7 +1046,7 @@
       ]
     },
     {
-      "name": "Klö·e Halb/Halb 8 Stück",
+      "name": "Klöße Halb/Halb 8 Stück",
       "manufacturer": "Werners",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
@@ -1991,7 +1991,7 @@
       ]
     },
     {
-      "name": "Extra Gelierzucker 2 1",
+      "name": "Extra Gelierzucker 2",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backzutaten",
@@ -2079,7 +2079,7 @@
       ]
     },
     {
-      "name": "Fondant Decke Wei·",
+      "name": "Fondant Decke Weiß",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backzutaten",
@@ -2101,10 +2101,21 @@
       ]
     },
     {
-      "name": "Fondant Wei·",
+      "name": "Fondant Weiß",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backzutaten",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Backzutaten"
+      ]
+    },
+    {
+      "name": "Frische Hefe",
+      "manufacturer": "Deutsche Hefewerke",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "BackzutatenBackzutaten",
       "dairy_status": "parve",
       "pessach": "not_pessach",
       "categories": [
@@ -2121,17 +2132,6 @@
       "categories": [
         "Backzutaten",
         "Hefe"
-      ]
-    },
-    {
-      "name": "Frische Hefe",
-      "manufacturer": "Deutsche Hefewerke",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "BackzutatenBackzutaten",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Backzutaten"
       ]
     },
     {
@@ -2214,7 +2214,7 @@
       ]
     },
     {
-      "name": "KALFANY LIGHT POCKET TINS SUGAR-FREE 50g",
+      "name": "\"KALFANY \"\"LIGHT\"\" POCKET TINS SUGAR-FREE 50g\"",
       "manufacturer": "Kalfany",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Bonbons",
@@ -3853,8 +3853,8 @@
     },
     {
       "name": "Zwiebelbrötchen",
-      "manufacturer": "Schürener Backparadies, Dortmund",
-      "certificate": "Rabbiner Avichai Apel",
+      "manufacturer": "Bäckerei Zimmermann, Köln",
+      "certificate": "Rabbiner Jaron Engelmayer",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3864,8 +3864,8 @@
     },
     {
       "name": "Zwiebelbrötchen",
-      "manufacturer": "Bäckerei Zimmermann, Köln",
-      "certificate": "Rabbiner Jaron Engelmayer",
+      "manufacturer": "Schürener Backparadies, Dortmund",
+      "certificate": "Rabbiner Avichai Apel",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -5111,7 +5111,7 @@
       ]
     },
     {
-      "name": "Premium Cräme de Chocolat - Wei·e Schokolade *",
+      "name": "Premium Cräme de Chocolat - Weiße Schokolade *",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Pulver",
@@ -5282,7 +5282,7 @@
       ]
     },
     {
-      "name": "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.51",
+      "name": "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.",
       "manufacturer": "Ben & JerryKof-K",
       "certificate": "",
       "weitere_kategorien": "Milch",
@@ -5582,7 +5582,7 @@
       ]
     },
     {
-      "name": "COOKIE DOUGH 100ML MULTIPACK X4",
+      "name": "COOKIE DOUGH 100ML MULTIPACK X",
       "manufacturer": "Ben & JerryKof-K",
       "certificate": "",
       "weitere_kategorien": "Milch",
@@ -5983,7 +5983,7 @@
       ]
     },
     {
-      "name": "Citrovin Bio Zitrone200 ml",
+      "name": "\"\"\"Citrovin\"\" Bio Zitrone200 ml\"",
       "manufacturer": "Speyer & Grund",
       "certificate": "",
       "weitere_kategorien": "",
@@ -5994,7 +5994,7 @@
       ]
     },
     {
-      "name": "Citrovin Limette Bio 200 ml",
+      "name": "\"\"\"Citrovin\"\" Limette Bio 200 ml\"",
       "manufacturer": "Speyer & Grund",
       "certificate": "",
       "weitere_kategorien": "",
@@ -6005,7 +6005,7 @@
       ]
     },
     {
-      "name": "Surig Citroessenz 20%",
+      "name": "\"\"\"Surig\"\" Citroessenz 20%\"",
       "manufacturer": "Speyer & Grund",
       "certificate": "",
       "weitere_kategorien": "",
@@ -6274,7 +6274,7 @@
       ]
     },
     {
-      "name": "Gefüllte Wie·kohlblätter",
+      "name": "Gefüllte Wießkohlblätter",
       "manufacturer": "BAKTAT",
       "certificate": "",
       "weitere_kategorien": "Konservenfeinkost",
@@ -6286,7 +6286,7 @@
       ]
     },
     {
-      "name": "Wie·e Riesenbohnen in Tomatensauce",
+      "name": "Wieße Riesenbohnen in Tomatensauce",
       "manufacturer": "BAKTAT",
       "certificate": "",
       "weitere_kategorien": "Konservenfeinkost",
@@ -6762,7 +6762,7 @@
       ]
     },
     {
-      "name": "Dinkelflocken Gro·blatt Dinkelvollkornflocken",
+      "name": "Dinkelflocken Großblatt Dinkelvollkornflocken",
       "manufacturer": "Demeter Bauck",
       "certificate": "",
       "weitere_kategorien": "Grieß, Kleie, Leinsaat,Flocken, Getreide",
@@ -6930,7 +6930,7 @@
       ]
     },
     {
-      "name": "Haferflocken Gro·blatt Hafervollkornflocken",
+      "name": "Haferflocken Großblatt Hafervollkornflocken",
       "manufacturer": "Demeter Bauck",
       "certificate": "",
       "weitere_kategorien": "Grieß, Kleie, Leinsaat,Flocken, Getreide",
@@ -7854,7 +7854,7 @@
       ]
     },
     {
-      "name": "Pasteurisierter Joghurt  Zottis",
+      "name": "\"Pasteurisierter Joghurt  \"\"Zottis\"\"\"",
       "manufacturer": "Zott SE & Co.KG",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "JougurthFruchtjougurth",
@@ -7867,7 +7867,7 @@
       ]
     },
     {
-      "name": "Pasteurisierter Joghurt Zott ist Frucht",
+      "name": "\"Pasteurisierter Joghurt \"\"Zott ist Frucht\"\"\"",
       "manufacturer": "Zott SE & Co.KG",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "JougurthFruchtjougurth",
@@ -8371,7 +8371,7 @@
       ]
     },
     {
-      "name": "Champignons  ganze Köpfe 1.Wahl",
+      "name": "Champignons  Ganze Köpfe 1.Wahl",
       "manufacturer": "Bonduelle",
       "certificate": "",
       "weitere_kategorien": "Gemüsekonserven",
@@ -9486,7 +9486,7 @@
       ]
     },
     {
-      "name": "Arabische Küche Baharat, bio",
+      "name": "\"Arabische Küche \"\"Baharat\"\", bio\"",
       "manufacturer": "Lebensbaum",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9497,7 +9497,7 @@
       ]
     },
     {
-      "name": "BAMI GORENG DELIKAT 650G",
+      "name": "\"BAMI GORENG \"\"DELIKAT\"\" 650G\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9509,7 +9509,7 @@
       ]
     },
     {
-      "name": "CURRY CEYLON TASTE 650G",
+      "name": "\"CURRY \"\"CEYLON TASTE\"\" 650G\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9521,7 +9521,7 @@
       ]
     },
     {
-      "name": "CURRY CEYLON TASTE",
+      "name": "\"CURRY \"\"CEYLON TASTE\"\"\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9533,7 +9533,7 @@
       ]
     },
     {
-      "name": "CURRY GENUINE TASTE 680G",
+      "name": "\"CURRY \"\"GENUINE TASTE\"\" 680G\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9545,7 +9545,7 @@
       ]
     },
     {
-      "name": "HéHNCHEN HOT",
+      "name": "\"HéHNCHEN \"\"HOT\"\"\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9557,7 +9557,7 @@
       ]
     },
     {
-      "name": "HELASEPT KRéUTERBUTTER UPAHL",
+      "name": "\"HELASEPT KRéUTERBUTTER \"\"UPAHL\"\"\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9569,7 +9569,7 @@
       ]
     },
     {
-      "name": "Indische Küche Garam Masala, bio",
+      "name": "\"Indische Küche \"\"Garam Masala\"\", bio\"",
       "manufacturer": "Lebensbaum",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9580,7 +9580,7 @@
       ]
     },
     {
-      "name": "PAPRIKA DELIKATESSE",
+      "name": "\"PAPRIKA \"\"DELIKATESSE\"\"\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9592,7 +9592,7 @@
       ]
     },
     {
-      "name": "PAPRIKA HELA SPEZIAL, GEMAHLEN 600G",
+      "name": "\"PAPRIKA \"\"HELA SPEZIAL\"\", GEMAHLEN 600G \"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9604,7 +9604,7 @@
       ]
     },
     {
-      "name": "PAPRIKA HELA SPEZIAL, GEMAHLEN",
+      "name": "\"PAPRIKA \"\"HELA SPEZIAL\"\", GEMAHLEN\"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Gewürzmischungen",
@@ -9639,7 +9639,7 @@
       ]
     },
     {
-      "name": "Anis ganz15",
+      "name": "Anis ganz",
       "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9661,7 +9661,7 @@
       ]
     },
     {
-      "name": "Anis gemahlen15",
+      "name": "Anis gemahlen",
       "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9774,18 +9774,7 @@
       ]
     },
     {
-      "name": "Austernpilze5",
-      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
-      "certificate": "",
-      "weitere_kategorien": "",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Gewürze"
-      ]
-    },
-    {
-      "name": "Austernpilze25",
+      "name": "Austernpilze",
       "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9818,18 +9807,7 @@
       ]
     },
     {
-      "name": "Basilikum6",
-      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
-      "certificate": "",
-      "weitere_kategorien": "",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Gewürze"
-      ]
-    },
-    {
-      "name": "Basilikum15",
+      "name": "Basilikum",
       "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
@@ -9874,8 +9852,8 @@
       ]
     },
     {
-      "name": "BASILIKUM GEREBELT",
-      "manufacturer": "Raps GmbH & Co KG",
+      "name": "Basilikum gerebelt12,",
+      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
       "dairy_status": "parve",
@@ -9885,8 +9863,8 @@
       ]
     },
     {
-      "name": "Basilikum gerebelt12,5",
-      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
+      "name": "BASILIKUM GEREBELT",
+      "manufacturer": "Raps GmbH & Co KG",
       "certificate": "",
       "weitere_kategorien": "",
       "dairy_status": "parve",
@@ -9976,7 +9954,7 @@
       ]
     },
     {
-      "name": "Beifu· geschnitten25",
+      "name": "Beifuß geschnitten",
       "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "certificate": "",
       "weitere_kategorien": "",
@@ -10748,7 +10726,7 @@
       ]
     },
     {
-      "name": "Henglein Eierspätzle Allgäuer Art",
+      "name": "\"Henglein Eierspätzle \"\"Allgäuer Art\"\"\"",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -10892,7 +10870,7 @@
       ]
     },
     {
-      "name": "Hefeklö·e m. Heidelbeerf.",
+      "name": "Hefeklöße m. Heidelbeerf.",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11036,7 +11014,7 @@
       ]
     },
     {
-      "name": "Klo·masse",
+      "name": "Kloßmasse",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11048,7 +11026,7 @@
       ]
     },
     {
-      "name": "Klo·teig",
+      "name": "Kloßteig",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11060,7 +11038,7 @@
       ]
     },
     {
-      "name": "Klo·teig fränkisch halb/halb",
+      "name": "Kloßteig fränkisch halb/halb",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11072,7 +11050,7 @@
       ]
     },
     {
-      "name": "Klo·teig Premium",
+      "name": "Kloßteig Premium",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11084,7 +11062,7 @@
       ]
     },
     {
-      "name": "Klo·teig Thüringer Art",
+      "name": "Kloßteig Thüringer Art",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11132,7 +11110,7 @@
       ]
     },
     {
-      "name": "Nürnberger  Frische Klö·e m. Brot",
+      "name": "Nürnberger  Frische Klöße m. Brot",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11144,7 +11122,7 @@
       ]
     },
     {
-      "name": "Nürnberger  Frische Klö·e o. Brot",
+      "name": "Nürnberger  Frische Klöße o. Brot",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11156,7 +11134,7 @@
       ]
     },
     {
-      "name": "Nürnberger  Klo·teig Franken",
+      "name": "Nürnberger  Kloßteig Franken",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11180,7 +11158,7 @@
       ]
     },
     {
-      "name": "Nürnberger Klo·teig",
+      "name": "Nürnberger Kloßteig",
       "manufacturer": "Henglein",
       "certificate": "",
       "weitere_kategorien": "Hartweizen",
@@ -11895,18 +11873,6 @@
       ]
     },
     {
-      "name": "Aprikose",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "JogurtFruchtjugurth",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
       "name": "AprikoseFruchtZwerge",
       "manufacturer": "Danone",
       "certificate": "",
@@ -11923,6 +11889,18 @@
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "Aprikose",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "JogurtFruchtjugurth",
       "dairy_status": "milchig",
       "pessach": "not_pessach",
       "categories": [
@@ -12075,30 +12053,6 @@
       ]
     },
     {
-      "name": "ErdbeereActivia laktosefrei",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "ErdbeereDanone Family Standard",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
       "name": "ErdbeereFruchtZwerge",
       "manufacturer": "Danone",
       "certificate": "",
@@ -12124,6 +12078,30 @@
     },
     {
       "name": "ErdbeereFruchtzwerge/Milchzwerge Drinks",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "ErdbeereActivia laktosefrei",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "ErdbeereDanone Family Standard",
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
@@ -12590,7 +12568,7 @@
       ]
     },
     {
-      "name": "Lavazza BlueRotondo",
+      "name": "Lavazza BlueCafe Crema Dolce",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "weitere_kategorien": "Kaffee",
@@ -12601,18 +12579,7 @@
       ]
     },
     {
-      "name": "Lavazza BlueAmabile",
-      "manufacturer": "Luigi LAVAZZA",
-      "certificate": "Rabbiner Hazan",
-      "weitere_kategorien": "Kaffee",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kaffee"
-      ]
-    },
-    {
-      "name": "Lavazza BlueTierra",
+      "name": "Lavazza BlueEspresso Ricco",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "weitere_kategorien": "Kaffee",
@@ -12624,6 +12591,17 @@
     },
     {
       "name": "Lavazza BlueDecaffeinato",
+      "manufacturer": "Luigi LAVAZZA",
+      "certificate": "Rabbiner Hazan",
+      "weitere_kategorien": "Kaffee",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kaffee"
+      ]
+    },
+    {
+      "name": "Lavazza BlueRotondo",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "weitere_kategorien": "Kaffee",
@@ -12875,6 +12853,17 @@
       ]
     },
     {
+      "name": "Coppenrath FeingebäckKekse Schwarz&weiß",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
       "name": "Coppenrath FeingebäckChoco Kränze",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -12886,7 +12875,29 @@
       ]
     },
     {
+      "name": "Coppenrath FeingebäckMinikekse Kakao",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
       "name": "Coppenrath FeingebäckFranken Thaler",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckAmerican Cookie Chunks",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Kekse",
@@ -12985,7 +12996,7 @@
       ]
     },
     {
-      "name": "Coppenrath FeingebäckKekse mit Butter und Eiwei·",
+      "name": "Coppenrath FeingebäckKekse mit Butter und Eiweiß",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Kekse",
@@ -13062,17 +13073,6 @@
       ]
     },
     {
-      "name": "Coppenrath FeingebäckKekse Schwarz&wei·",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
       "name": "Coppenrath FeingebäckGrazerringe",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -13084,29 +13084,7 @@
       ]
     },
     {
-      "name": "Coppenrath FeingebäckMinikekse Kakao",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
       "name": "Coppenrath FeingebäckMini Cookies Drops",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
-      "name": "Coppenrath FeingebäckAmerican Cookie Chunks",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Kekse",
@@ -14493,7 +14471,7 @@
       ]
     },
     {
-      "name": "Wei· 200 g",
+      "name": "Weiß 200 g",
       "manufacturer": "EcoFina GmbHVivani",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
@@ -14504,7 +14482,7 @@
       ]
     },
     {
-      "name": "Wei·, 2,5 kg",
+      "name": "Weiß, 2,5 kg",
       "manufacturer": "EcoFina GmbHVivani",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
@@ -14882,7 +14860,7 @@
       ]
     },
     {
-      "name": "Marzipanrohmasse 50/50",
+      "name": "Marzipanrohmasse 50/",
       "manufacturer": "Zentis",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "BackzutatenMarzipan",
@@ -15630,7 +15608,7 @@
       ]
     },
     {
-      "name": "Corny Big 50g Schoko-Banane",
+      "name": "\"Corny Big 50g Schoko-Banane\"\"\"",
       "manufacturer": "Schwartau Corny",
       "certificate": "",
       "weitere_kategorien": "Müsliriegel",
@@ -16009,7 +15987,7 @@
       ]
     },
     {
-      "name": "Corny Free 20g Wei·e Schoko",
+      "name": "Corny Free 20g Weiße Schoko",
       "manufacturer": "Schwartau Corny",
       "certificate": "",
       "weitere_kategorien": "Müsliriegel",
@@ -16752,7 +16730,7 @@
       ]
     },
     {
-      "name": "Olivenöl, extra verginemit wei·em Trüffelaroma",
+      "name": "Olivenöl, extra verginemit weißem Trüffelaroma",
       "manufacturer": "vom Fass AG",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Olivenöl",
@@ -16951,6 +16929,61 @@
       ]
     },
     {
+      "name": "Süße MahlzeitApfel-Püfferchen *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
+      "name": "Süße MahlzeitGrießbrei nach klassischer Art *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
+      "name": "Süße MahlzeitGrießbrei Vanille-Geschmack *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
+      "name": "Süße MahlzeitGrießbrei weniger Süß *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
+      "name": "Süße MahlzeitKaiserschmarrn nach klassischer Art *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
       "name": "Süße MahlzeitMilchnudeln Vanille-Geschmack *",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
@@ -17039,61 +17072,6 @@
       ]
     },
     {
-      "name": "Süße MahlzeitApfel-Püfferchen *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
-      "name": "Süße MahlzeitGrießbrei nach klassischer Art *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
-      "name": "Süße MahlzeitGrießbrei Vanille-Geschmack *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
-      "name": "Süße MahlzeitGrießbrei weniger Süß *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
-      "name": "Süße MahlzeitKaiserschmarrn nach klassischer Art *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
       "name": "Süße TassenprodukteMein Moment Grießbrei",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
@@ -17149,7 +17127,7 @@
       ]
     },
     {
-      "name": "Wei·e Schokolade _Sorte des Jahres_",
+      "name": "Weiße Schokolade _Sorte des Jahres_",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Pulver",
@@ -17867,6 +17845,17 @@
       ]
     },
     {
+      "name": "Dehydrierte SojasoßeKU20, 25 kg Karton",
+      "manufacturer": "Kikkoman Foods Europe",
+      "certificate": "Rabbiner EhrentreuK Meschulasch",
+      "weitere_kategorien": "Soja",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Saucen"
+      ]
+    },
+    {
       "name": "Dehydrierte SojasoßeKL20, 25 kg Karton",
       "manufacturer": "Kikkoman Foods Europe",
       "certificate": "Rabbiner EhrentreuK Meschulasch",
@@ -17890,17 +17879,6 @@
     },
     {
       "name": "Dehydrierte SojasoßeKS20, 25 kg Karton, 500 kg",
-      "manufacturer": "Kikkoman Foods Europe",
-      "certificate": "Rabbiner EhrentreuK Meschulasch",
-      "weitere_kategorien": "Soja",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Saucen"
-      ]
-    },
-    {
-      "name": "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "manufacturer": "Kikkoman Foods Europe",
       "certificate": "Rabbiner EhrentreuK Meschulasch",
       "weitere_kategorien": "Soja",
@@ -18666,17 +18644,6 @@
       ]
     },
     {
-      "name": "Grafschafter GourmetApfel-Holunder",
-      "manufacturer": "Grafschafter Krautfabrik",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Sirup",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Sirup"
-      ]
-    },
-    {
       "name": "Grafschafter GourmetApfel-Ingwer",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -18722,6 +18689,17 @@
     },
     {
       "name": "Grafschafter GourmetFlüssigzuckermischungen",
+      "manufacturer": "Grafschafter Krautfabrik",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Sirup",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Sirup"
+      ]
+    },
+    {
+      "name": "Grafschafter GourmetApfel-Holunder",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Sirup",
@@ -20638,7 +20616,7 @@
       ]
     },
     {
-      "name": "Vegan Freiburger Genie·er-Schmalz",
+      "name": "Vegan Freiburger Genießer-Schmalz",
       "manufacturer": "Tartex",
       "certificate": "",
       "weitere_kategorien": "vegan",
@@ -21012,7 +20990,7 @@
       ]
     },
     {
-      "name": "BIO-WIENER _NEU",
+      "name": "\"BIO-WIENER _NEU\"\" \"",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "",
@@ -21299,7 +21277,7 @@
       ]
     },
     {
-      "name": "wie feine Lyoner bio",
+      "name": "\"\"\"wie feine Lyoner\"\" bio \"",
       "manufacturer": "Cenovis Heiler",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21310,7 +21288,7 @@
       ]
     },
     {
-      "name": "wie Landjäger bio",
+      "name": "\"\"\"wie Landjäger\"\" bio \"",
       "manufacturer": "Cenovis Heiler",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21398,7 +21376,7 @@
       ]
     },
     {
-      "name": "FlanzenFleisch Der gro·e Heideländer",
+      "name": "FlanzenFleisch Der große Heideländer",
       "manufacturer": "Granovita",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21563,7 +21541,7 @@
       ]
     },
     {
-      "name": "Reinbei·er",
+      "name": "Reinbeißer",
       "manufacturer": "Granovita",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21717,7 +21695,7 @@
       ]
     },
     {
-      "name": "Vegetarische Wei·wurst",
+      "name": "Vegetarische Weißwurst",
       "manufacturer": "Granovita",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21805,7 +21783,7 @@
       ]
     },
     {
-      "name": "wie gemischter Aufschnitt, sortiert, bio",
+      "name": "wie gemischter Aufschnitt, sortiert, bio\"",
       "manufacturer": "Cenovis Heiler",
       "certificate": "",
       "weitere_kategorien": "",
@@ -21904,7 +21882,7 @@
       ]
     },
     {
-      "name": "ZUCKER 800 X 4G TCHIBO_",
+      "name": "\"ZUCKER 800 X 4G \"\"TCHIBO_\"",
       "manufacturer": "Tchibo und Davidoff",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "",
@@ -21915,7 +21893,7 @@
       ]
     },
     {
-      "name": "ZUCKER STICKS 1000 X 4G TCHIBO",
+      "name": "\"ZUCKER STICKS 1000 X 4G \"\"TCHIBO\"\"\"",
       "manufacturer": "Tchibo und Davidoff",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "",
@@ -21926,7 +21904,7 @@
       ]
     },
     {
-      "name": "ZUCKERSTICKS 1000 X 4G DAVIDOFF",
+      "name": "\"ZUCKERSTICKS 1000 X 4G \"\"DAVIDOFF\"\"\"",
       "manufacturer": "Tchibo und Davidoff",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "",
@@ -22260,7 +22238,7 @@
       "Olivenöl, extra verginemit Peperroni",
       "Olivenöl, extra verginemit Rosmarin",
       "Olivenöl, extra verginemit Tomate",
-      "Olivenöl, extra verginemit wei·em Trüffelaroma",
+      "Olivenöl, extra verginemit weißem Trüffelaroma",
       "Olivenöl, extra vergine mit Jalapeno",
       "Olivenöl, extra vergine mit Limone",
       "Olivenöl, extra vergine mit Orange",
@@ -22405,7 +22383,7 @@
       "Dreyer-Sommertracht 500g-Glas"
     ],
     "mövenpick": [
-      "Mövenpick Gourmet Jam 250g , Raspberry Fruit Spread"
+      "\"Mövenpick Gourmet Jam 250g , Raspberry Fruit Spread\"\"\""
     ],
     "tuchel & sohn": [
       "Ahornsirup",
@@ -22509,7 +22487,7 @@
       "Curry Bratwurst",
       "Delikat, Brotbelag",
       "FlanzenFleisch Cevapcici",
-      "FlanzenFleisch Der gro·e Heideländer",
+      "FlanzenFleisch Der große Heideländer",
       "FlanzenFleisch Mini-Frikadellen",
       "FlanzenFleisch und Bratlinge",
       "Gemüse Bratwurst",
@@ -22524,7 +22502,7 @@
       "Olive",
       "Pepperami",
       "Quinoa-Bratling",
-      "Reinbei·er",
+      "Reinbeißer",
       "Räucher Snackies",
       "Schnittwurst",
       "Vegane Bio Feine Bratwurst",
@@ -22538,7 +22516,7 @@
       "Vegetarische Bratwürstchen",
       "Vegetarische Mini-Krakauer",
       "Vegetarische Rostbratwürstchen",
-      "Vegetarische Wei·wurst",
+      "Vegetarische Weißwurst",
       "Vegetarische Wiener",
       "Vegetarische Würstchen",
       "Vegetarische Würste",
@@ -22585,23 +22563,23 @@
       "Pasteten alles vegan",
       "PatÇ Pfifferling,",
       "Tartex PatÇ alles vegan",
-      "Vegan Freiburger Genie·er-Schmalz",
+      "Vegan Freiburger Genießer-Schmalz",
       "Vegan Freiburger Schmalz-Töpfle",
       "Wie Hausmacher Wurst",
       "Wie Teewurst"
     ],
     "werners": [
-      "Backmischung für Crepes 2x4",
-      "Backmischung für Eierkuchen 2x4",
-      "Backmischung für Hefeplinsen 2x4",
-      "Backmischung für Kaiserschmarren 2x2-3",
+      "Backmischung für Crepes 2x",
+      "Backmischung für Eierkuchen 2x",
+      "Backmischung für Hefeplinsen 2x",
+      "Backmischung für Kaiserschmarren 2x2-",
       "Backmischung für Pfannkuchen Chili",
       "Backmischung für Pfannkuchen Knoblauch/Chili",
       "Backmischung für Pfannkuchen Zitronengras",
-      "Backmischung für Quarkkeulchen 4x4",
+      "Backmischung für Quarkkeulchen 4x",
       "Kartoffelpuffer 15 Stück",
-      "Klö·e Halb&Halb   3x4",
-      "Klö·e Halb/Halb 8 Stück",
+      "Klöße Halb&Halb   3x",
+      "Klöße Halb/Halb 8 Stück",
       "Backmischung für Böhmische Knödel",
       "Tassenknödel böhm. Art"
     ],
@@ -22625,7 +22603,7 @@
       "Grießpudding",
       "Grießpudding Vanille HartweizenGrieß",
       "Kartoffelpüree, natur",
-      "Dinkelflocken Gro·blatt Dinkelvollkornflocken",
+      "Dinkelflocken Großblatt Dinkelvollkornflocken",
       "Dinkelflocken Kleinblatt Dinkelvollkornflocken",
       "Dinkelflocken Zartblatt Dinkelvollkornflocken",
       "DinkelGrieß",
@@ -22634,7 +22612,7 @@
       "geschrotet Leinsaat",
       "Gold-Leinsaat",
       "Haferbrei",
-      "Haferflocken Gro·blatt Hafervollkornflocken",
+      "Haferflocken Großblatt Hafervollkornflocken",
       "Haferflocken Kleinblatt Hafervollkornflocken",
       "Haferflocken Kleinblatt, glutenfrei",
       "Haferflocken Zartblatt Hafervollkornflocken",
@@ -22679,7 +22657,7 @@
       "Chocolat Deluxe",
       "Cupcakes Himbeer-Schoko",
       "Gourmet Chocolat",
-      "Gro·mutters Back-Idee",
+      "Großmutters Back-Idee",
       "Gugelhupf",
       "Hefeteig",
       "Himbeer Mascarpone",
@@ -22716,13 +22694,13 @@
       "Dekorieren in Bunt",
       "Edel Kuvertüre *",
       "Einmachhilfe",
-      "Extra Gelierzucker 2 1",
+      "Extra Gelierzucker 2",
       "Feine Dekorblüten",
       "Feine Marzipan Decke",
       "Fondant",
-      "Fondant Decke Wei·",
+      "Fondant Decke Weiß",
       "Fondant Grün",
-      "Fondant Wei·",
+      "Fondant Weiß",
       "Früchte Fix",
       "Füllungen",
       "Gebäck-Cräme Zitrone",
@@ -22770,7 +22748,7 @@
       "Paula Pudding Vanillegeschmack mit Schoko-Flecken *",
       "Paula Schokoladen-Pudding mit Vanillegeschmack Flecken *",
       "Premium Cräme de Chocolat - Feinherbe Schokolade *",
-      "Premium Cräme de Chocolat - Wei·e Schokolade *",
+      "Premium Cräme de Chocolat - Weiße Schokolade *",
       "Quarkfein Erdbeer-Geschmack",
       "Frucht Genuss Früchte ohne Rosinen",
       "Frucht Genuss Früchte-Vollkorn",
@@ -22782,6 +22760,11 @@
       "Sahne-Karamell-Geschmack *",
       "Schokolade *",
       "Stracciatella *",
+      "Süße MahlzeitApfel-Püfferchen *",
+      "Süße MahlzeitGrießbrei nach klassischer Art *",
+      "Süße MahlzeitGrießbrei Vanille-Geschmack *",
+      "Süße MahlzeitGrießbrei weniger Süß *",
+      "Süße MahlzeitKaiserschmarrn nach klassischer Art *",
       "Süße MahlzeitMilchnudeln Vanille-Geschmack *",
       "Süße MahlzeitMilchreis Apfel-Zimt",
       "Süße MahlzeitMilchreis nach klassischer Art *",
@@ -22790,17 +22773,12 @@
       "Süße MahlzeitPfannkuchen nach klassischer Art",
       "Süße MahlzeitQuarkauflauf *",
       "Süße MahlzeitQuarkschmarrn nach klassischer Art *",
-      "Süße MahlzeitApfel-Püfferchen *",
-      "Süße MahlzeitGrießbrei nach klassischer Art *",
-      "Süße MahlzeitGrießbrei Vanille-Geschmack *",
-      "Süße MahlzeitGrießbrei weniger Süß *",
-      "Süße MahlzeitKaiserschmarrn nach klassischer Art *",
       "Süße TassenprodukteMein Moment Grießbrei",
       "Süße TassenprodukteMein Moment Cremepudding Vanille Geschmack",
       "TrenddessertsCaramel & Chocolate *",
       "TrenddessertsLemon Cheesecake *",
       "Vanille-Geschmack *",
-      "Wei·e Schokolade _Sorte des Jahres_"
+      "Weiße Schokolade _Sorte des Jahres_"
     ],
     "kuchenmeister": [
       "Marmorkuchen",
@@ -23042,19 +23020,19 @@
       "Milch, 200 g",
       "Organic Coverture",
       "Reis Schokocouverture, 150 g, 2,5 kg",
-      "Wei· 200 g",
-      "Wei·, 2,5 kg"
+      "Weiß 200 g",
+      "Weiß, 2,5 kg"
     ],
     "dr ritter": [
       "Edelhefe (Würzflocken)"
+    ],
+    "deutsche hefewerke": [
+      "Frische Hefe"
     ],
     "dr.oetker": [
       "Frische Hefe",
       "Hefe",
       "Hefeteig Garant"
-    ],
-    "deutsche hefewerke": [
-      "Frische Hefe"
     ],
     "müllers mühle": [
       "Bohnen, Bohnen Flour",
@@ -23068,7 +23046,7 @@
       "Perlsago (Tapiokastärke)"
     ],
     "kalfany": [
-      "KALFANY LIGHT POCKET TINS SUGAR-FREE 50g"
+      "\"KALFANY \"\"LIGHT\"\" POCKET TINS SUGAR-FREE 50g\""
     ],
     "jelly belly": [
       "100g 20 Sorten Mischung",
@@ -23238,7 +23216,7 @@
       "Glanzmittel",
       "Marzipan Rohmasse 12 x 200g",
       "Marzipanrohmasse",
-      "Marzipanrohmasse 50/50",
+      "Marzipanrohmasse 50/",
       "Orange",
       "Belmanda 24 x 60g",
       "Belnuga 24 x 60g"
@@ -23267,7 +23245,7 @@
     ],
     "ben & jerrykof-k": [
       "ALL OR NUT-TING 500ML",
-      "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.51",
+      "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.",
       "B&J CHOCOLATE COOKIE CORE 500ML",
       "B&J FT BLONDIE BROWNIE 500ML",
       "B&J FT CHOCOLATE FUDGE BROWNIE 150ML",
@@ -23292,7 +23270,7 @@
       "CLEVER COOKIES 4.5L",
       "CLEVER COOKIES 500ML",
       "CONE SWEET CONE 4.5L",
-      "COOKIE DOUGH 100ML MULTIPACK X4",
+      "COOKIE DOUGH 100ML MULTIPACK X",
       "COW POWER 4500ML",
       "COW POWER 500ML",
       "DOUGH-BLE WHAMMY 500ML",
@@ -23347,16 +23325,16 @@
       "Malzkaffee, löslich Gerstenmalz"
     ],
     "speyer & grund": [
-      "Citrovin Bio Zitrone200 ml",
-      "Citrovin Limette Bio 200 ml",
-      "Surig Citroessenz 20%",
+      "\"\"\"Citrovin\"\" Bio Zitrone200 ml\"",
+      "\"\"\"Citrovin\"\" Limette Bio 200 ml\"",
+      "\"\"\"Surig\"\" Citroessenz 20%\"",
       "Essigessenz 25% hell"
     ],
     "baktat": [
       "Gefüllte Auberginen in Tomatensauce",
       "Gefüllte Auberginen mit Reis",
-      "Gefüllte Wie·kohlblätter",
-      "Wie·e Riesenbohnen in Tomatensauce"
+      "Gefüllte Wießkohlblätter",
+      "Wieße Riesenbohnen in Tomatensauce"
     ],
     "m-back gmbh": [
       "KNOBLAUCHBUTTER BAGUETTE"
@@ -23433,8 +23411,8 @@
       "Hero Extra 340g Black Cherry Fruit Spread"
     ],
     "zott se & co.kg": [
-      "Pasteurisierter Joghurt  Zottis",
-      "Pasteurisierter Joghurt Zott ist Frucht",
+      "\"Pasteurisierter Joghurt  \"\"Zottis\"\"\"",
+      "\"Pasteurisierter Joghurt \"\"Zott ist Frucht\"\"\"",
       "Kaffeesahne",
       "Zott Monte Schoko Dessert"
     ],
@@ -23461,11 +23439,11 @@
       "Yamato Tofu pur, bio",
       "Yamato Tofu SatÇ pikant gewürzt",
       "Yamato Tofu Thai Curry, bio",
-      "wie feine Lyoner bio",
-      "wie Landjäger bio",
+      "\"\"\"wie feine Lyoner\"\" bio \"",
+      "\"\"\"wie Landjäger\"\" bio \"",
       "wie feine Lyoner mit ganzem Pfeffer bio",
       "wie feine Lyoner mit gemüse bio",
-      "wie gemischter Aufschnitt, sortiert, bio"
+      "wie gemischter Aufschnitt, sortiert, bio\""
     ],
     "bonduelle": [
       "Bio Goldmais",
@@ -23473,7 +23451,7 @@
       "Bio  Erbsen mit Möhrchen",
       "Bio  Junge Erbsen",
       "Bohnen-Duo",
-      "Champignons  ganze Köpfe 1.Wahl",
+      "Champignons  Ganze Köpfe 1.Wahl",
       "Champignons  Gourmet-Scheiben 1. Wahl",
       "Champignons  Minis 1. Wahl",
       "Champignons  Scheiben 2.Wahl",
@@ -23612,10 +23590,10 @@
       "Gran CafÇ",
       "Gran Espresso",
       "Lavazza  Dek",
-      "Lavazza BlueRotondo",
-      "Lavazza BlueAmabile",
-      "Lavazza BlueTierra",
-      "Lavazza BlueDecaffeinato"
+      "Lavazza BlueCafe Crema Dolce",
+      "Lavazza BlueEspresso Ricco",
+      "Lavazza BlueDecaffeinato",
+      "Lavazza BlueRotondo"
     ],
     "caffee donatello, italien": [
       "Argento Intenso & Cremoso",
@@ -23668,15 +23646,15 @@
       "HELASEPT KéSE KERBEL / ESTRAGON",
       "HELASEPT SOMMERGEMöSE DO",
       "KRéUTER DER PROVENCE 270G",
-      "BAMI GORENG DELIKAT 650G",
-      "CURRY CEYLON TASTE 650G",
-      "CURRY CEYLON TASTE",
-      "CURRY GENUINE TASTE 680G",
-      "HéHNCHEN HOT",
-      "HELASEPT KRéUTERBUTTER UPAHL",
-      "PAPRIKA DELIKATESSE",
-      "PAPRIKA HELA SPEZIAL, GEMAHLEN 600G",
-      "PAPRIKA HELA SPEZIAL, GEMAHLEN",
+      "\"BAMI GORENG \"\"DELIKAT\"\" 650G\"",
+      "\"CURRY \"\"CEYLON TASTE\"\" 650G\"",
+      "\"CURRY \"\"CEYLON TASTE\"\"\"",
+      "\"CURRY \"\"GENUINE TASTE\"\" 680G\"",
+      "\"HéHNCHEN \"\"HOT\"\"\"",
+      "\"HELASEPT KRéUTERBUTTER \"\"UPAHL\"\"\"",
+      "\"PAPRIKA \"\"DELIKATESSE\"\"\"",
+      "\"PAPRIKA \"\"HELA SPEZIAL\"\", GEMAHLEN 600G \"",
+      "\"PAPRIKA \"\"HELA SPEZIAL\"\", GEMAHLEN\"",
       "ANIS (STERNANIS), GANZ 250G",
       "ANIS, GANZ 550G",
       "ANIS, GEMAHLEN",
@@ -23745,7 +23723,7 @@
       "WöRZMARINADE FRISCHE KNOBLAUCHNOTE 400ML",
       "WöRZMARINADE FRISCHE KRéUTER-PAPRIKANOTE 400ML",
       "WöRZMARINADE PIKANTE CURRYNOTE 400ML",
-      "BIO-WIENER _NEU",
+      "\"BIO-WIENER _NEU\"\" \"",
       "BIO-BIERWURST",
       "BIO-BRATWURST FEIN",
       "BIO-BRATWURST, FRISCHE",
@@ -23773,8 +23751,8 @@
       "BIO-WIENER"
     ],
     "lebensbaum": [
-      "Arabische Küche Baharat, bio",
-      "Indische Küche Garam Masala, bio",
+      "\"Arabische Küche \"\"Baharat\"\", bio\"",
+      "\"Indische Küche \"\"Garam Masala\"\", bio\"",
       "Anis ganz, bio",
       "Anis, gemahlen",
       "Apfel-Zimt-Zucker, bio",
@@ -23785,14 +23763,12 @@
       "Alle Gewürze, Kräuter, Gewürzmischungen und Gewürzzubereitung"
     ],
     "ostmann gewürze teuto markenvertrieb gmbh": [
-      "Anis ganz15",
-      "Anis gemahlen15",
-      "Austernpilze5",
-      "Austernpilze25",
-      "Basilikum6",
-      "Basilikum15",
-      "Basilikum gerebelt12,5",
-      "Beifu· geschnitten25"
+      "Anis ganz",
+      "Anis gemahlen",
+      "Austernpilze",
+      "Basilikum",
+      "Basilikum gerebelt12,",
+      "Beifuß geschnitten"
     ],
     "raps gmbh & co kg": [
       "APFELGRANULAT GESCHWEFELT",
@@ -23816,7 +23792,7 @@
       "Bio-Reisflocken"
     ],
     "henglein": [
-      "Henglein Eierspätzle Allgäuer Art",
+      "\"Henglein Eierspätzle \"\"Allgäuer Art\"\"\"",
       "Blätterteig",
       "Blätterteig light",
       "Bratkartoffeln Faltsch.",
@@ -23828,7 +23804,7 @@
       "Focaccia",
       "Germknödel Powidl",
       "Gnocchi",
-      "Hefeklö·e m. Heidelbeerf.",
+      "Hefeklöße m. Heidelbeerf.",
       "Hefeteig für Blechkuchen",
       "Henglein Blätterteig XXL",
       "Henglein Kartoffel-Gnocchi",
@@ -23840,19 +23816,19 @@
       "Hochreiter Schwedensalat",
       "Kartoffelnudeln/Schupfn.",
       "Kartoffelpufferteig",
-      "Klo·masse",
-      "Klo·teig",
-      "Klo·teig fränkisch halb/halb",
-      "Klo·teig Premium",
-      "Klo·teig Thüringer Art",
+      "Kloßmasse",
+      "Kloßteig",
+      "Kloßteig fränkisch halb/halb",
+      "Kloßteig Premium",
+      "Kloßteig Thüringer Art",
       "Knöpfle",
       "Käsespätzle",
       "Mürbeteig",
-      "Nürnberger  Frische Klö·e m. Brot",
-      "Nürnberger  Frische Klö·e o. Brot",
-      "Nürnberger  Klo·teig Franken",
+      "Nürnberger  Frische Klöße m. Brot",
+      "Nürnberger  Frische Klöße o. Brot",
+      "Nürnberger  Kloßteig Franken",
       "Nürnberger Kasa m. Essig & ôl",
-      "Nürnberger Klo·teig",
+      "Nürnberger Kloßteig",
       "Pizzateig",
       "Reibekuchenteig",
       "Seidenknödelteig",
@@ -23876,9 +23852,9 @@
       "Activia 1,5%Activia laktosefrei",
       "Activia Classic 3,5% Fett",
       "Activia Creme Genuss",
-      "Aprikose",
       "AprikoseFruchtZwerge",
       "AprikoseFruchtzwerge/Milchzwerge Drinks",
+      "Aprikose",
       "BananeFruchtZwerge",
       "BananeFruchtzwerge/Milchzwerge Drinks",
       "Birne (Wintersorte)",
@@ -23891,11 +23867,11 @@
       "Duo Erdbeere/BananeFruchtZwerge",
       "Erdbeer Müsli",
       "Erdbeer-Vanille (Saison)FruchtZwerge",
-      "ErdbeereActivia laktosefrei",
-      "ErdbeereDanone Family Standard",
       "ErdbeereFruchtZwerge",
       "Erdbeere",
       "ErdbeereFruchtzwerge/Milchzwerge Drinks",
+      "ErdbeereActivia laktosefrei",
+      "ErdbeereDanone Family Standard",
       "Erdbeere-KiwiActivia Drink",
       "Feige (Wintersorte)",
       "Getrocknete Pflaume"
@@ -23914,8 +23890,11 @@
     "coppenrath und wiese": [
       "Coppenrath FeingebäckButter Cookies",
       "Coppenrath FeingebäckCafe Kränze",
+      "Coppenrath FeingebäckKekse Schwarz&weiß",
       "Coppenrath FeingebäckChoco Kränze",
+      "Coppenrath FeingebäckMinikekse Kakao",
       "Coppenrath FeingebäckFranken Thaler",
+      "Coppenrath FeingebäckAmerican Cookie Chunks",
       "Coppenrath FeingebäckSpritzgenuss",
       "Coppenrath FeingebäckSpritzgenuss Vollmilch Schoko",
       "Coppenrath FeingebäckSpritzgenuss Zartbitter Schoko",
@@ -23924,18 +23903,15 @@
       "Coppenrath FeingebäckButter Cookies zuckerfrei",
       "Coppenrath FeingebäckHaferkeksstückchen",
       "Coppenrath FeingebäckCookie Drops 22% Butter",
-      "Coppenrath FeingebäckKekse mit Butter und Eiwei·",
+      "Coppenrath FeingebäckKekse mit Butter und Eiweiß",
       "Coppenrath FeingebäckButterkeks 31,5 mm x 31,5 mm",
       "Coppenrath FeingebäckButterkeks 77 mm x 77 mm",
       "Coppenrath FeingebäckAmarettini",
       "Coppenrath FeingebäckButterkekse",
       "Coppenrath FeingebäckBiscuit Light",
       "Coppenrath FeingebäckHaselunussringe",
-      "Coppenrath FeingebäckKekse Schwarz&wei·",
       "Coppenrath FeingebäckGrazerringe",
-      "Coppenrath FeingebäckMinikekse Kakao",
       "Coppenrath FeingebäckMini Cookies Drops",
-      "Coppenrath FeingebäckAmerican Cookie Chunks",
       "Coppenrath FeingebäckBiscuit mit dunklen Schokostückchen"
     ],
     "teuteburgermühle": [
@@ -23997,7 +23973,7 @@
       "Frische Süße Sahne"
     ],
     "schwartau corny": [
-      "Corny Big 50g Schoko-Banane",
+      "\"Corny Big 50g Schoko-Banane\"\"\"",
       "Corny Big 50g Aprikose",
       "Corny Big 50g Dunkle Schoko",
       "Corny Big 50g Erdnuss",
@@ -24026,7 +24002,7 @@
       "Corny Free 20g Kirsch-Joghurt",
       "Corny Free 20g Nuss-Nougat",
       "Corny Free 20g Schoko",
-      "Corny Free 20g Wei·e Schoko",
+      "Corny Free 20g Weiße Schoko",
       "Corny Milchsandwich 30g/40g Milch Classic",
       "Corny Milchsandwich 30g/40g Milch Dark&White"
     ],
@@ -24098,10 +24074,10 @@
       "Pasta chuta"
     ],
     "kikkoman foods europe": [
+      "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "Dehydrierte SojasoßeKL20, 25 kg Karton",
       "Dehydrierte SojasoßeKN20, 25 kg Karton, 500 kg",
       "Dehydrierte SojasoßeKS20, 25 kg Karton, 500 kg",
-      "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "Dehydrierte Tamari Glutenfreie Sojasoße, 25 kg Karton",
       "Saishikomi Sojasoße",
       "SojasoßeGlassflasche, PET-Flasche, 1,9 L,",
@@ -24165,12 +24141,12 @@
       "Bounty Stick"
     ],
     "grafschafter krautfabrik": [
-      "Grafschafter GourmetApfel-Holunder",
       "Grafschafter GourmetApfel-Ingwer",
       "Grafschafter GourmetWinterzauber Apfel - Sultanine",
       "Grafschafter GourmetWinterzauber Apfel - Sauerkirsche",
       "Grafschafter GourmetWinterzauber Birne - Orange",
-      "Grafschafter GourmetFlüssigzuckermischungen"
+      "Grafschafter GourmetFlüssigzuckermischungen",
+      "Grafschafter GourmetApfel-Holunder"
     ],
     "true fruits": [
       "Detox Green",
@@ -24271,9 +24247,9 @@
       "Dextro Energy"
     ],
     "tchibo und davidoff": [
-      "ZUCKER 800 X 4G TCHIBO_",
-      "ZUCKER STICKS 1000 X 4G TCHIBO",
-      "ZUCKERSTICKS 1000 X 4G DAVIDOFF"
+      "\"ZUCKER 800 X 4G \"\"TCHIBO_\"",
+      "\"ZUCKER STICKS 1000 X 4G \"\"TCHIBO\"\"\"",
+      "\"ZUCKERSTICKS 1000 X 4G \"\"DAVIDOFF\"\"\""
     ],
     "südzucker": [
       "Zucker(raffinierter Zucker, weiß, Kristallzucker, Puderzucker)"
