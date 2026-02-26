@@ -281,7 +281,8 @@ def parse_row(cells: list) -> dict | None:
         # 5: Pessach (tick image + optional text notes)
         # 6: Hersteller (manufacturer)
 
-        name = cells[1].get_text(strip=True).strip('"').replace('""', '').strip() if len(cells) > 1 else ""
+        name = clean_name(cells[1].get_text(strip=True)) if len(cells) > 1 else ""
+        manufacturer = clean_manufacturer(cells[6].get_text(strip=True)) if len(cells) > 6 else ""
         weitere_kategorien = cells[2].get_text(strip=True) if len(cells) > 2 else ""
         certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
         manufacturer = cells[6].get_text(strip=True) if len(cells) > 6 else ""
@@ -395,8 +396,6 @@ def clean_name(name: str) -> str:
     """Clean product name."""
     # Fix ß encoding corruption (· appears instead of ß)
     name = name.replace("·", "ß")
-    # Strip surrounding quotes
-    name = name.strip('"').replace('""', "").strip()
     # Strip trailing numbers (gram weights like "Anis ganz15")
     name = re.sub(r"\s*\d+$", "", name).strip()
     return name
