@@ -281,7 +281,7 @@ def parse_row(cells: list) -> dict | None:
         # 5: Pessach (tick image + optional text notes)
         # 6: Hersteller (manufacturer)
 
-        name = cells[1].get_text(strip=True).strip('"').strip() if len(cells) > 1 else ""
+        name = cells[1].get_text(strip=True).strip('"').replace('""', '').strip() if len(cells) > 1 else ""
         weitere_kategorien = cells[2].get_text(strip=True) if len(cells) > 2 else ""
         certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
         manufacturer = cells[6].get_text(strip=True) if len(cells) > 6 else ""
