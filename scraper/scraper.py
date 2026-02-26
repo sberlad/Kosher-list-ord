@@ -272,42 +272,90 @@ def fetch_category(session: requests.Session, cat_id: int) -> list[dict]:
 def parse_row(cells: list) -> dict | None:
     """Parse a table row into a product dict."""
     try:
-        # Column order observed on site:
-        # 0: Produkt (product name)
-        # 1: Hersteller (manufacturer)
-        # 2: Zertifikat (certificate/authority)
-        # 3: Milchig / Parve / Nicht milchig
-        # 4: Koscher lePessach flags
-        # (column count varies — be defensive)
+        # Confirmed column order from site HTML inspection:
+        # 0: # (row number - skip)
+        # 1: Produkt (product name)
+        # 2: weitere Kategorien (additional categories)
+        # 3: Zertifikate (certificate/rabbi)
+        # 4: Milchig (tick image = milchig, empty = parve, text = note)
+        # 5: Pessach (tick image + optional text notes)
+        # 6: Hersteller (manufacturer)
 
         name = cells[1].get_text(strip=True) if len(cells) > 1 else ""
         weitere_kategorien = cells[2].get_text(strip=True) if len(cells) > 2 else ""
         certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
-        milchig_raw = cells[4].get_text(strip=True) if len(cells) > 4 else ""
-        pessach_raw = cells[5].get_text(strip=True) if len(cells) > 5 else ""
         manufacturer = cells[6].get_text(strip=True) if len(cells) > 6 else ""
 
-        if not name or not manufacturer:
+        if not name:
             return None
 
-        # Normalise dairy status
-        milchig = normalise_dairy(milchig_raw)
+        # Milchig cell: tick.png image = milchig, text note may follow (e.g. "Chalaw Stam")
+        milchig_cell = cells[4] if len(cells) > 4 else None
+        dairy_status, dairy_note = parse_milchig_cell(milchig_cell)
 
-        # Normalise Pessach status
-        pessach = normalise_pessach(pessach_raw)
+        # Pessach cell: tick.png image = kosher lePessach, text = notes (e.g. "Kitniyot")
+        pessach_cell = cells[5] if len(cells) > 5 else None
+        pessach_status, pessach_note = parse_pessach_cell(pessach_cell)
 
-        return {
+        product = {
             "name": name,
             "manufacturer": manufacturer,
             "certificate": certificate,
-            "dairy_status": milchig,       # "milchig" | "parve" | "fleischig" | "unknown"
-            "pessach": pessach,             # "kosher_lepessach" | "not_pessach" | "suitable" | "unknown"
+            "weitere_kategorien": weitere_kategorien,
+            "dairy_status": dairy_status,   # "milchig" | "parve" | "unknown"
+            "pessach": pessach_status,       # "kosher_lepessach" | "not_pessach" | "unknown"
         }
+
+        if dairy_note:
+            product["dairy_note"] = dairy_note      # e.g. "Chalaw Stam", "Chalav Yisrael"
+        if pessach_note:
+            product["pessach_note"] = pessach_note  # e.g. "Kitniyot", "Gebruchts"
+
+        return product
+
     except Exception:
         return None
 
 
+def parse_milchig_cell(cell) -> tuple[str, str]:
+    """Returns (dairy_status, note). Tick image = milchig, empty = parve."""
+    if cell is None:
+        return "unknown", ""
+    has_tick = cell.find("img") is not None
+    note = cell.get_text(strip=True)
+    if has_tick:
+        return "milchig", note
+    elif note:
+        # Sometimes text like "Parve" appears directly
+        note_lower = note.lower()
+        if "parve" in note_lower or "pareve" in note_lower:
+            return "parve", ""
+        if "fleisch" in note_lower or "meat" in note_lower:
+            return "fleischig", note
+        return "milchig", note  # text without tick still likely milchig indicator
+    else:
+        return "parve", ""  # empty cell = parve
+
+
+def parse_pessach_cell(cell) -> tuple[str, str]:
+    """Returns (pessach_status, note). Tick = kosher lePessach, text = qualifications."""
+    if cell is None:
+        return "unknown", ""
+    has_tick = cell.find("img") is not None
+    note = cell.get_text(strip=True)
+    if has_tick:
+        return "kosher_lepessach", note  # note may include "Kitniyot" etc
+    elif note:
+        note_lower = note.lower()
+        if "nicht" in note_lower or "not" in note_lower:
+            return "not_pessach", note
+        return "kosher_lepessach", note  # text without tick, assume qualified approval
+    else:
+        return "not_pessach", ""  # empty = not specifically approved for Pessach
+
+
 def normalise_dairy(raw: str) -> str:
+    """Legacy fallback - kept for compatibility."""
     raw_lower = raw.lower()
     if "milchig" in raw_lower or "dairy" in raw_lower:
         return "milchig"
@@ -319,6 +367,7 @@ def normalise_dairy(raw: str) -> str:
 
 
 def normalise_pessach(raw: str) -> str:
+    """Legacy fallback - kept for compatibility."""
     raw_lower = raw.lower()
     if "le pessach" in raw_lower or "lepessach" in raw_lower:
         return "kosher_lepessach"
