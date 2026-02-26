@@ -1,11 +1,11 @@
 {
   "version": "2026-02-26",
-  "generated_at": "2026-02-26T10:47:45.011445+00:00",
-  "product_count": 1682,
+  "generated_at": "2026-02-26T10:58:02.006334+00:00",
+  "product_count": 1934,
   "source": "https://koscherliste.ordonline.de/koscherliste/",
   "stats": {
-    "categories_scraped": 195,
-    "categories_empty": 10,
-    "duplicates_removed": 818
+    "categories_scraped": 200,
+    "categories_empty": 5,
+    "duplicates_removed": 820
   }
 }
