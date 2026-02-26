@@ -285,7 +285,6 @@ def parse_row(cells: list) -> dict | None:
         manufacturer = clean_manufacturer(cells[6].get_text(strip=True)) if len(cells) > 6 else ""
         weitere_kategorien = cells[2].get_text(strip=True) if len(cells) > 2 else ""
         certificate = cells[3].get_text(strip=True) if len(cells) > 3 else ""
-        manufacturer = cells[6].get_text(strip=True) if len(cells) > 6 else ""
 
         if not name:
             return None
