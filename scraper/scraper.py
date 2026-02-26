@@ -380,6 +380,45 @@ def normalise_pessach(raw: str) -> str:
         return "not_pessach"
     return "unknown"
 
+# Known certificate/authority suffixes that leak into the manufacturer field
+_CERT_SUFFIXES = [
+    "Rabbiner Tuvia Hod Hochwald", "Rabbiner Jona Pawel",
+    "Rabbiner  Meir Hord", "Rabbiner Meir Hord",
+    "Kof-K", "KLBD",
+]
+
+# Known sub-brand suffixes that leak into the manufacturer field
+_BRAND_SUFFIXES = ["Balisto", "Bounty", "BRôLIO", "Vivani"]
+
+
+def clean_name(name: str) -> str:
+    """Clean product name."""
+    # Fix ß encoding corruption (· appears instead of ß)
+    name = name.replace("·", "ß")
+    # Strip surrounding quotes
+    name = name.strip('"').replace('""', "").strip()
+    # Strip trailing numbers (gram weights like "Anis ganz15")
+    name = re.sub(r"\s*\d+$", "", name).strip()
+    return name
+
+
+def clean_manufacturer(mfr: str) -> str:
+    """Clean manufacturer name."""
+    # Fix ß encoding corruption
+    mfr = mfr.replace("·", "ß")
+    # Strip known certificate suffixes that leaked in
+    for suffix in _CERT_SUFFIXES:
+        if mfr.endswith(suffix):
+            mfr = mfr[:-len(suffix)].strip().rstrip(",").strip()
+            break
+    # Strip known brand suffixes that leaked in
+    for suffix in _BRAND_SUFFIXES:
+        if mfr.endswith(suffix):
+            mfr = mfr[:-len(suffix)].strip().rstrip(",").strip()
+            break
+    # Fix concatenated city+rabbi: "HeidelbergRabbiner" -> "Heidelberg Rabbiner"
+    mfr = re.sub(r"(\w)(Rabbiner\s)", r"\1 \2", mfr)
+    return mfr.strip()
 
 def scrape_all() -> tuple[list[dict], dict]:
     """Scrape every category and return (products, stats)."""
