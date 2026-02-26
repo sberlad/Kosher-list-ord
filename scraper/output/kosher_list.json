@@ -1,6 +1,6 @@
 {
   "version": "2026-02-26",
-  "generated_at": "2026-02-26T13:19:55.168603+00:00",
+  "generated_at": "2026-02-26T13:25:09.127805+00:00",
   "product_count": 1932,
   "products": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "name": "Cider Apple and Pear , parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "SaftApfelsaft",
       "dairy_status": "parve",
@@ -1212,7 +1212,7 @@
     },
     {
       "name": "Obstkuchenteig",
-      "manufacturer": "Demeter Bauck",
+      "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
       "dairy_status": "parve",
@@ -1223,7 +1223,7 @@
     },
     {
       "name": "Obstkuchenteig",
-      "manufacturer": "Dr. Oetker",
+      "manufacturer": "Demeter Bauck",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
       "dairy_status": "parve",
@@ -1429,7 +1429,7 @@
     },
     {
       "name": "Baguettenur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
@@ -1537,7 +1537,7 @@
     },
     {
       "name": "Berches (Bitte vorbestellen)nur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "BrotBerches",
       "dairy_status": "parve",
@@ -1574,7 +1574,7 @@
     },
     {
       "name": "BERLINER nur mit Konfitüre-Füllung (parve)",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Berliner",
       "dairy_status": "parve",
@@ -1890,7 +1890,7 @@
     },
     {
       "name": "Dunkel, 2,5 kg",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -1902,7 +1902,7 @@
     },
     {
       "name": "Dunkel, 200 g",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -2113,17 +2113,6 @@
     },
     {
       "name": "Frische Hefe",
-      "manufacturer": "Deutsche Hefewerke",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "BackzutatenBackzutaten",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Backzutaten"
-      ]
-    },
-    {
-      "name": "Frische Hefe",
       "manufacturer": "Dr.Oetker",
       "certificate": "",
       "weitere_kategorien": "BackzutatenHefe",
@@ -2132,6 +2121,17 @@
       "categories": [
         "Backzutaten",
         "Hefe"
+      ]
+    },
+    {
+      "name": "Frische Hefe",
+      "manufacturer": "Deutsche Hefewerke",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "BackzutatenBackzutaten",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Backzutaten"
       ]
     },
     {
@@ -2847,7 +2847,7 @@
     },
     {
       "name": "Brezeln (außer mit Käse überbacken)",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "LaugengebäckBrezeln",
       "dairy_status": "parve",
@@ -2892,7 +2892,7 @@
     },
     {
       "name": "Ciabattanur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
@@ -3056,9 +3056,9 @@
       ]
     },
     {
-      "name": "Dreikornbrot",
-      "manufacturer": "Schürener Backparadies, Dortmund",
-      "certificate": "Rabbiner Avichai Apel",
+      "name": "Dreikornbrotnur ungeschnitten",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
+      "certificate": "",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3067,9 +3067,9 @@
       ]
     },
     {
-      "name": "Dreikornbrotnur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
-      "certificate": "",
+      "name": "Dreikornbrot",
+      "manufacturer": "Schürener Backparadies, Dortmund",
+      "certificate": "Rabbiner Avichai Apel",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3225,7 +3225,7 @@
     },
     {
       "name": "Kartoffelbrotnur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
@@ -3369,7 +3369,7 @@
     },
     {
       "name": "Marmeladen, ams alle parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Marmeladen",
       "dairy_status": "parve",
@@ -3391,7 +3391,7 @@
     },
     {
       "name": "Brötchen alle Sorten außer Kaiser -, Milchbrötchen , sowie mit Käse überbackene Brötchen)",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
@@ -3413,8 +3413,8 @@
     },
     {
       "name": "Dinkelbrötchen",
-      "manufacturer": "Bäckerei Zimmermann, Köln",
-      "certificate": "Rabbiner Jaron Engelmayer",
+      "manufacturer": "Schürener Backparadies, Dortmund",
+      "certificate": "Rabbiner Avichai Apel",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3424,8 +3424,8 @@
     },
     {
       "name": "Dinkelbrötchen",
-      "manufacturer": "Schürener Backparadies, Dortmund",
-      "certificate": "Rabbiner Avichai Apel",
+      "manufacturer": "Bäckerei Zimmermann, Köln",
+      "certificate": "Rabbiner Jaron Engelmayer",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -4753,7 +4753,7 @@
     },
     {
       "name": "Dauergebäck",
-      "manufacturer": "Bäckerei Seip, HeidelbergRabbiner Jona Pawel",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
       "certificate": "",
       "weitere_kategorien": "Dauergebäck",
       "dairy_status": "milchig",
@@ -5210,7 +5210,7 @@
     },
     {
       "name": "RAFFINIERTES DISTELôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Distelöl",
       "dairy_status": "parve",
@@ -5271,7 +5271,7 @@
     },
     {
       "name": "ALL OR NUT-TING 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5283,7 +5283,7 @@
     },
     {
       "name": "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5295,7 +5295,7 @@
     },
     {
       "name": "B&J CHOCOLATE COOKIE CORE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5307,7 +5307,7 @@
     },
     {
       "name": "B&J FT BLONDIE BROWNIE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5319,7 +5319,7 @@
     },
     {
       "name": "B&J FT CHOCOLATE FUDGE BROWNIE 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5331,7 +5331,7 @@
     },
     {
       "name": "B&J FT CHOCOLATE FUDGE BROWNIE NEW 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5343,7 +5343,7 @@
     },
     {
       "name": "B&J FT CINNAMON BUNS 150 ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5355,7 +5355,7 @@
     },
     {
       "name": "B&J FT CINNAMON BUNS 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5367,7 +5367,7 @@
     },
     {
       "name": "B&J FT CINNAMON BUNS 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5379,7 +5379,7 @@
     },
     {
       "name": "B&J FT KARAMEL SUTRA 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5391,7 +5391,7 @@
     },
     {
       "name": "B&J FT S'MORES 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5403,7 +5403,7 @@
     },
     {
       "name": "B&J FT VANILLA IC 100ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5415,7 +5415,7 @@
     },
     {
       "name": "B&J GFY BLUEBERRY 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5427,7 +5427,7 @@
     },
     {
       "name": "B&J GREEK FROZEN YOGURT, BLUEBERRY CHEESECAKE",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5439,7 +5439,7 @@
     },
     {
       "name": "B&J HALF BAKED 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5451,7 +5451,7 @@
     },
     {
       "name": "B&J PEANUT BUTTER COOKIE CORE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5463,7 +5463,7 @@
     },
     {
       "name": "B&J SAVE OUR SWIRL 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5475,7 +5475,7 @@
     },
     {
       "name": "B&J SAVE OUR SWIRLED 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5487,7 +5487,7 @@
     },
     {
       "name": "B&J SPECULOOS COOKIE CORE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5499,7 +5499,7 @@
     },
     {
       "name": "B&J STRAWBEARY 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5511,7 +5511,7 @@
     },
     {
       "name": "BERRY WHITE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5523,7 +5523,7 @@
     },
     {
       "name": "BJ PUMPKIN CHEESECAKE 500 ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5535,7 +5535,7 @@
     },
     {
       "name": "BLONDIE BROWNIE 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5547,7 +5547,7 @@
     },
     {
       "name": "CLEVER COOKIES 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5559,7 +5559,7 @@
     },
     {
       "name": "CLEVER COOKIES 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5571,7 +5571,7 @@
     },
     {
       "name": "CONE SWEET CONE 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5583,7 +5583,7 @@
     },
     {
       "name": "COOKIE DOUGH 100ML MULTIPACK X",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5595,7 +5595,7 @@
     },
     {
       "name": "COW POWER 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5607,7 +5607,7 @@
     },
     {
       "name": "COW POWER 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5619,7 +5619,7 @@
     },
     {
       "name": "DOUGH-BLE WHAMMY 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5739,7 +5739,7 @@
     },
     {
       "name": "FAIR TRADE CHUNKY MONKEY 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5751,7 +5751,7 @@
     },
     {
       "name": "FAIR TRADE CHUNKY MONKEY 4.5L",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5763,7 +5763,7 @@
     },
     {
       "name": "FAIR TRADE CHUNKY MONKEY 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5775,7 +5775,7 @@
     },
     {
       "name": "FAIR TRADE VANILLA FOR A CHANGE 4.5L - EU",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5787,7 +5787,7 @@
     },
     {
       "name": "FAIRY NUTS 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5799,7 +5799,7 @@
     },
     {
       "name": "FAIRY NUTS 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5811,7 +5811,7 @@
     },
     {
       "name": "FOSSIL FUEL 500 ML (UK)",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5823,7 +5823,7 @@
     },
     {
       "name": "FT BAKED ALASKA 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5835,7 +5835,7 @@
     },
     {
       "name": "FT BAKED ALASKA 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5847,7 +5847,7 @@
     },
     {
       "name": "FT BERRY NICE 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -5859,7 +5859,7 @@
     },
     {
       "name": "FT CARAMEL CHEW CHEW 100ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -6679,7 +6679,7 @@
     },
     {
       "name": "sill Dill, Hering mit Dill, parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Hering",
       "dairy_status": "parve",
@@ -6691,7 +6691,7 @@
     },
     {
       "name": "sill Inlagd , Hering/Zwiebeln/Karotten , parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Hering",
       "dairy_status": "parve",
@@ -6703,7 +6703,7 @@
     },
     {
       "name": "Sill Matjes,  Matjeshering/Filets ,  pareve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Hering",
       "dairy_status": "parve",
@@ -6715,7 +6715,7 @@
     },
     {
       "name": "Sill senap , Hering in Senfsoße, parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Hering",
       "dairy_status": "parve",
@@ -8959,7 +8959,7 @@
     },
     {
       "name": "Alle nicht aromatisierten Produkte, wie Klassik, Ostfriesentee, Darjeeling, Grüner Tee, Früchte-Mischung, Rooibos,  Pfef",
-      "manufacturer": "Milford Me·mer",
+      "manufacturer": "Milford Meßmer",
       "certificate": "",
       "weitere_kategorien": "Tee",
       "dairy_status": "parve",
@@ -9684,17 +9684,6 @@
       ]
     },
     {
-      "name": "Anis, gemahlen",
-      "manufacturer": "Lebensbaum",
-      "certificate": "",
-      "weitere_kategorien": "",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Gewürze"
-      ]
-    },
-    {
       "name": "ANIS, GEMAHLEN",
       "manufacturer": "HELA",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -9704,6 +9693,17 @@
       "categories": [
         "Gewürze",
         "Gewürzmischungen"
+      ]
+    },
+    {
+      "name": "Anis, gemahlen",
+      "manufacturer": "Lebensbaum",
+      "certificate": "",
+      "weitere_kategorien": "",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Gewürze"
       ]
     },
     {
@@ -11873,6 +11873,18 @@
       ]
     },
     {
+      "name": "Aprikose",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "JogurtFruchtjugurth",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
       "name": "AprikoseFruchtZwerge",
       "manufacturer": "Danone",
       "certificate": "",
@@ -11889,18 +11901,6 @@
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "Aprikose",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "JogurtFruchtjugurth",
       "dairy_status": "milchig",
       "pessach": "not_pessach",
       "categories": [
@@ -12053,6 +12053,30 @@
       ]
     },
     {
+      "name": "ErdbeereActivia laktosefrei",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "ErdbeereDanone Family Standard",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
       "name": "ErdbeereFruchtZwerge",
       "manufacturer": "Danone",
       "certificate": "",
@@ -12078,30 +12102,6 @@
     },
     {
       "name": "ErdbeereFruchtzwerge/Milchzwerge Drinks",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "ErdbeereActivia laktosefrei",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "ErdbeereDanone Family Standard",
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
@@ -12381,17 +12381,6 @@
       ]
     },
     {
-      "name": "Crema AromaEspresso",
-      "manufacturer": "Luigi LAVAZZA",
-      "certificate": "Rabbiner Hazan",
-      "weitere_kategorien": "Kaffee",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kaffee"
-      ]
-    },
-    {
       "name": "Crema AromaGran CafÇ",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
@@ -12404,6 +12393,17 @@
     },
     {
       "name": "Crema AromaGran Espresso",
+      "manufacturer": "Luigi LAVAZZA",
+      "certificate": "Rabbiner Hazan",
+      "weitere_kategorien": "Kaffee",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kaffee"
+      ]
+    },
+    {
+      "name": "Crema AromaEspresso",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "weitere_kategorien": "Kaffee",
@@ -12525,7 +12525,7 @@
     },
     {
       "name": "Jeder Kaffee , parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kaffee",
       "dairy_status": "parve",
@@ -13179,7 +13179,7 @@
     },
     {
       "name": "KAKOR CHOKLADFLARN, Schokoknusperkekse, doppelt, milchig",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kekse",
       "dairy_status": "parve",
@@ -13190,7 +13190,7 @@
     },
     {
       "name": "KAKOR HALLON, Gebäck mit Himbeerfüllung, parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kekse",
       "dairy_status": "parve",
@@ -13201,7 +13201,7 @@
     },
     {
       "name": "KAKOR HAVREFLARN, Haferknusperkekse, parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kekse",
       "dairy_status": "milchig",
@@ -13928,7 +13928,7 @@
     },
     {
       "name": "Knäcke Brot alle außer mit Dill",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Knäckebrot",
       "dairy_status": "parve",
@@ -14204,7 +14204,7 @@
     },
     {
       "name": "PEPPARKAKOR, Pfefferkuchen, parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kuchen",
       "dairy_status": "parve",
@@ -14287,7 +14287,7 @@
     },
     {
       "name": "SôTSAK DAMMSUGARE, Konfekt Punschrolle, milchig",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kuchen",
       "dairy_status": "milchig",
@@ -14298,7 +14298,7 @@
     },
     {
       "name": "SôTSAK KAKAOBOLL, Schokoball, milchig",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Kuchen",
       "dairy_status": "parve",
@@ -14428,7 +14428,7 @@
     },
     {
       "name": "Milch, 2,5 kg",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14439,7 +14439,7 @@
     },
     {
       "name": "Milch, 200 g",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14450,7 +14450,7 @@
     },
     {
       "name": "Organic Coverture",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14461,7 +14461,7 @@
     },
     {
       "name": "Reis Schokocouverture, 150 g, 2,5 kg",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14472,7 +14472,7 @@
     },
     {
       "name": "Weiß 200 g",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14483,7 +14483,7 @@
     },
     {
       "name": "Weiß, 2,5 kg",
-      "manufacturer": "EcoFina GmbHVivani",
+      "manufacturer": "EcoFina GmbH",
       "certificate": "Rabbiner J.Ralbag",
       "weitere_kategorien": "BackzutatenKuvertüren",
       "dairy_status": "parve",
@@ -14784,7 +14784,7 @@
     },
     {
       "name": "Apfel",
-      "manufacturer": "Chuppa ChpsKLBD",
+      "manufacturer": "Chuppa Chps",
       "certificate": "",
       "weitere_kategorien": "Lutscher",
       "dairy_status": "parve",
@@ -14806,7 +14806,7 @@
     },
     {
       "name": "RAFFINIERTES MAISKEIMôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Maiskeimöl",
       "dairy_status": "parve",
@@ -15011,7 +15011,7 @@
     },
     {
       "name": "FT CARAMEL CHEW CHEW 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15022,7 +15022,7 @@
     },
     {
       "name": "FT CARAMEL CHEW CHEW 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15033,7 +15033,7 @@
     },
     {
       "name": "FT CARAMEL CHEW CHEW 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15044,7 +15044,7 @@
     },
     {
       "name": "FT CHERRY GARCIA 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15055,7 +15055,7 @@
     },
     {
       "name": "FT CHERRY GARCIA 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15066,7 +15066,7 @@
     },
     {
       "name": "FT CHERRY GARCIA FROYO 500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15077,7 +15077,7 @@
     },
     {
       "name": "FT CHOCOLATE FUDGE BROWNIE 100ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15088,7 +15088,7 @@
     },
     {
       "name": "FT CHOCOLATE FUDGE BROWNIE 150ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15099,7 +15099,7 @@
     },
     {
       "name": "FT CHOCOLATE FUDGE BROWNIE 4500ML",
-      "manufacturer": "Ben & JerryKof-K",
+      "manufacturer": "Ben & Jerry",
       "certificate": "",
       "weitere_kategorien": "Milch",
       "dairy_status": "milchig",
@@ -15620,7 +15620,7 @@
     },
     {
       "name": "Balisto Corn Mix",
-      "manufacturer": "Mars IncBalisto",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "SchokoladeMüsliriegel",
       "dairy_status": "parve",
@@ -15632,7 +15632,7 @@
     },
     {
       "name": "Balisto Honey Almond Bar",
-      "manufacturer": "Mars IncBalisto",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "SchokoladeMüsliriegel",
       "dairy_status": "parve",
@@ -15644,7 +15644,7 @@
     },
     {
       "name": "Balisto Muesli Bar",
-      "manufacturer": "Mars IncBalisto",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "SchokoladeMüsliriegel",
       "dairy_status": "parve",
@@ -15656,7 +15656,7 @@
     },
     {
       "name": "Balisto Strawberry Bar",
-      "manufacturer": "Mars IncBalisto",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "SchokoladeMüsliriegel",
       "dairy_status": "parve",
@@ -15668,7 +15668,7 @@
     },
     {
       "name": "Balisto Woodberry Bar",
-      "manufacturer": "Mars IncBalisto",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "SchokoladeMüsliriegel",
       "dairy_status": "parve",
@@ -16566,7 +16566,7 @@
     },
     {
       "name": "OLIVENôLE",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Olivenöl",
       "dairy_status": "parve",
@@ -16786,7 +16786,7 @@
     },
     {
       "name": "UND EXTRA NATIVEM OLIVENôL / NEBENPRODUKTE",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Olivenöl",
       "dairy_status": "parve",
@@ -17151,7 +17151,7 @@
     },
     {
       "name": "MISCHUNG AUS RAFFINIERTEM RAPSôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Rapsöl",
       "dairy_status": "parve",
@@ -17162,7 +17162,7 @@
     },
     {
       "name": "RAFFINIERTES RAPSôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Rapsöl",
       "dairy_status": "parve",
@@ -17173,7 +17173,7 @@
     },
     {
       "name": "RAPSôL-LEZITHIN",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Rapsöl",
       "dairy_status": "parve",
@@ -17228,7 +17228,7 @@
     },
     {
       "name": "ROHES RAPSôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Rapsöl",
       "dairy_status": "parve",
@@ -17703,7 +17703,7 @@
     },
     {
       "name": "ROSTAD LôK, Röstzwiebeln -parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Röstzwiebeln",
       "dairy_status": "parve",
@@ -17714,7 +17714,7 @@
     },
     {
       "name": "Drink lingon flader, Preiselbeegetränk parve",
-      "manufacturer": "IkeaRabbiner  Meir Hord",
+      "manufacturer": "Ikea",
       "certificate": "",
       "weitere_kategorien": "Saft",
       "dairy_status": "parve",
@@ -17845,17 +17845,6 @@
       ]
     },
     {
-      "name": "Dehydrierte SojasoßeKU20, 25 kg Karton",
-      "manufacturer": "Kikkoman Foods Europe",
-      "certificate": "Rabbiner EhrentreuK Meschulasch",
-      "weitere_kategorien": "Soja",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Saucen"
-      ]
-    },
-    {
       "name": "Dehydrierte SojasoßeKL20, 25 kg Karton",
       "manufacturer": "Kikkoman Foods Europe",
       "certificate": "Rabbiner EhrentreuK Meschulasch",
@@ -17879,6 +17868,17 @@
     },
     {
       "name": "Dehydrierte SojasoßeKS20, 25 kg Karton, 500 kg",
+      "manufacturer": "Kikkoman Foods Europe",
+      "certificate": "Rabbiner EhrentreuK Meschulasch",
+      "weitere_kategorien": "Soja",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Saucen"
+      ]
+    },
+    {
+      "name": "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "manufacturer": "Kikkoman Foods Europe",
       "certificate": "Rabbiner EhrentreuK Meschulasch",
       "weitere_kategorien": "Soja",
@@ -18535,7 +18535,7 @@
     },
     {
       "name": "Bounty Bar",
-      "manufacturer": "Mars IncBounty",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "Schokolade",
       "dairy_status": "parve",
@@ -18546,7 +18546,7 @@
     },
     {
       "name": "Bounty Dark",
-      "manufacturer": "Mars IncBounty",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "Schokolade",
       "dairy_status": "parve",
@@ -18557,7 +18557,7 @@
     },
     {
       "name": "Bounty Fun Size",
-      "manufacturer": "Mars IncBounty",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "Schokolade",
       "dairy_status": "parve",
@@ -18568,7 +18568,7 @@
     },
     {
       "name": "Bounty Milk",
-      "manufacturer": "Mars IncBounty",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "Schokolade",
       "dairy_status": "parve",
@@ -18579,7 +18579,7 @@
     },
     {
       "name": "Bounty Stick",
-      "manufacturer": "Mars IncBounty",
+      "manufacturer": "Mars Inc",
       "certificate": "Orthodox UnionBasel Kosher Commission",
       "weitere_kategorien": "Schokolade",
       "dairy_status": "parve",
@@ -18644,6 +18644,28 @@
       ]
     },
     {
+      "name": "Grafschafter GourmetFlüssigzuckermischungen",
+      "manufacturer": "Grafschafter Krautfabrik",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Sirup",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Sirup"
+      ]
+    },
+    {
+      "name": "Grafschafter GourmetApfel-Holunder",
+      "manufacturer": "Grafschafter Krautfabrik",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Sirup",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Sirup"
+      ]
+    },
+    {
       "name": "Grafschafter GourmetApfel-Ingwer",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -18678,28 +18700,6 @@
     },
     {
       "name": "Grafschafter GourmetWinterzauber Birne - Orange",
-      "manufacturer": "Grafschafter Krautfabrik",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Sirup",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Sirup"
-      ]
-    },
-    {
-      "name": "Grafschafter GourmetFlüssigzuckermischungen",
-      "manufacturer": "Grafschafter Krautfabrik",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Sirup",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Sirup"
-      ]
-    },
-    {
-      "name": "Grafschafter GourmetApfel-Holunder",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Sirup",
@@ -19250,7 +19250,7 @@
     },
     {
       "name": "RAFFINIERTES SOJAôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Sojaöl",
       "dairy_status": "parve",
@@ -19305,7 +19305,7 @@
     },
     {
       "name": "RAFFINIERTES WINTERISIERTES SONNENBLUMENôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Sonnenblumenöl",
       "dairy_status": "parve",
@@ -19316,7 +19316,7 @@
     },
     {
       "name": "ROHES SONNENBLUMENôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Sonnenblumenöl",
       "dairy_status": "parve",
@@ -21806,7 +21806,7 @@
     },
     {
       "name": "REFFINIERTES WALNUSSôL",
-      "manufacturer": "Brökelmann & CoBRôLIO",
+      "manufacturer": "Brökelmann & Co",
       "certificate": "Rabbiner Padwa",
       "weitere_kategorien": "Walnussöl",
       "dairy_status": "parve",
@@ -22165,7 +22165,7 @@
       "Tomatenmark -italienische Tomaten",
       "Walnusskernöl"
     ],
-    "ikearabbiner  meir hord": [
+    "ikea": [
       "Cider Apple and Pear , parve",
       "Marmeladen, ams alle parve",
       "sill Dill, Hering mit Dill, parve",
@@ -22947,7 +22947,7 @@
       "FermFresh Roggen",
       "Froststern"
     ],
-    "bäckerei seip, heidelbergrabbiner jona pawel": [
+    "bäckerei seip, heidelberg": [
       "Baguettenur ungeschnitten",
       "Berches (Bitte vorbestellen)nur ungeschnitten",
       "BERLINER nur mit Konfitüre-Füllung (parve)",
@@ -23013,7 +23013,7 @@
       "Dunkle Grundsauce in 100 ml",
       "Helle Grundsauce in 100 ml"
     ],
-    "ecofina gmbhvivani": [
+    "ecofina gmbh": [
       "Dunkel, 2,5 kg",
       "Dunkel, 200 g",
       "Milch, 2,5 kg",
@@ -23026,13 +23026,13 @@
     "dr ritter": [
       "Edelhefe (Würzflocken)"
     ],
-    "deutsche hefewerke": [
-      "Frische Hefe"
-    ],
     "dr.oetker": [
       "Frische Hefe",
       "Hefe",
       "Hefeteig Garant"
+    ],
+    "deutsche hefewerke": [
+      "Frische Hefe"
     ],
     "müllers mühle": [
       "Bohnen, Bohnen Flour",
@@ -23221,7 +23221,7 @@
       "Belmanda 24 x 60g",
       "Belnuga 24 x 60g"
     ],
-    "brökelmann & cobrôlio": [
+    "brökelmann & co": [
       "RAFFINIERTES DISTELôL",
       "RAFFINIERTES MAISKEIMôL",
       "OLIVENôLE",
@@ -23243,7 +23243,7 @@
       "Meerrettich soße",
       "Meerrettich soße extra scharf"
     ],
-    "ben & jerrykof-k": [
+    "ben & jerry": [
       "ALL OR NUT-TING 500ML",
       "B&J CHOCO FUDGE BROWNIE NEW PIECES 4.",
       "B&J CHOCOLATE COOKIE CORE 500ML",
@@ -23567,7 +23567,7 @@
       "Dragonwell Zhejiang",
       "Dung Ti Oolong"
     ],
-    "milford me·mer": [
+    "milford meßmer": [
       "Alle nicht aromatisierten Produkte, wie Klassik, Ostfriesentee, Darjeeling, Grüner Tee, Früchte-Mischung, Rooibos,  Pfef"
     ],
     "eckes / granini": [
@@ -23583,9 +23583,9 @@
       "Aroma ClubGran Espresso",
       "Aroma Point",
       "Aroma Top Espresso",
-      "Crema AromaEspresso",
       "Crema AromaGran CafÇ",
       "Crema AromaGran Espresso",
+      "Crema AromaEspresso",
       "DEK Espresso",
       "Gran CafÇ",
       "Gran Espresso",
@@ -23852,9 +23852,9 @@
       "Activia 1,5%Activia laktosefrei",
       "Activia Classic 3,5% Fett",
       "Activia Creme Genuss",
+      "Aprikose",
       "AprikoseFruchtZwerge",
       "AprikoseFruchtzwerge/Milchzwerge Drinks",
-      "Aprikose",
       "BananeFruchtZwerge",
       "BananeFruchtzwerge/Milchzwerge Drinks",
       "Birne (Wintersorte)",
@@ -23867,11 +23867,11 @@
       "Duo Erdbeere/BananeFruchtZwerge",
       "Erdbeer Müsli",
       "Erdbeer-Vanille (Saison)FruchtZwerge",
+      "ErdbeereActivia laktosefrei",
+      "ErdbeereDanone Family Standard",
       "ErdbeereFruchtZwerge",
       "Erdbeere",
       "ErdbeereFruchtzwerge/Milchzwerge Drinks",
-      "ErdbeereActivia laktosefrei",
-      "ErdbeereDanone Family Standard",
       "Erdbeere-KiwiActivia Drink",
       "Feige (Wintersorte)",
       "Getrocknete Pflaume"
@@ -23957,7 +23957,7 @@
       "Marke Underberg",
       "Natürliche Bitterkräuter"
     ],
-    "chuppa chpsklbd": [
+    "chuppa chps": [
       "Apfel"
     ],
     "dresdner mühle zn / pmg premium mühlen gruppe gmbh & co.kg": [
@@ -24006,12 +24006,17 @@
       "Corny Milchsandwich 30g/40g Milch Classic",
       "Corny Milchsandwich 30g/40g Milch Dark&White"
     ],
-    "mars incbalisto": [
+    "mars inc": [
       "Balisto Corn Mix",
       "Balisto Honey Almond Bar",
       "Balisto Muesli Bar",
       "Balisto Strawberry Bar",
-      "Balisto Woodberry Bar"
+      "Balisto Woodberry Bar",
+      "Bounty Bar",
+      "Bounty Dark",
+      "Bounty Fun Size",
+      "Bounty Milk",
+      "Bounty Stick"
     ],
     "andean dream, llc": [
       "Gluten und Getreide & Corn Free Orzogluten und kornfrei",
@@ -24074,10 +24079,10 @@
       "Pasta chuta"
     ],
     "kikkoman foods europe": [
-      "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "Dehydrierte SojasoßeKL20, 25 kg Karton",
       "Dehydrierte SojasoßeKN20, 25 kg Karton, 500 kg",
       "Dehydrierte SojasoßeKS20, 25 kg Karton, 500 kg",
+      "Dehydrierte SojasoßeKU20, 25 kg Karton",
       "Dehydrierte Tamari Glutenfreie Sojasoße, 25 kg Karton",
       "Saishikomi Sojasoße",
       "SojasoßeGlassflasche, PET-Flasche, 1,9 L,",
@@ -24133,20 +24138,13 @@
       "Big Ben _Nutcrisp dark",
       "Big Ben _Raisins"
     ],
-    "mars incbounty": [
-      "Bounty Bar",
-      "Bounty Dark",
-      "Bounty Fun Size",
-      "Bounty Milk",
-      "Bounty Stick"
-    ],
     "grafschafter krautfabrik": [
+      "Grafschafter GourmetFlüssigzuckermischungen",
+      "Grafschafter GourmetApfel-Holunder",
       "Grafschafter GourmetApfel-Ingwer",
       "Grafschafter GourmetWinterzauber Apfel - Sultanine",
       "Grafschafter GourmetWinterzauber Apfel - Sauerkirsche",
-      "Grafschafter GourmetWinterzauber Birne - Orange",
-      "Grafschafter GourmetFlüssigzuckermischungen",
-      "Grafschafter GourmetApfel-Holunder"
+      "Grafschafter GourmetWinterzauber Birne - Orange"
     ],
     "true fruits": [
       "Detox Green",
