@@ -7,10 +7,9 @@ on:
 
 jobs:
   scrape:
-  runs-on: ubuntu-latest
-  permissions:
-    contents: write
-
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -34,18 +33,6 @@ jobs:
           echo "========================="
           cat scraper/output/manifest.json
 
-          echo ""
-          echo "========================="
-          echo "FIRST 5 PRODUCTS"
-          echo "========================="
-          python3 -c "
-          import json
-          with open('scraper/output/kosher_list.json') as f:
-              data = json.load(f)
-          for p in data['products'][:5]:
-              print(json.dumps(p, ensure_ascii=False, indent=2))
-          "
-
       - name: Check if output changed
         id: diff
         run: |
@@ -56,7 +43,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scraper/output/kosher_list.json scraper/output/manifest.json
+          git add scraper/output/
           git commit -m "chore: update kosher list $(date -u '+%Y-%m-%d')"
           git push
 
