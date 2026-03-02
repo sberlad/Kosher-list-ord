@@ -1,6 +1,6 @@
 {
-  "version": "2026-02-26",
-  "generated_at": "2026-02-26T13:25:09.127805+00:00",
+  "version": "2026-03-02",
+  "generated_at": "2026-03-02T06:46:33.551150+00:00",
   "product_count": 1932,
   "products": [
     {
@@ -1212,7 +1212,7 @@
     },
     {
       "name": "Obstkuchenteig",
-      "manufacturer": "Dr. Oetker",
+      "manufacturer": "Demeter Bauck",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
       "dairy_status": "parve",
@@ -1223,7 +1223,7 @@
     },
     {
       "name": "Obstkuchenteig",
-      "manufacturer": "Demeter Bauck",
+      "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Backmischungen",
       "dairy_status": "parve",
@@ -1416,9 +1416,9 @@
       ]
     },
     {
-      "name": "Baguette",
-      "manufacturer": "Bäckerei Zimmermann, Köln",
-      "certificate": "Rabbiner Jaron Engelmayer",
+      "name": "Baguettenur ungeschnitten",
+      "manufacturer": "Bäckerei Seip, Heidelberg",
+      "certificate": "",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -1428,9 +1428,9 @@
       ]
     },
     {
-      "name": "Baguettenur ungeschnitten",
-      "manufacturer": "Bäckerei Seip, Heidelberg",
-      "certificate": "",
+      "name": "Baguette",
+      "manufacturer": "Bäckerei Zimmermann, Köln",
+      "certificate": "Rabbiner Jaron Engelmayer",
       "weitere_kategorien": "Brot",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3413,8 +3413,8 @@
     },
     {
       "name": "Dinkelbrötchen",
-      "manufacturer": "Schürener Backparadies, Dortmund",
-      "certificate": "Rabbiner Avichai Apel",
+      "manufacturer": "Bäckerei Zimmermann, Köln",
+      "certificate": "Rabbiner Jaron Engelmayer",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3424,8 +3424,8 @@
     },
     {
       "name": "Dinkelbrötchen",
-      "manufacturer": "Bäckerei Zimmermann, Köln",
-      "certificate": "Rabbiner Jaron Engelmayer",
+      "manufacturer": "Schürener Backparadies, Dortmund",
+      "certificate": "Rabbiner Avichai Apel",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3721,8 +3721,8 @@
     },
     {
       "name": "Sesambrötchen",
-      "manufacturer": "Bäckerei Zimmermann, Köln",
-      "certificate": "Rabbiner Jaron Engelmayer",
+      "manufacturer": "Schürener Backparadies, Dortmund",
+      "certificate": "Rabbiner Avichai Apel",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -3732,8 +3732,8 @@
     },
     {
       "name": "Sesambrötchen",
-      "manufacturer": "Schürener Backparadies, Dortmund",
-      "certificate": "Rabbiner Avichai Apel",
+      "manufacturer": "Bäckerei Zimmermann, Köln",
+      "certificate": "Rabbiner Jaron Engelmayer",
       "weitere_kategorien": "Brötchen",
       "dairy_status": "parve",
       "pessach": "not_pessach",
@@ -8371,7 +8371,7 @@
       ]
     },
     {
-      "name": "Champignons  Ganze Köpfe 1.Wahl",
+      "name": "Champignons  ganze Köpfe 1.Wahl",
       "manufacturer": "Bonduelle",
       "certificate": "",
       "weitere_kategorien": "Gemüsekonserven",
@@ -9103,7 +9103,7 @@
     },
     {
       "name": "Assam",
-      "manufacturer": "J.T. Ronnefeld KG",
+      "manufacturer": "Teekanne",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Tee",
       "dairy_status": "parve",
@@ -9115,7 +9115,7 @@
     },
     {
       "name": "Assam",
-      "manufacturer": "Teekanne",
+      "manufacturer": "J.T. Ronnefeld KG",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Tee",
       "dairy_status": "parve",
@@ -11873,18 +11873,6 @@
       ]
     },
     {
-      "name": "Aprikose",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "JogurtFruchtjugurth",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
       "name": "AprikoseFruchtZwerge",
       "manufacturer": "Danone",
       "certificate": "",
@@ -11901,6 +11889,18 @@
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "Aprikose",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "JogurtFruchtjugurth",
       "dairy_status": "milchig",
       "pessach": "not_pessach",
       "categories": [
@@ -12053,6 +12053,30 @@
       ]
     },
     {
+      "name": "Erdbeere",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
+      "name": "ErdbeereFruchtzwerge/Milchzwerge Drinks",
+      "manufacturer": "Danone",
+      "certificate": "",
+      "weitere_kategorien": "Jogurt",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Jogurt",
+        "Milchprodukte"
+      ]
+    },
+    {
       "name": "ErdbeereActivia laktosefrei",
       "manufacturer": "Danone",
       "certificate": "",
@@ -12078,30 +12102,6 @@
     },
     {
       "name": "ErdbeereFruchtZwerge",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "Erdbeere",
-      "manufacturer": "Danone",
-      "certificate": "",
-      "weitere_kategorien": "Jogurt",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Jogurt",
-        "Milchprodukte"
-      ]
-    },
-    {
-      "name": "ErdbeereFruchtzwerge/Milchzwerge Drinks",
       "manufacturer": "Danone",
       "certificate": "",
       "weitere_kategorien": "Jogurt",
@@ -12381,17 +12381,6 @@
       ]
     },
     {
-      "name": "Crema AromaGran CafÇ",
-      "manufacturer": "Luigi LAVAZZA",
-      "certificate": "Rabbiner Hazan",
-      "weitere_kategorien": "Kaffee",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kaffee"
-      ]
-    },
-    {
       "name": "Crema AromaGran Espresso",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
@@ -12404,6 +12393,17 @@
     },
     {
       "name": "Crema AromaEspresso",
+      "manufacturer": "Luigi LAVAZZA",
+      "certificate": "Rabbiner Hazan",
+      "weitere_kategorien": "Kaffee",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kaffee"
+      ]
+    },
+    {
+      "name": "Crema AromaGran CafÇ",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "weitere_kategorien": "Kaffee",
@@ -12831,39 +12831,6 @@
       ]
     },
     {
-      "name": "Coppenrath FeingebäckButter Cookies",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
-      "name": "Coppenrath FeingebäckCafe Kränze",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
-      "name": "Coppenrath FeingebäckKekse Schwarz&weiß",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
       "name": "Coppenrath FeingebäckChoco Kränze",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -12875,29 +12842,7 @@
       ]
     },
     {
-      "name": "Coppenrath FeingebäckMinikekse Kakao",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
       "name": "Coppenrath FeingebäckFranken Thaler",
-      "manufacturer": "Coppenrath und Wiese",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Kekse",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Kekse"
-      ]
-    },
-    {
-      "name": "Coppenrath FeingebäckAmerican Cookie Chunks",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Kekse",
@@ -13096,6 +13041,61 @@
     },
     {
       "name": "Coppenrath FeingebäckBiscuit mit dunklen Schokostückchen",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckKekse Schwarz&weiß",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckMinikekse Kakao",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckAmerican Cookie Chunks",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckButter Cookies",
+      "manufacturer": "Coppenrath und Wiese",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Kekse",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Kekse"
+      ]
+    },
+    {
+      "name": "Coppenrath FeingebäckCafe Kränze",
       "manufacturer": "Coppenrath und Wiese",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Kekse",
@@ -13729,28 +13729,6 @@
       ]
     },
     {
-      "name": "BurgerBallaststoff",
-      "manufacturer": "Burger",
-      "certificate": "",
-      "weitere_kategorien": "Knäckebrot",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Knäckebrot"
-      ]
-    },
-    {
-      "name": "BurgerBio-Delikatesse",
-      "manufacturer": "Burger",
-      "certificate": "",
-      "weitere_kategorien": "Knäckebrot",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Knäckebrot"
-      ]
-    },
-    {
       "name": "BurgerBio-Knäcke 5 Saaten",
       "manufacturer": "Burger",
       "certificate": "",
@@ -13862,6 +13840,28 @@
     },
     {
       "name": "BurgerButtermilch",
+      "manufacturer": "Burger",
+      "certificate": "",
+      "weitere_kategorien": "Knäckebrot",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Knäckebrot"
+      ]
+    },
+    {
+      "name": "BurgerBallaststoff",
+      "manufacturer": "Burger",
+      "certificate": "",
+      "weitere_kategorien": "Knäckebrot",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Knäckebrot"
+      ]
+    },
+    {
+      "name": "BurgerBio-Delikatesse",
       "manufacturer": "Burger",
       "certificate": "",
       "weitere_kategorien": "Knäckebrot",
@@ -16929,17 +16929,6 @@
       ]
     },
     {
-      "name": "Süße MahlzeitApfel-Püfferchen *",
-      "manufacturer": "Dr. Oetker",
-      "certificate": "",
-      "weitere_kategorien": "Pulver",
-      "dairy_status": "milchig",
-      "pessach": "not_pessach",
-      "categories": [
-        "Pulver"
-      ]
-    },
-    {
       "name": "Süße MahlzeitGrießbrei nach klassischer Art *",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
@@ -17062,6 +17051,17 @@
     },
     {
       "name": "Süße MahlzeitQuarkschmarrn nach klassischer Art *",
+      "manufacturer": "Dr. Oetker",
+      "certificate": "",
+      "weitere_kategorien": "Pulver",
+      "dairy_status": "milchig",
+      "pessach": "not_pessach",
+      "categories": [
+        "Pulver"
+      ]
+    },
+    {
+      "name": "Süße MahlzeitApfel-Püfferchen *",
       "manufacturer": "Dr. Oetker",
       "certificate": "",
       "weitere_kategorien": "Pulver",
@@ -18644,17 +18644,6 @@
       ]
     },
     {
-      "name": "Grafschafter GourmetFlüssigzuckermischungen",
-      "manufacturer": "Grafschafter Krautfabrik",
-      "certificate": "Rabbiner Tuvia Hod Hochwald",
-      "weitere_kategorien": "Sirup",
-      "dairy_status": "parve",
-      "pessach": "not_pessach",
-      "categories": [
-        "Sirup"
-      ]
-    },
-    {
       "name": "Grafschafter GourmetApfel-Holunder",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
@@ -18700,6 +18689,17 @@
     },
     {
       "name": "Grafschafter GourmetWinterzauber Birne - Orange",
+      "manufacturer": "Grafschafter Krautfabrik",
+      "certificate": "Rabbiner Tuvia Hod Hochwald",
+      "weitere_kategorien": "Sirup",
+      "dairy_status": "parve",
+      "pessach": "not_pessach",
+      "categories": [
+        "Sirup"
+      ]
+    },
+    {
+      "name": "Grafschafter GourmetFlüssigzuckermischungen",
       "manufacturer": "Grafschafter Krautfabrik",
       "certificate": "Rabbiner Tuvia Hod Hochwald",
       "weitere_kategorien": "Sirup",
@@ -22760,7 +22760,6 @@
       "Sahne-Karamell-Geschmack *",
       "Schokolade *",
       "Stracciatella *",
-      "Süße MahlzeitApfel-Püfferchen *",
       "Süße MahlzeitGrießbrei nach klassischer Art *",
       "Süße MahlzeitGrießbrei Vanille-Geschmack *",
       "Süße MahlzeitGrießbrei weniger Süß *",
@@ -22773,6 +22772,7 @@
       "Süße MahlzeitPfannkuchen nach klassischer Art",
       "Süße MahlzeitQuarkauflauf *",
       "Süße MahlzeitQuarkschmarrn nach klassischer Art *",
+      "Süße MahlzeitApfel-Püfferchen *",
       "Süße TassenprodukteMein Moment Grießbrei",
       "Süße TassenprodukteMein Moment Cremepudding Vanille Geschmack",
       "TrenddessertsCaramel & Chocolate *",
@@ -23451,7 +23451,7 @@
       "Bio  Erbsen mit Möhrchen",
       "Bio  Junge Erbsen",
       "Bohnen-Duo",
-      "Champignons  Ganze Köpfe 1.Wahl",
+      "Champignons  ganze Köpfe 1.Wahl",
       "Champignons  Gourmet-Scheiben 1. Wahl",
       "Champignons  Minis 1. Wahl",
       "Champignons  Scheiben 2.Wahl",
@@ -23583,9 +23583,9 @@
       "Aroma ClubGran Espresso",
       "Aroma Point",
       "Aroma Top Espresso",
-      "Crema AromaGran CafÇ",
       "Crema AromaGran Espresso",
       "Crema AromaEspresso",
+      "Crema AromaGran CafÇ",
       "DEK Espresso",
       "Gran CafÇ",
       "Gran Espresso",
@@ -23852,9 +23852,9 @@
       "Activia 1,5%Activia laktosefrei",
       "Activia Classic 3,5% Fett",
       "Activia Creme Genuss",
-      "Aprikose",
       "AprikoseFruchtZwerge",
       "AprikoseFruchtzwerge/Milchzwerge Drinks",
+      "Aprikose",
       "BananeFruchtZwerge",
       "BananeFruchtzwerge/Milchzwerge Drinks",
       "Birne (Wintersorte)",
@@ -23867,11 +23867,11 @@
       "Duo Erdbeere/BananeFruchtZwerge",
       "Erdbeer Müsli",
       "Erdbeer-Vanille (Saison)FruchtZwerge",
+      "Erdbeere",
+      "ErdbeereFruchtzwerge/Milchzwerge Drinks",
       "ErdbeereActivia laktosefrei",
       "ErdbeereDanone Family Standard",
       "ErdbeereFruchtZwerge",
-      "Erdbeere",
-      "ErdbeereFruchtzwerge/Milchzwerge Drinks",
       "Erdbeere-KiwiActivia Drink",
       "Feige (Wintersorte)",
       "Getrocknete Pflaume"
@@ -23888,13 +23888,8 @@
       "WrigleyÔs Spearmint"
     ],
     "coppenrath und wiese": [
-      "Coppenrath FeingebäckButter Cookies",
-      "Coppenrath FeingebäckCafe Kränze",
-      "Coppenrath FeingebäckKekse Schwarz&weiß",
       "Coppenrath FeingebäckChoco Kränze",
-      "Coppenrath FeingebäckMinikekse Kakao",
       "Coppenrath FeingebäckFranken Thaler",
-      "Coppenrath FeingebäckAmerican Cookie Chunks",
       "Coppenrath FeingebäckSpritzgenuss",
       "Coppenrath FeingebäckSpritzgenuss Vollmilch Schoko",
       "Coppenrath FeingebäckSpritzgenuss Zartbitter Schoko",
@@ -23912,7 +23907,12 @@
       "Coppenrath FeingebäckHaselunussringe",
       "Coppenrath FeingebäckGrazerringe",
       "Coppenrath FeingebäckMini Cookies Drops",
-      "Coppenrath FeingebäckBiscuit mit dunklen Schokostückchen"
+      "Coppenrath FeingebäckBiscuit mit dunklen Schokostückchen",
+      "Coppenrath FeingebäckKekse Schwarz&weiß",
+      "Coppenrath FeingebäckMinikekse Kakao",
+      "Coppenrath FeingebäckAmerican Cookie Chunks",
+      "Coppenrath FeingebäckButter Cookies",
+      "Coppenrath FeingebäckCafe Kränze"
     ],
     "teuteburgermühle": [
       "Klassisch pures Canola Kernel ôl",
@@ -23928,8 +23928,6 @@
       "KinderGrieß"
     ],
     "burger": [
-      "BurgerBallaststoff",
-      "BurgerBio-Delikatesse",
       "BurgerBio-Knäcke 5 Saaten",
       "BurgerBio-Knäcke Sesam",
       "BurgerDelikatesse",
@@ -23941,6 +23939,8 @@
       "BurgerSonnenblume",
       "BurgerUrtyp",
       "BurgerButtermilch",
+      "BurgerBallaststoff",
+      "BurgerBio-Delikatesse",
       "Burger Buttermilch *",
       "Burger Kürbiskern *",
       "Burger Sesam *",
@@ -24139,12 +24139,12 @@
       "Big Ben _Raisins"
     ],
     "grafschafter krautfabrik": [
-      "Grafschafter GourmetFlüssigzuckermischungen",
       "Grafschafter GourmetApfel-Holunder",
       "Grafschafter GourmetApfel-Ingwer",
       "Grafschafter GourmetWinterzauber Apfel - Sultanine",
       "Grafschafter GourmetWinterzauber Apfel - Sauerkirsche",
-      "Grafschafter GourmetWinterzauber Birne - Orange"
+      "Grafschafter GourmetWinterzauber Birne - Orange",
+      "Grafschafter GourmetFlüssigzuckermischungen"
     ],
     "true fruits": [
       "Detox Green",
