@@ -1,6 +1,6 @@
-Here’s the full updated README — paste this into the file:
-
 # Kosher Scanner App
+
+**Tech stack:** React Native (Expo) · TypeScript · Python · GitHub Actions · Supabase · Open Food Facts API
 
 > **Project goal:** To explore AI-assisted software development workflows while building a practical tool for kosher consumers in Germany.
 
