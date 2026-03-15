@@ -12,7 +12,12 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 
 import ResultModal from "../components/ResultModal";
 import { lookupByBarcode } from "../services/OpenFoodFacts";
-import { lookupProduct, type LookupResult } from "../services/KosherService";
+import {
+  lookupProduct,
+  loadKosherData,
+  getProductById,
+  type LookupResult,
+} from "../services/KosherService";
 import { lookupConfirmedBarcode } from "../services/BarcodeConfirmationApi";
 
 type ScanResultState = LookupResult | null;
@@ -102,28 +107,43 @@ export default function HomeScreen() {
           openResult(cachedResult, data);
           return;
         }
-                const confirmed = await lookupConfirmedBarcode(data);
+
+        // 1. Trusted barcode confirmation lookup
+        const confirmed = await lookupConfirmedBarcode(data);
 
         if (confirmed?.product_id) {
+          const kosherData = await loadKosherData();
+          const resolved = getProductById(kosherData.products, confirmed.product_id);
+
           const trustedResult: LookupResult = {
             status: "kosher",
             matchType: "exact",
             confidence: 1,
             source: "ORD",
             list: "ORD",
+            certificate: resolved?.certificate,
             reason: `Trusted barcode match (${confirmed.confirmations ?? 0} confirmations).`,
-            matchedProduct: {
-              id: confirmed.product_id,
-              name: confirmed.product_id,
-              manufacturer: "Confirmed barcode match",
-            },
+            matchedProduct: resolved
+              ? {
+                  id: resolved.id,
+                  name: resolved.display_name || resolved.name,
+                  manufacturer: resolved.manufacturer,
+                  size: resolved.size,
+                  categories: resolved.categories,
+                }
+              : {
+                  id: confirmed.product_id,
+                  name: confirmed.product_id,
+                  manufacturer: "Confirmed barcode match",
+                },
           };
 
           setCachedResult(data, trustedResult);
           openResult(trustedResult, data);
           return;
         }
-        
+
+        // 2. Open Food Facts fallback
         const offProduct = await lookupByBarcode(data);
 
         if (!offProduct) {
@@ -133,6 +153,7 @@ export default function HomeScreen() {
           return;
         }
 
+        // 3. ORD fuzzy/exact/manufacturer lookup
         const kosherResult = await lookupProduct({
           barcode: data,
           name: offProduct.name,
