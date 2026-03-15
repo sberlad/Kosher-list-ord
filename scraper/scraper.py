@@ -6,17 +6,17 @@ Scrapes https://koscherliste.ordonline.de/koscherliste/ and outputs:
   - kosher_list.json   (full product database, stable IDs, incremental updates)
   - manifest.json      (version info for app update checks)
 
-Improvements in this version:
-  - Categories discovered dynamically from the live site
-  - Encoding normalized before parsing
-  - Blank Milchig / Pessach cells treated as unknown, not negative
-  - Raw source fields preserved for debugging
-  - IDs generated from raw source fields for better long-term stability
-  - Variant rows appended to previous product instead of becoming fake products
-  - Size/weight text split out into a dedicated size field where possible
-  - Manufacturer certificates extracted before cleaning manufacturer text
-  - weitere_kategorien removed from output; canonical categories only
-  - Optional legal suffix cleanup for manufacturer normalization
+Fixes in this version:
+  - dynamic category discovery
+  - better text normalization + mojibake repair
+  - raw-based stable IDs
+  - variant rows attached to previous product
+  - better size extraction
+  - richer certificate extraction
+  - manufacturer cleanup incl. legal suffixes
+  - canonical categories only in final output
+  - manufacturer_index now maps manufacturer -> product_ids
+  - optional product name cleanup for common recurring garbage
 """
 
 import hashlib
@@ -44,18 +44,21 @@ HEADERS = {
 _CERT_SUFFIXES = [
     "Rabbiner Tuvia Hod Hochwald",
     "Rabbiner Jona Pawel",
-    "Rabbiner  Meir Hord",
     "Rabbiner Meir Hord",
+    "Rabbiner  Meir Hord",
     "Rabbiner Jaron Engelmayer",
     "Rabbiner Avichai Apel",
     "Rabbiner Mark (Mordechai) Pavlovsky",
+    "Rabbiner Mark Pavlovsky",
     "Rabbiner Moshe Flomenmann",
     "Rabbiner Zsolt Balla",
     "Rabbiner Dov Levy Barsilay",
     "Rabbiner Hazan",
     "Rabbiner Garelik",
     "Rabbiner P. Padwa",
+    "Rabbiner Padwa",
     "Rabbiner Israel Meir Levinger",
+    "Orthodox Union",
     "London Beit Din",
     "Manchester Kosher",
     "Manchester Beit Din",
@@ -86,28 +89,110 @@ _LEGAL_SUFFIXES = [
     "SE",
     "Ltd.",
     "Limited",
+    "LLC",
+    "Inc.",
+    "Corp.",
+    "Co.",
     "S.A.",
     "S.R.L.",
     "S.p.A.",
 ]
 
 _SIZE_PATTERNS = [
-    r"\b\d+\s?(?:x\s?)?\d+[,.]?\d*\s?(?:g|kg|ml|l)\b",
-    r"\b\d+[,.]?\d*\s?(?:g|kg|ml|l)\b",
-    r"\bGastro\s?\d+[,.]?\d*\s?(?:g|kg|ml|l)\b",
+    r"\bGastro\s*\d+(?:[.,]\d+)?\s?(?:g|kg|ml|l)\b",
+    r"\b\d+\s?[xX]\s?\d+(?:[.,]\d+)?\s?(?:g|kg|ml|l)\b",
+    r"\b\d+(?:[.,]\d+)?\s?(?:g|kg|ml|l)\b",
 ]
+
+KNOWN_CATEGORY_ALIASES = {
+    "fertiggerichte": "Fertiggerichte",
+    "feinkost": "Feinkost",
+    "vegetarisch": "Vegetarisch",
+    "vegan": "Vegan",
+    "glutenfrei": "Glutenfrei",
+    "jougurth": "Jogurt",
+    "sauresahne": "Saure Sahne",
+    "kurbiskernöl": "Kürbiskernöl",
+    "marmeladen": "Marmeladen",
+    "fruchtsäfte": "Fruchtsäfte",
+    "fruchtsaft": "Fruchtsaft",
+}
+
+COMMON_TEXT_REPLACEMENTS = {
+    "Wie·e": "Weiße",
+    "Wei·e": "Weiße",
+    "Me·mer": "Messer",
+    "Meßmer": "Meßmer",
+    "Jougurth": "Jogurt",
+    "Kornkncker": "Kornknacker",
+    "Sonneblumen": "Sonnenblumen",
+    "RapsôL": "Rapsöl",
+    "OLIVENôLE": "Olivenöle",
+    "OLIVENôL": "Olivenöl",
+    "DistelôL": "Distelöl",
+    "MaiskeimôL": "Maiskeimöl",
+    "SojaôL": "Sojaöl",
+    "SonnenblumenôL": "Sonnenblumenöl",
+    "WalnussôL": "Walnussöl",
+    "SatÇ": "Saté",
+    "BrälÇe": "Brûlée",
+    "CafÇ": "Café",
+    "Esssgig": "Essig",
+    "Essgig": "Essig",
+    "baturtrüb": "naturtrüb",
+    "Säue": "Säure",
+    "veagn": "vegan",
+    "ams": "sind",
+    "Marmelde": "Marmelade",
+}
+
+HEADER_LIKE_NAMES = {
+    "artikelbezeichnung",
+    "produkt",
+    "produktbezeichnung",
+    "bezeichnung",
+}
 
 
 # ── Text normalization ────────────────────────────────────────────────────────
 
+def fix_mojibake(text: str) -> str:
+    """Attempt to repair common latin1/utf8 mojibake safely."""
+    if not text:
+        return text
+
+    candidates = [text]
+
+    try:
+        candidates.append(text.encode("latin1", errors="strict").decode("utf-8", errors="strict"))
+    except Exception:
+        pass
+
+    try:
+        candidates.append(text.encode("cp1252", errors="strict").decode("utf-8", errors="strict"))
+    except Exception:
+        pass
+
+    def score(s: str) -> int:
+        bad = sum(s.count(ch) for ch in ["�", "ô", "Ç", "·", "Ã", "Â"])
+        return bad
+
+    return min(candidates, key=score)
+
+
 def normalize_text(s: str) -> str:
     """Normalize scraped text for stable parsing and matching."""
     s = html.unescape(s or "")
+    s = fix_mojibake(s)
     s = unicodedata.normalize("NFKC", s)
     s = s.replace("\xa0", " ")
     s = s.replace("“", '"').replace("”", '"').replace("„", '"')
-    s = s.replace("’", "'").replace("‘", "'")
+    s = s.replace("’", "'").replace("‘", "'").replace("_", "'")
     s = re.sub(r"\s+", " ", s).strip()
+
+    for bad, good in COMMON_TEXT_REPLACEMENTS.items():
+        s = s.replace(bad, good)
+
     return s
 
 
@@ -120,27 +205,76 @@ def clean_quotes_and_punct(s: str) -> str:
     s = re.sub(r'"+\s*$', "", s)
     s = re.sub(r"^\s*'+", "", s)
     s = re.sub(r"'+\s*$", "", s)
-    s = re.sub(r"\s*[-,;:/]+\s*$", "", s)
     s = re.sub(r"\s+", " ", s).strip()
+    s = re.sub(r"\s*[-,;:/]+\s*$", "", s).strip()
     return s
+
+
+def titlecase_if_allcaps(text: str) -> str:
+    if not text:
+        return text
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return text
+    upper_ratio = sum(1 for c in letters if c.isupper()) / len(letters)
+    if upper_ratio > 0.85:
+        return text.title()
+    return text
+
+
+def postprocess_name(name: str) -> str:
+    name = clean_quotes_and_punct(name)
+    name = titlecase_if_allcaps(name)
+    name = re.sub(r"\s+", " ", name).strip()
+
+    # remove duplicated obvious words
+    name = re.sub(r"\b(Goldmais)\s+\1\b", r"\1", name, flags=re.IGNORECASE)
+
+    # cleanup multipack wording
+    name = re.sub(r"\bMULTIPACK\s+X(\d+)\b", r"Multipack x\1", name, flags=re.IGNORECASE)
+
+    # normalize spaces around punctuation
+    name = re.sub(r"\s*,\s*", ", ", name)
+    name = re.sub(r"\s*-\s*", "-", name)
+    name = re.sub(r"\(\s+", "(", name)
+    name = re.sub(r"\s+\)", ")", name)
+
+    return name.strip()
+
+
+def normalize_category_label(label: str) -> str:
+    label = clean_quotes_and_punct(label)
+    if not label:
+        return ""
+    alias = KNOWN_CATEGORY_ALIASES.get(label.lower())
+    if alias:
+        return alias
+    return label
 
 
 def extract_size(name: str) -> tuple[str, str]:
     """
-    Extract a likely size/packaging fragment from a product name.
+    Extract likely size/packaging fragments from a product name.
     Returns (name_without_size, size).
     """
     text = normalize_text(name)
     found_parts: list[str] = []
 
-    for pattern in _SIZE_PATTERNS:
-        matches = re.findall(pattern, text, flags=re.IGNORECASE)
-        if matches:
-            for m in matches:
-                if m not in found_parts:
-                    found_parts.append(m)
-            text = re.sub(pattern, "", text, flags=re.IGNORECASE)
+    changed = True
+    while changed:
+        changed = False
+        for pattern in _SIZE_PATTERNS:
+            m = re.search(pattern, text, flags=re.IGNORECASE)
+            if m:
+                part = clean_quotes_and_punct(m.group(0))
+                if part and part not in found_parts:
+                    found_parts.append(part)
+                text = (text[:m.start()] + " " + text[m.end():]).strip()
+                changed = True
+                break
 
+    # special patterns like "200ml-Trinkpack"
+    text = re.sub(r"\b-\s*Trinkpack\b", " -Trinkpack", text, flags=re.IGNORECASE)
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s*[-,;:/]+\s*$", "", text).strip()
 
@@ -152,33 +286,30 @@ def clean_name(name: str) -> tuple[str, str]:
     """Normalize product name and extract size if possible."""
     name = clean_quotes_and_punct(name)
 
-    # Remove obvious placeholder header rows
-    if name.lower() in {"artikelbezeichnung", "produkt", "produktbezeichnung"}:
+    if name.lower() in HEADER_LIKE_NAMES:
         return "", ""
 
     cleaned_name, size = extract_size(name)
-
-    # remove trailing bare numbers only if they are left hanging
     cleaned_name = re.sub(r"\s+\d+$", "", cleaned_name).strip()
-
-    # normalize weird residual punctuation
     cleaned_name = re.sub(r"\s+", " ", cleaned_name).strip()
     cleaned_name = re.sub(r"\s*[-,;:/]+\s*$", "", cleaned_name).strip()
+    cleaned_name = postprocess_name(cleaned_name)
 
     return cleaned_name, size
 
 
 def extract_certificate_from_text(text: str) -> str:
-    """Extract certificate/hechsher references from free text."""
     text = normalize_text(text)
-
     found: list[str] = []
-    for suffix in _CERT_SUFFIXES:
+
+    for suffix in sorted(_CERT_SUFFIXES, key=len, reverse=True):
         if suffix in text and suffix not in found:
             found.append(suffix)
 
-    # Prefer longest / richest info first
-    found = sorted(found, key=len, reverse=True)
+    # collapse very common nested duplicates
+    if "Manchester Beit Din" in found and "Basel Kosher Commission" in found and "Rabbiner Garelik" in found:
+        return "Rabbiner Garelik / Manchester Beit Din / Basel Kosher Commission"
+
     return " / ".join(found)
 
 
@@ -186,7 +317,6 @@ def clean_manufacturer(mfr: str) -> str:
     """Normalize manufacturer while trimming common suffix noise."""
     mfr = clean_quotes_and_punct(mfr)
 
-    # Remove certifier text from manufacturer after extracting elsewhere
     for suffix in sorted(_CERT_SUFFIXES, key=len, reverse=True):
         mfr = mfr.replace(suffix, " ")
 
@@ -196,29 +326,26 @@ def clean_manufacturer(mfr: str) -> str:
 
     mfr = re.sub(r"(\w)(Rabbiner\s)", r"\1 \2", mfr)
 
-    # Optional legal suffix cleanup
     for suffix in _LEGAL_SUFFIXES:
         mfr = re.sub(rf"\b{re.escape(suffix)}\b", "", mfr)
 
     mfr = re.sub(r"\s*,\s*,+", ", ", mfr)
     mfr = re.sub(r"\s+", " ", mfr).strip(" ,")
+    mfr = postprocess_name(mfr)
     return mfr.strip()
 
 
 def make_lookup_key(name: str, manufacturer: str) -> str:
-    """Stable normalized lookup key."""
     return f"{name.lower().strip()}|{manufacturer.lower().strip()}"
 
 
 def make_raw_lookup_key(raw_name: str, raw_manufacturer: str) -> str:
-    """Stable raw lookup key."""
     return f"{normalize_text(raw_name).lower()}|{normalize_text(raw_manufacturer).lower()}"
 
 
 # ── Stable ID generation ──────────────────────────────────────────────────────
 
 def make_product_id(raw_name: str, raw_manufacturer: str) -> str:
-    """Generate a stable 12-char ID from raw source name + manufacturer."""
     key = make_raw_lookup_key(raw_name, raw_manufacturer)
     return hashlib.md5(key.encode("utf-8")).hexdigest()[:12]
 
@@ -226,7 +353,6 @@ def make_product_id(raw_name: str, raw_manufacturer: str) -> str:
 # ── Load existing data ────────────────────────────────────────────────────────
 
 def load_existing(path: str) -> dict[str, dict]:
-    """Load existing kosher_list.json and return a dict of id → product."""
     if not os.path.exists(path):
         print("  ℹ No existing kosher_list.json found — fresh run.")
         return {}
@@ -234,7 +360,6 @@ def load_existing(path: str) -> dict[str, dict]:
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-
         products = data.get("products", [])
         return {p["id"]: p for p in products if isinstance(p, dict) and "id" in p}
     except Exception as e:
@@ -245,7 +370,6 @@ def load_existing(path: str) -> dict[str, dict]:
 # ── Category discovery ────────────────────────────────────────────────────────
 
 def fetch_categories(session: requests.Session) -> dict[int, str]:
-    """Discover category IDs and labels dynamically from the live site."""
     try:
         resp = session.get(BASE_URL, headers=HEADERS, timeout=20)
         resp.raise_for_status()
@@ -269,7 +393,7 @@ def fetch_categories(session: requests.Session) -> dict[int, str]:
         except (TypeError, ValueError):
             continue
 
-        label = clean_quotes_and_punct(a.get_text(" ", strip=True))
+        label = normalize_category_label(a.get_text(" ", strip=True))
         if not label:
             continue
         if label.lower() in {"kategorie", "suche"}:
@@ -286,13 +410,6 @@ def fetch_categories(session: requests.Session) -> dict[int, str]:
 # ── Cell parsing ──────────────────────────────────────────────────────────────
 
 def parse_milchig_cell(cell) -> tuple[str, str]:
-    """
-    Parse dairy cell.
-
-    Returns:
-      - status: milchig | parve | fleischig | unknown
-      - note: raw/normalized note text
-    """
     if cell is None:
         return "unknown", ""
 
@@ -315,13 +432,6 @@ def parse_milchig_cell(cell) -> tuple[str, str]:
 
 
 def parse_pessach_cell(cell) -> tuple[str, str]:
-    """
-    Parse Pessach cell.
-
-    Returns:
-      - status: kosher_lepessach | not_pessach | unknown
-      - note: raw/normalized note text
-    """
     if cell is None:
         return "unknown", ""
 
@@ -344,36 +454,47 @@ def parse_pessach_cell(cell) -> tuple[str, str]:
 
 
 def split_additional_categories(text: str) -> list[str]:
-    """Split additional categories heuristically."""
     text = clean_quotes_and_punct(text)
     if not text:
         return []
 
-    # Split only on clear separators, not commas inside category names
-    parts = re.split(r"\s{2,}|/|;|\|", text)
+    # first, preserve known slash categories
+    raw_parts = re.split(r"\s{2,}|;|\|", text)
     out: list[str] = []
 
-    for part in parts:
+    for part in raw_parts:
         part = part.strip(" ,")
         if not part:
             continue
 
-        # If still a long chain without separators, try a soft split on capitalized transitions
-        if len(part) > 35 and " " in part:
-            out.append(part)
+        # Soft split on slashes when it really looks like separate labels
+        if "/" in part and " / " in part:
+            subparts = [p.strip(" ,") for p in part.split("/") if p.strip(" ,")]
+            out.extend(subparts)
         else:
             out.append(part)
 
-    return [p for p in out if p]
+    normalized: list[str] = []
+    for part in out:
+        part = normalize_category_label(part)
+        if not part:
+            continue
+
+        # try splitting obvious multi-word mashups only when needed
+        if re.fullmatch(r"[A-Za-zÄÖÜäöüß]+(?:\s+[A-Za-zÄÖÜäöüß]+)+", part) and len(part.split()) <= 3:
+            normalized.append(part)
+        else:
+            normalized.append(part)
+
+    return [p for p in normalized if p]
 
 
 def merge_category_lists(base: list[str], extras: list[str]) -> list[str]:
-    """Merge category labels while preserving order and uniqueness."""
     seen = set()
     merged = []
 
     for item in base + extras:
-        item = clean_quotes_and_punct(item)
+        item = normalize_category_label(item)
         if not item:
             continue
         key = item.lower()
@@ -387,15 +508,6 @@ def merge_category_lists(base: list[str], extras: list[str]) -> list[str]:
 # ── Row parsing ───────────────────────────────────────────────────────────────
 
 def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict | None, dict | None]:
-    """
-    Parse a product row into a normalized product dict.
-
-    Returns:
-      (product_or_none, updated_previous_product)
-
-    Variant rows are appended to previous_product["variants"] and do not create
-    a new product record.
-    """
     try:
         raw_name = clean_quotes_and_punct(cells[1].get_text(" ", strip=True)) if len(cells) > 1 else ""
         raw_manufacturer = clean_quotes_and_punct(cells[6].get_text(" ", strip=True)) if len(cells) > 6 else ""
@@ -405,8 +517,8 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
         if not raw_name:
             return None, previous_product
 
-        # Variant row: attach to previous product instead of creating a fake product.
-        if raw_name.startswith("(") and previous_product is not None:
+        # Variant rows should never become products
+        if raw_name.startswith("(") and raw_name.endswith(")") and previous_product is not None:
             previous_product.setdefault("variants", [])
             if raw_name not in previous_product["variants"]:
                 previous_product["variants"].append(raw_name)
@@ -424,17 +536,11 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
         if cert_from_mfr:
             extracted_certs.append(cert_from_mfr)
 
-        certificate = " / ".join(
-            dict.fromkeys([c for c in extracted_certs if c])
-        ).strip(" /")
-
+        certificate = " / ".join(dict.fromkeys([c for c in extracted_certs if c])).strip(" /")
         manufacturer = clean_manufacturer(raw_manufacturer)
 
-        dairy_cell = cells[4] if len(cells) > 4 else None
-        pessach_cell = cells[5] if len(cells) > 5 else None
-
-        dairy_status, dairy_note = parse_milchig_cell(dairy_cell)
-        pessach_status, pessach_note = parse_pessach_cell(pessach_cell)
+        dairy_status, dairy_note = parse_milchig_cell(cells[4] if len(cells) > 4 else None)
+        pessach_status, pessach_note = parse_pessach_cell(cells[5] if len(cells) > 5 else None)
 
         product = {
             "source": "ORD",
@@ -471,7 +577,6 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
 # ── Scraping ──────────────────────────────────────────────────────────────────
 
 def fetch_category(session: requests.Session, cat_id: int, cat_name: str) -> list[dict]:
-    """Fetch all products for a given category ID."""
     url = f"{BASE_URL}?cat={cat_id}&sortby=1"
 
     try:
@@ -506,7 +611,6 @@ def fetch_category(session: requests.Session, cat_id: int, cat_name: str) -> lis
 
 
 def scrape_all() -> tuple[list[dict], dict]:
-    """Scrape every discovered category and return (products, scrape_stats)."""
     session = requests.Session()
     categories = fetch_categories(session)
 
@@ -548,7 +652,6 @@ def scrape_all() -> tuple[list[dict], dict]:
                                 dict.fromkeys(existing.get("variants", []) + p["variants"])
                             )
 
-                        # If duplicate row has cert info we lacked, keep it
                         if not existing.get("certificate") and p.get("certificate"):
                             existing["certificate"] = p["certificate"]
                         break
@@ -569,14 +672,6 @@ def scrape_all() -> tuple[list[dict], dict]:
 # ── Merge logic ───────────────────────────────────────────────────────────────
 
 def merge_products(scraped: list[dict], existing: dict[str, dict]) -> tuple[list[dict], dict]:
-    """
-    Merge freshly scraped products with existing data.
-
-    Strategy:
-      1. Match by current raw-based ID
-      2. Fallback by raw key
-      3. Fallback by normalized key
-    """
     stats = {
         "new": 0,
         "updated": 0,
@@ -637,7 +732,6 @@ def merge_products(scraped: list[dict], existing: dict[str, dict]) -> tuple[list
             for field in fields_to_update:
                 new_val = product.get(field)
                 old_val = existing_product.get(field)
-
                 if new_val != old_val:
                     if new_val is not None:
                         merged_product[field] = new_val
@@ -666,27 +760,27 @@ def merge_products(scraped: list[dict], existing: dict[str, dict]) -> tuple[list
 # ── Output helpers ────────────────────────────────────────────────────────────
 
 def build_manufacturer_index(products: list[dict]) -> dict[str, list[str]]:
-    """Build simple manufacturer → product names index."""
+    """manufacturer -> product_ids"""
     index: dict[str, list[str]] = {}
 
     for p in products:
         mfr = p["manufacturer"].lower().strip()
         index.setdefault(mfr, [])
+        if p["id"] not in index[mfr]:
+            index[mfr].append(p["id"])
 
-        if p["name"] not in index[mfr]:
-            index[mfr].append(p["name"])
+    for mfr in index:
+        index[mfr].sort()
 
     return index
 
 
 def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) -> None:
-    """Write kosher_list.json and manifest.json."""
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     now = datetime.now(timezone.utc)
     version = now.strftime("%Y-%m-%d")
 
-    # Stable, readable ordering helps diffs
     products = sorted(
         products,
         key=lambda p: (
