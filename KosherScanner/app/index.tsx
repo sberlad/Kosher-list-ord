@@ -42,7 +42,6 @@ function createUnknownResult(reason: string): LookupResult {
     matchType: "none",
     confidence: 0,
     source: "ORD",
-    list: "ORD",
     reason,
   };
 }
@@ -124,7 +123,6 @@ export default function HomeScreen() {
             matchType: "exact",
             confidence: 1,
             source: "ORD",
-            list: "ORD",
             certificate: resolved?.certificate,
             reason: `Trusted barcode match (${confirmed.confirmations ?? 0} confirmations).`,
             matchedProduct: resolved
@@ -164,8 +162,18 @@ export default function HomeScreen() {
           brand: offProduct.brand,
         });
 
-        setCachedResult(data, kosherResult);
-        openResult(kosherResult, data);
+        // Attach OFF product info so the modal can display scanned product details
+        const enrichedResult: LookupResult = {
+          ...kosherResult,
+          offProduct: {
+            name: offProduct.name,
+            brand: offProduct.brand,
+            imageUrl: offProduct.imageUrl,
+          },
+        };
+
+        setCachedResult(data, enrichedResult);
+        openResult(enrichedResult, data);
       } catch (error) {
         console.error("Barcode lookup failed:", error);
         openResult(createUnknownResult("Lookup failed."), data);
@@ -192,6 +200,27 @@ export default function HomeScreen() {
     }
   }, [requestPermission]);
 
+  // All hooks must be declared before any conditional return
+  const handleConfirmYes = useCallback(async () => {
+    if (!lastBarcode || !result?.matchedProduct?.id) return;
+
+    try {
+      await confirmBarcode(lastBarcode, result.matchedProduct.id);
+    } catch (err) {
+      console.error("Confirm barcode failed:", err);
+    }
+  }, [lastBarcode, result]);
+
+  const handleConfirmNo = useCallback(async () => {
+    if (!lastBarcode || !result?.matchedProduct?.id) return;
+
+    try {
+      await rejectBarcode(lastBarcode, result.matchedProduct.id);
+    } catch (err) {
+      console.error("Reject barcode failed:", err);
+    }
+  }, [lastBarcode, result]);
+
   if (permissionState === "loading") {
     return (
       <SafeAreaView style={styles.centeredScreen}>
@@ -214,26 +243,6 @@ export default function HomeScreen() {
       </SafeAreaView>
     );
   }
-
-  const handleConfirmYes = useCallback(async () => {
-  if (!lastBarcode || !result?.matchedProduct?.id) return;
-
-  try {
-    await confirmBarcode(lastBarcode, result.matchedProduct.id);
-  } catch (err) {
-    console.error("Confirm barcode failed:", err);
-  }
-}, [lastBarcode, result]);
-
-const handleConfirmNo = useCallback(async () => {
-  if (!lastBarcode || !result?.matchedProduct?.id) return;
-
-  try {
-    await rejectBarcode(lastBarcode, result.matchedProduct.id);
-  } catch (err) {
-    console.error("Reject barcode failed:", err);
-  }
-}, [lastBarcode, result]);
 
   return (
     <SafeAreaView style={styles.container}>

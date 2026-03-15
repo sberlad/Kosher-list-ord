@@ -49,6 +49,12 @@ export interface MatchedProductSummary {
   categories?: string[];
 }
 
+export interface OffProductInfo {
+  name: string;
+  brand?: string;
+  imageUrl?: string;
+}
+
 export interface LookupResult {
   status: ResultStatus;
   matchType: MatchType;
@@ -59,6 +65,8 @@ export interface LookupResult {
   needsConfirmation?: boolean;
   matchedProduct?: MatchedProductSummary;
   manufacturerProducts?: MatchedProductSummary[];
+  /** Open Food Facts product data used as input for the ORD match. */
+  offProduct?: OffProductInfo;
 }
 
 let cachedData: KosherData | null = null;
@@ -341,6 +349,16 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       reason: "Matched via generic ORD rule.",
     };
   }
+
+  // Debug: log top candidates that almost matched so misses can be diagnosed
+  const topCandidates = productRecords
+    .map((p) => ({ id: p.id, name: p.name, score: scoreCandidate(input.name, input.brand ?? "", p) }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+  console.debug(
+    `[KosherService] No ORD match for "${input.name}" / "${input.brand ?? ""}". Top candidates:`,
+    topCandidates.map((c) => `${c.name} (${c.score.toFixed(3)})`).join(", ")
+  );
 
   return createNoneResult();
 }
