@@ -18,7 +18,11 @@ import {
   getProductById,
   type LookupResult,
 } from "../services/KosherService";
-import { lookupConfirmedBarcode } from "../services/BarcodeConfirmationApi";
+import {
+  lookupConfirmedBarcode,
+  confirmBarcode,
+  rejectBarcode,
+} from "../services/BarcodeConfirmationApi";
 
 type ScanResultState = LookupResult | null;
 
@@ -211,6 +215,26 @@ export default function HomeScreen() {
     );
   }
 
+  const handleConfirmYes = useCallback(async () => {
+  if (!lastBarcode || !result?.matchedProduct?.id) return;
+
+  try {
+    await confirmBarcode(lastBarcode, result.matchedProduct.id);
+  } catch (err) {
+    console.error("Confirm barcode failed:", err);
+  }
+}, [lastBarcode, result]);
+
+const handleConfirmNo = useCallback(async () => {
+  if (!lastBarcode || !result?.matchedProduct?.id) return;
+
+  try {
+    await rejectBarcode(lastBarcode, result.matchedProduct.id);
+  } catch (err) {
+    console.error("Reject barcode failed:", err);
+  }
+}, [lastBarcode, result]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -267,6 +291,8 @@ export default function HomeScreen() {
         result={result}
         barcode={lastBarcode ?? undefined}
         onClose={() => setModalVisible(false)}
+        onConfirmYes={handleConfirmYes}
+        onConfirmNo={handleConfirmNo}
       />
     </SafeAreaView>
   );
