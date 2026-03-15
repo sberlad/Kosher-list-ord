@@ -1,6 +1,6 @@
 {
   "version": "2026-03-15",
-  "generated_at": "2026-03-15T14:08:16.375774+00:00",
+  "generated_at": "2026-03-15T14:19:39.510687+00:00",
   "product_count": 1965,
   "source": "https://koscherliste.ordonline.de/koscherliste/",
   "scrape_stats": {
@@ -10,9 +10,9 @@
     "duplicates_removed": 888
   },
   "merge_stats": {
-    "new": 1,
-    "updated": 1964,
-    "unchanged": 0,
-    "removed": 160
+    "new": 0,
+    "updated": 491,
+    "unchanged": 1474,
+    "removed": 62
   }
 }
