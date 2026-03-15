@@ -344,3 +344,15 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
 
   return createNoneResult();
 }
+
+export function getProductById(
+  products: KosherProduct[],
+  productId: string
+): KosherProduct | null {
+  for (const product of products) {
+    if (product.id === productId) {
+      return product;
+    }
+  }
+  return null;
+}
