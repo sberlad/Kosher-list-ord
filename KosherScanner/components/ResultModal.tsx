@@ -1,0 +1,532 @@
+import React, { useEffect, useRef } from "react";
+import {
+  Animated,
+  Image,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import type { LookupResult } from "../services/KosherService";
+
+interface Props {
+  visible: boolean;
+  result: LookupResult | null;
+  barcode?: string;
+  onClose: () => void;
+}
+
+const GOLD = "#c9a84c";
+const BG = "#0a0a0f";
+
+const STATUS = {
+  exact: {
+    color: "#4ade80",
+    label: "KOSHER CERTIFIED",
+    symbol: "✓",
+  },
+  fuzzy: {
+    color: "#f59e0b",
+    label: "POSSIBLE MATCH",
+    symbol: "~",
+  },
+  manufacturer: {
+    color: "#60a5fa",
+    label: "BRAND / FAMILY MATCH",
+    symbol: "◎",
+  },
+  generic_rule: {
+    color: GOLD,
+    label: "GENERIC ORD RULE",
+    symbol: "◌",
+  },
+  none: {
+    color: "#ef4444",
+    label: "NOT LISTED",
+    symbol: "✗",
+  },
+} as const;
+
+function StatusSymbol({ type }: { type: keyof typeof STATUS }) {
+  const s = STATUS[type];
+  const scale = useRef(new Animated.Value(0.5)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.spring(scale, {
+        toValue: 1,
+        tension: 60,
+        friction: 7,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [opacity, scale]);
+
+  return (
+    <Animated.View
+      style={[
+        styles.symbolRing,
+        {
+          borderColor: s.color,
+          transform: [{ scale }],
+          opacity,
+        },
+      ]}
+    >
+      <Text style={[styles.symbolText, { color: s.color }]}>{s.symbol}</Text>
+    </Animated.View>
+  );
+}
+
+function Pill({
+  label,
+  color,
+  note,
+}: {
+  label: string;
+  color: string;
+  note?: string;
+}) {
+  return (
+    <View
+      style={[
+        styles.pill,
+        {
+          backgroundColor: `${color}18`,
+          borderColor: `${color}44`,
+        },
+      ]}
+    >
+      <Text style={[styles.pillText, { color }]}>{label}</Text>
+      {note ? <Text style={[styles.pillNote, { color: `${color}cc` }]}>{note}</Text> : null}
+    </View>
+  );
+}
+
+function InfoBlock({
+  label,
+  value,
+}: {
+  label: string;
+  value?: string | null;
+}) {
+  if (!value) return null;
+
+  return (
+    <View style={styles.infoBlock}>
+      <Text style={styles.infoLabel}>{label}</Text>
+      <Text style={styles.infoValue}>{value}</Text>
+    </View>
+  );
+}
+
+export default function ResultModal({
+  visible,
+  result,
+  barcode,
+  onClose,
+}: Props) {
+  const slideY = useRef(new Animated.Value(80)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (!visible) {
+      slideY.setValue(80);
+      opacity.setValue(0);
+      return;
+    }
+
+    Animated.parallel([
+      Animated.spring(slideY, {
+        toValue: 0,
+        tension: 65,
+        friction: 10,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 250,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [visible, opacity, slideY]);
+
+  if (!visible || !result) {
+    return null;
+  }
+
+  const statusConfig = STATUS[result.matchType];
+  const matched = result.matchedProduct;
+
+  return (
+    <Modal
+      visible={visible}
+      animationType="none"
+      transparent
+      onRequestClose={onClose}
+    >
+      <Animated.View style={[styles.overlay, { opacity }]}>
+        <Animated.View
+          style={[
+            styles.sheet,
+            {
+              transform: [{ translateY: slideY }],
+            },
+          ]}
+        >
+          <View style={styles.statusRow}>
+            <StatusSymbol type={result.matchType} />
+            <View style={styles.statusCopy}>
+              <Text style={[styles.statusLabel, { color: statusConfig.color }]}>
+                {statusConfig.label}
+              </Text>
+
+              {result.matchType !== "none" && typeof result.confidence === "number" ? (
+                <Text style={styles.confidenceText}>
+                  {Math.round(result.confidence * 100)}% confidence
+                </Text>
+              ) : null}
+            </View>
+          </View>
+
+          <View
+            style={[
+              styles.divider,
+              { backgroundColor: `${statusConfig.color}33` },
+            ]}
+          />
+
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={styles.scroll}
+            contentContainerStyle={styles.scrollContent}
+          >
+            <InfoBlock label="Source" value={result.source} />
+            <InfoBlock label="Barcode" value={barcode} />
+
+            {matched ? (
+              <View style={styles.kosherBlock}>
+                {result.matchType !== "exact" ? (
+                  <Text style={styles.matchedLabel}>MATCHED TO</Text>
+                ) : null}
+
+                <Text style={styles.kosherName}>{matched.name}</Text>
+                <Text style={styles.kosherMfr}>{matched.manufacturer}</Text>
+
+                {matched.size ? (
+                  <Text style={styles.secondaryLine}>Size: {matched.size}</Text>
+                ) : null}
+
+                {result.certificate ? (
+                  <Text style={styles.cert}>Hechsher: {result.certificate}</Text>
+                ) : null}
+
+                {"matchedProduct" in result && matched.categories?.length ? (
+                  <Text style={styles.cats}>{matched.categories.join("  ·  ")}</Text>
+                ) : null}
+              </View>
+            ) : null}
+
+            {(result.matchType === "exact" ||
+              result.matchType === "fuzzy" ||
+              result.matchType === "manufacturer" ||
+              result.matchType === "generic_rule") && (
+              <View style={styles.pills}>
+                {result.matchType === "generic_rule" ? (
+                  <Pill
+                    label="Generic ORD Rule"
+                    color={GOLD}
+                    note="Applies by category rather than exact product listing."
+                  />
+                ) : null}
+              </View>
+            )}
+
+            {result.manufacturerProducts &&
+            result.manufacturerProducts.length > 1 ? (
+              <View style={styles.mfrBlock}>
+                <Text style={styles.mfrBlockTitle}>
+                  Similar certified products from this manufacturer
+                </Text>
+
+                {result.manufacturerProducts.slice(0, 6).map((p) => (
+                  <Text key={p.id} style={styles.mfrItem}>
+                    · {p.name}
+                    {p.size ? ` — ${p.size}` : ""}
+                  </Text>
+                ))}
+
+                {result.manufacturerProducts.length > 6 ? (
+                  <Text style={styles.mfrMore}>
+                    +{result.manufacturerProducts.length - 6} more
+                  </Text>
+                ) : null}
+              </View>
+            ) : null}
+
+            {result.needsConfirmation ? (
+              <View style={styles.confirmBox}>
+                <Text style={styles.confirmQ}>
+                  This looks like a likely match, but it should be verified against
+                  the exact product.
+                </Text>
+              </View>
+            ) : null}
+
+            {result.reason ? (
+              <View style={styles.noteBox}>
+                <Text style={styles.noteLabel}>Note</Text>
+                <Text style={styles.noteText}>{result.reason}</Text>
+              </View>
+            ) : null}
+
+            {result.matchType === "none" ? (
+              <View style={styles.notFoundBox}>
+                <Text style={styles.notFoundText}>
+                  This product is not currently matched in the ORD dataset.
+                </Text>
+              </View>
+            ) : null}
+          </ScrollView>
+
+          <Pressable
+            style={[styles.closeBtn, { borderColor: `${statusConfig.color}66` }]}
+            onPress={onClose}
+          >
+            <Text style={[styles.closeBtnText, { color: statusConfig.color }]}>
+              SCAN ANOTHER
+            </Text>
+          </Pressable>
+        </Animated.View>
+      </Animated.View>
+    </Modal>
+  );
+}
+
+const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(10,10,15,0.92)",
+    justifyContent: "flex-end",
+  },
+  sheet: {
+    backgroundColor: "#111118",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: "#ffffff0f",
+    padding: 24,
+    paddingBottom: 36,
+    maxHeight: "85%",
+  },
+  statusRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+    marginBottom: 20,
+  },
+  statusCopy: {
+    flex: 1,
+  },
+  symbolRing: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  symbolText: {
+    fontSize: 24,
+    fontWeight: "700",
+  },
+  statusLabel: {
+    fontSize: 17,
+    fontWeight: "800",
+    letterSpacing: 1.5,
+  },
+  confidenceText: {
+    color: "#8a8f98",
+    fontSize: 12,
+    marginTop: 3,
+    letterSpacing: 0.5,
+  },
+  divider: {
+    height: 1,
+    marginBottom: 18,
+  },
+  scroll: {
+    maxHeight: 460,
+  },
+  scrollContent: {
+    paddingBottom: 8,
+  },
+  infoBlock: {
+    marginBottom: 14,
+  },
+  infoLabel: {
+    color: "#686f79",
+    fontSize: 11,
+    letterSpacing: 1.4,
+    marginBottom: 4,
+    textTransform: "uppercase",
+  },
+  infoValue: {
+    color: "#d7dce2",
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  kosherBlock: {
+    marginBottom: 18,
+  },
+  matchedLabel: {
+    color: "#666b75",
+    fontSize: 10,
+    letterSpacing: 2,
+    marginBottom: 6,
+  },
+  kosherName: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 4,
+    lineHeight: 24,
+  },
+  kosherMfr: {
+    color: "#9aa1ab",
+    fontSize: 13,
+    marginBottom: 8,
+    letterSpacing: 0.2,
+  },
+  secondaryLine: {
+    color: "#8b9199",
+    fontSize: 13,
+    marginBottom: 6,
+  },
+  cert: {
+    color: GOLD,
+    fontSize: 13,
+    marginBottom: 10,
+    fontStyle: "italic",
+  },
+  pills: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 8,
+    marginBottom: 16,
+  },
+  pill: {
+    borderRadius: 6,
+    borderWidth: 1,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  pillText: {
+    fontSize: 13,
+    fontWeight: "600",
+  },
+  pillNote: {
+    fontSize: 11,
+    marginTop: 2,
+    lineHeight: 15,
+  },
+  cats: {
+    color: "#6e7480",
+    fontSize: 11,
+    letterSpacing: 0.6,
+    lineHeight: 17,
+  },
+  mfrBlock: {
+    backgroundColor: "#60a5fa0a",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#60a5fa22",
+    padding: 14,
+    marginBottom: 18,
+  },
+  mfrBlockTitle: {
+    color: "#60a5fa",
+    fontSize: 12,
+    letterSpacing: 0.8,
+    marginBottom: 10,
+  },
+  mfrItem: {
+    color: "#b2b7c0",
+    fontSize: 13,
+    marginBottom: 5,
+    lineHeight: 18,
+  },
+  mfrMore: {
+    color: "#7f8792",
+    fontSize: 12,
+    marginTop: 4,
+  },
+  confirmBox: {
+    backgroundColor: "#ffffff07",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 18,
+  },
+  confirmQ: {
+    color: "#d0d5dc",
+    fontSize: 14,
+    textAlign: "center",
+    lineHeight: 21,
+    letterSpacing: 0.2,
+  },
+  noteBox: {
+    backgroundColor: "#ffffff07",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ffffff10",
+    padding: 14,
+    marginBottom: 18,
+  },
+  noteLabel: {
+    color: "#7f8792",
+    fontSize: 11,
+    letterSpacing: 1.2,
+    textTransform: "uppercase",
+    marginBottom: 6,
+  },
+  noteText: {
+    color: "#d5dae1",
+    fontSize: 14,
+    lineHeight: 21,
+  },
+  notFoundBox: {
+    backgroundColor: "#ef444411",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#ef444430",
+    padding: 16,
+    marginBottom: 18,
+  },
+  notFoundText: {
+    color: "#d1a3a3",
+    fontSize: 14,
+    lineHeight: 22,
+  },
+  closeBtn: {
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 16,
+    alignItems: "center",
+    marginTop: 14,
+  },
+  closeBtnText: {
+    fontSize: 13,
+    fontWeight: "700",
+    letterSpacing: 2.5,
+  },
+});
