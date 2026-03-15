@@ -13,6 +13,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import ResultModal from "../components/ResultModal";
 import { lookupByBarcode } from "../services/OpenFoodFacts";
 import { lookupProduct, type LookupResult } from "../services/KosherService";
+import { lookupConfirmedBarcode } from "../services/BarcodeConfirmationApi";
 
 type ScanResultState = LookupResult | null;
 
@@ -101,7 +102,28 @@ export default function HomeScreen() {
           openResult(cachedResult, data);
           return;
         }
+                const confirmed = await lookupConfirmedBarcode(data);
 
+        if (confirmed?.product_id) {
+          const trustedResult: LookupResult = {
+            status: "kosher",
+            matchType: "exact",
+            confidence: 1,
+            source: "ORD",
+            list: "ORD",
+            reason: `Trusted barcode match (${confirmed.confirmations ?? 0} confirmations).`,
+            matchedProduct: {
+              id: confirmed.product_id,
+              name: confirmed.product_id,
+              manufacturer: "Confirmed barcode match",
+            },
+          };
+
+          setCachedResult(data, trustedResult);
+          openResult(trustedResult, data);
+          return;
+        }
+        
         const offProduct = await lookupByBarcode(data);
 
         if (!offProduct) {
