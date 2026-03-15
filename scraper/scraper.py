@@ -574,10 +574,10 @@ if __name__ == "__main__":
 ```
 
 Key changes from the original:
-- `make_product_id()` — stable hash ID per product
-- `load_existing()` — loads current JSON before scraping
-- `merge_products()` — preserves IDs, updates only changed fields, tracks new/updated/removed
-- `save_outputs()` — now includes merge stats in manifest
+- `make_product_id()` - stable hash ID per product
+- `load_existing()` - loads current JSON before scraping
+- `merge_products()` - preserves IDs, updates only changed fields, tracks new/updated/removed
+- `save_outputs()` - now includes merge stats in manifest
 - Duplicate category tagging logic cleaned up (was slightly broken before)
 
 Paste it in, save, then run it once manually to assign IDs to all existing products:
