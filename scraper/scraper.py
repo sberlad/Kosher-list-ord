@@ -6,13 +6,13 @@ Outputs:
   - output/kosher_list.json
   - output/manifest.json
 
-Focus:
-  - stronger data quality
-  - canonical schema enforcement
-  - generic-rule detection
-  - better category normalization
-  - safer casing and text repair
+Stack:
+  - ftfy for text repair
+  - Pydantic v2 for schema enforcement
+  - custom domain cleanup for ORD-specific quirks
 """
+
+from __future__ import annotations
 
 import hashlib
 import html
@@ -21,10 +21,13 @@ import os
 import re
 import unicodedata
 from datetime import datetime, timezone
+from typing import Literal
 from urllib.parse import parse_qs, urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
+from ftfy import fix_text
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 BASE_URL = "https://koscherliste.ordonline.de/koscherliste/"
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "output")
@@ -108,7 +111,7 @@ HEADER_LIKE_NAMES = {
 
 ACRONYMS = {
     "ABC", "B&J", "BJ", "FT", "GFY", "IC", "EU", "UK", "LLC", "KG",
-    "D.O.P.", "DOP", "USA", "UHT", "BBQ", "XL", "XXL"
+    "D.O.P.", "DOP", "USA", "UHT", "BBQ", "XL", "XXL",
 }
 
 CATEGORY_ALIAS_MAP = {
@@ -152,30 +155,29 @@ COMMON_TEXT_REPLACEMENTS = {
     "·": "ß",
 }
 
-WEIRD_CHARS = ["�", "ô", "Ç", "·", "Ã", "Â"]
+PRODUCT_NAME_REPLACEMENTS = {
+    "Coca ' Cola": "Coca-Cola",
+    "Coca - Cola": "Coca-Cola",
+    "Coca _ Cola": "Coca-Cola",
+    "Kornkncker": "Kornknacker",
+    "Sonneblumen": "Sonnenblumen",
+    "Reffiniertes": "Raffiniertes",
+    "Alsaka": "Alaska",
+    "Rapsberry": "Raspberry",
+    "Caprisonne": "Capri-Sonne",
+    "Seuppe": "Suppe",
+}
 
+MANUFACTURER_REPLACEMENTS = {
+    "Caprisonne": "Capri-Sonne",
+}
 
-def fix_mojibake(text: str) -> str:
-    if not text:
-        return text
-
-    candidates = [text]
-    for enc in ("latin1", "cp1252"):
-        try:
-            candidates.append(text.encode(enc, errors="strict").decode("utf-8", errors="strict"))
-        except Exception:
-            pass
-
-    def score(s: str) -> int:
-        bad = sum(s.count(ch) for ch in WEIRD_CHARS)
-        return bad
-
-    return min(candidates, key=score)
+GENERIC_RULE_MANUFACTURERS = {"alle firmen"}
 
 
 def normalize_text(text: str) -> str:
     text = html.unescape(text or "")
-    text = fix_mojibake(text)
+    text = fix_text(text)
     text = unicodedata.normalize("NFKC", text)
     text = text.replace("\xa0", " ")
     text = text.replace("“", '"').replace("”", '"').replace("„", '"')
@@ -198,6 +200,13 @@ def clean_quotes_and_punct(text: str) -> str:
     text = re.sub(r"'+\s*$", "", text)
     text = re.sub(r"\s+", " ", text).strip()
     text = re.sub(r"\s*[-,;:/]+\s*$", "", text).strip()
+    return text
+
+
+def apply_phrase_replacements(text: str, replacements: dict[str, str]) -> str:
+    text = text or ""
+    for bad, good in replacements.items():
+        text = text.replace(bad, good)
     return text
 
 
@@ -310,6 +319,20 @@ def clean_name(name: str) -> tuple[str, str]:
     return cleaned_name, size
 
 
+def cleanup_product_name(name: str) -> str:
+    name = apply_phrase_replacements(name, PRODUCT_NAME_REPLACEMENTS)
+    name = re.sub(r"\bCoca\s*[-'_]\s*Cola\b", "Coca-Cola", name, flags=re.IGNORECASE)
+    name = re.sub(r"\bCoca\s+Cola\b", "Coca-Cola", name, flags=re.IGNORECASE)
+    name = re.sub(r"\s+", " ", name).strip()
+    return name
+
+
+def cleanup_manufacturer_name(name: str) -> str:
+    name = apply_phrase_replacements(name, MANUFACTURER_REPLACEMENTS)
+    name = re.sub(r"\s+", " ", name).strip()
+    return name
+
+
 def extract_certificate_from_text(text: str) -> str:
     text = normalize_text(text)
     found: list[str] = []
@@ -344,7 +367,7 @@ def clean_manufacturer(mfr: str) -> str:
     mfr = re.sub(r"\s*,\s*,+", ", ", mfr)
     mfr = re.sub(r"\s+", " ", mfr).strip(" ,")
     mfr = clean_quotes_and_punct(mfr)
-    return mfr
+    return cleanup_manufacturer_name(mfr)
 
 
 def make_lookup_key(name: str, manufacturer: str) -> str:
@@ -360,51 +383,94 @@ def make_product_id(raw_name: str, raw_manufacturer: str) -> str:
     return hashlib.md5(key.encode("utf-8")).hexdigest()[:12]
 
 
-def canonical_product(product: dict) -> dict:
-    allowed_fields = {
-        "id",
-        "source",
-        "scope",
+class ProductModel(BaseModel):
+    model_config = ConfigDict(strict=True, extra="ignore")
+
+    id: str
+    source: Literal["ORD"] = "ORD"
+    scope: Literal["product", "generic_rule"] = "product"
+    name: str
+    display_name: str
+    match_name: str
+    manufacturer: str
+    certificate: str | None = None
+    categories: list[str] = Field(default_factory=list)
+    dairy_status: Literal["milchig", "parve", "fleischig", "unknown"]
+    pessach: Literal["kosher_lepessach", "not_pessach", "unknown"]
+    size: str | None = None
+    raw_name: str
+    raw_manufacturer: str
+    dairy_note: str | None = None
+    pessach_note: str | None = None
+    variants: list[str] = Field(default_factory=list)
+
+    @field_validator(
         "name",
         "display_name",
-        "match_name",
         "manufacturer",
-        "certificate",
-        "categories",
-        "dairy_status",
-        "pessach",
-        "size",
         "raw_name",
         "raw_manufacturer",
+        "certificate",
+        "size",
         "dairy_note",
         "pessach_note",
-        "variants",
-    }
+        mode="before",
+    )
+    @classmethod
+    def normalize_optional_text(cls, v):
+        if v is None:
+            return None
+        return clean_quotes_and_punct(str(v))
 
-    # remove explicitly known legacy fields first
+    @field_validator("categories", mode="before")
+    @classmethod
+    def normalize_categories(cls, v):
+        if not v:
+            return []
+        out: list[str] = []
+        for item in v:
+            out.extend(normalize_category_label(str(item)))
+        return dedupe_preserve(out)
+
+    @field_validator("name")
+    @classmethod
+    def normalize_name(cls, v: str) -> str:
+        return cleanup_product_name(v)
+
+    @field_validator("manufacturer")
+    @classmethod
+    def normalize_manufacturer(cls, v: str) -> str:
+        return cleanup_manufacturer_name(v)
+
+    @model_validator(mode="after")
+    def finalize(self):
+        self.display_name = self.name
+        self.match_name = normalize_for_match(self.name)
+        self.categories = dedupe_preserve(self.categories)
+        self.variants = dedupe_preserve([clean_quotes_and_punct(v) for v in self.variants if v])
+
+        if self.manufacturer.lower() in GENERIC_RULE_MANUFACTURERS:
+            self.scope = "generic_rule"
+
+        return self
+
+
+def canonical_product(product: dict) -> dict:
     product = dict(product)
     product.pop("weitere_kategorien", None)
     product.pop("_extra_categories", None)
 
-    out = {
-        k: v for k, v in product.items()
-        if k in allowed_fields and v not in (None, "", [], {})
-    }
+    if "name" in product:
+        product["name"] = cleanup_product_name(product["name"])
 
-    out["source"] = "ORD"
-    out.setdefault("scope", "product")
+    if "manufacturer" in product:
+        product["manufacturer"] = clean_manufacturer(product["manufacturer"])
 
-    if "name" in out:
-        out["display_name"] = out["name"]
-        out["match_name"] = normalize_for_match(out["name"])
+    product["display_name"] = product.get("name", "")
+    product["match_name"] = normalize_for_match(product.get("name", ""))
 
-    if "manufacturer" in out:
-        out["manufacturer"] = clean_manufacturer(out["manufacturer"])
-
-    if "categories" in out:
-        out["categories"] = dedupe_preserve(out["categories"])
-
-    return out
+    validated = ProductModel.model_validate(product)
+    return validated.model_dump(exclude_none=True)
 
 
 def load_existing(path: str) -> dict[str, dict]:
@@ -527,7 +593,6 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
         if not raw_name:
             return None, previous_product
 
-        # variant rows
         if raw_name.startswith("(") and raw_name.endswith(")") and previous_product is not None:
             previous_product.setdefault("variants", [])
             if raw_name not in previous_product["variants"]:
@@ -549,7 +614,7 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
 
         certificate = " / ".join(dict.fromkeys([c for c in certs if c])).strip(" /")
         manufacturer = clean_manufacturer(raw_manufacturer)
-        scope = "generic_rule" if manufacturer.lower() == "alle firmen" else "product"
+        scope = "generic_rule" if manufacturer.lower() in GENERIC_RULE_MANUFACTURERS else "product"
 
         dairy_status, dairy_note = parse_milchig_cell(cells[4] if len(cells) > 4 else None)
         pessach_status, pessach_note = parse_pessach_cell(cells[5] if len(cells) > 5 else None)
@@ -739,7 +804,7 @@ def merge_products(scraped: list[dict], existing: dict[str, dict]) -> tuple[list
                         del merged_product[field]
                     changed = True
 
-            merged_product = canonical_product(merged_product)
+            merged_product = canonical_product({"id": product_id, **merged_product})
 
             if changed:
                 stats["updated"] += 1
