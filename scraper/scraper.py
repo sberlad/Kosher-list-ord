@@ -846,6 +846,17 @@ def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) ->
     version = now.strftime("%Y-%m-%d")
 
     products = [canonical_product(p) for p in products]
+    content_hash = compute_content_hash(products)
+    previous_hash = previous_content_hash(OUTPUT_DIR)
+
+    existing_path = os.path.join(OUTPUT_DIR, "kosher_list.json")
+    old_products = list(load_existing(existing_path).values())
+
+    diff = diff_products(old_products, products) if old_products else {
+        "added": [p["id"] for p in products],
+        "removed": [],
+        "changed": [],
+    }
     products = sorted(
         products,
         key=lambda p: (
@@ -874,8 +885,14 @@ def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) ->
         "generated_at": now.isoformat(),
         "product_count": len(products),
         "source": BASE_URL,
+        "content_hash": content_hash,
         "scrape_stats": scrape_stats,
         "merge_stats": merge_stats,
+        "diff_stats": {
+            "added": len(diff["added"]),
+            "removed": len(diff["removed"]),
+            "changed": len(diff["changed"]),
+        },
     }
 
     manifest_path = os.path.join(OUTPUT_DIR, "manifest.json")
@@ -883,6 +900,11 @@ def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) ->
         json.dump(manifest, f, ensure_ascii=False, indent=2)
 
     print(f"✅ Saved manifest      → {manifest_path}")
+        if previous_hash != content_hash:
+            save_snapshot(kosher_list, manifest, diff)
+            print("✅ Content changed — snapshot saved")
+        else:
+            print("ℹ No content change — no snapshot saved")
 
 
 if __name__ == "__main__":
