@@ -2,9 +2,8 @@ name: Scrape ORD Kosher List
 
 on:
   schedule:
-    # Every Monday at 06:00 UTC
     - cron: "0 6 * * 1"
-  workflow_dispatch:  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -18,12 +17,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
       - name: Install dependencies
-        run: pip install requests beautifulsoup4
+        run: pip install -r requirements.txt
 
       - name: Run scraper
         run: python scraper/scraper.py
+
+      - name: Run validator
+        run: python scraper/validate_kosher_list.py
 
       - name: Show sample output
         run: |
@@ -38,7 +41,7 @@ jobs:
           echo "========================================="
           python3 -c "
           import json
-          with open('scraper/output/kosher_list.json') as f:
+          with open('scraper/output/kosher_list.json', encoding='utf-8') as f:
               data = json.load(f)
           for p in data['products'][:5]:
               print(json.dumps(p, ensure_ascii=False, indent=2))
@@ -50,11 +53,12 @@ jobs:
           echo "========================================="
           python3 -c "
           import json
-          with open('scraper/output/kosher_list.json') as f:
+          with open('scraper/output/kosher_list.json', encoding='utf-8') as f:
               data = json.load(f)
           index = data['manufacturer_index']
           for i, (k, v) in enumerate(index.items()):
-              if i >= 10: break
+              if i >= 10:
+                  break
               print(f'{k}: {v[:3]}')
           "
 
@@ -66,7 +70,7 @@ jobs:
       - name: Commit and push updated data
         if: steps.diff.outputs.changed == 'true'
         run: |
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add scraper/output/kosher_list.json scraper/output/manifest.json
           git commit -m "chore: update kosher list $(date -u '+%Y-%m-%d')"
