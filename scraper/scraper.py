@@ -29,6 +29,9 @@ from bs4 import BeautifulSoup
 from ftfy import fix_text
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from diff_utils import compute_content_hash, diff_products
+from snapshot_utils import previous_content_hash, save_snapshot
+
 BASE_URL = "https://koscherliste.ordonline.de/koscherliste/"
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "output")
 
