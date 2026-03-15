@@ -1,0 +1,70 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES (Key RWS Value Driver)
+────────────────────────────────────────────────────────────────────────────────
+German — Native (Germany-resident)
+English — Native
+Hebrew — Fluent
+French — Professional
+Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Germany-resident multilingual professional with five-language range and an
+established practice of evaluating AI-generated content for quality, accuracy,
+and appropriateness. Available for online rating, search evaluation, and AI
+assessment tasks; experienced in structured, criteria-based content review.
+
+────────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Managed multilingual digital platform with content in German, English, Hebrew,
+  and French; applied consistent quality evaluation standards across languages.
+• Evaluated and published cultural content for accuracy, relevance, and
+  appropriateness for diverse European and international audiences.
+
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+• Built and maintained a German-language product evaluation database; daily work
+  with multilingual text quality, encoding repair, and accuracy verification.
+• Evaluated AI-generated outputs against defined correctness criteria; developed
+  systematic approach to structured content assessment.
+• Used AI tools (Claude, Copilot, Cursor) daily; able to critically assess search
+  results, AI-generated text, and online information for accuracy and relevance.
+
+Developer / Editor                                             2023 – Present
+samuelberlad.com & operashalem.com                             Remote
+• Evaluated AI-generated and curated content for web publication; applied rating
+  criteria to distinguish high-quality from low-quality AI outputs.
+
+────────────────────────────────────────────────────────────────────────────────
+RWS-RELEVANT CAPABILITIES
+────────────────────────────────────────────────────────────────────────────────
+• Search result evaluation: German-market search behavior and relevance judgment
+• Ad relevance assessment: German and English language advertising evaluation
+• Content safety review: Five-language cross-cultural appropriateness awareness
+• Online map data: Germany-based with local geographic knowledge
+• AI response evaluation: Daily AI tool user with principled quality standards
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────────
+AI Tools: Claude, ChatGPT, Copilot, Cursor
+Engineering: Python, TypeScript, React Native
+Data: JSON, Supabase, REST APIs, GitHub Actions
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
+
+────────────────────────────────────────────────────────────────────────────────
+AVAILABILITY
+────────────────────────────────────────────────────────────────────────────────
+Germany-based; flexible hours; available for long-term part-time project engagement

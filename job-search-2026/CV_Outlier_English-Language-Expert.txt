@@ -1,0 +1,75 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES
+────────────────────────────────────────────────────────────────────────────────
+German — Native        English — Native
+Hebrew — Fluent        French — Professional     Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Systems-oriented professional with native fluency in English and German and
+working fluency in four additional languages. Experienced in AI-assisted
+development workflows and evaluating the accuracy, clarity, and logic of
+AI-generated outputs. Brings an editorial eye, cross-cultural awareness, and
+technical grounding to language quality assessment tasks.
+
+────────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Built and operated a digital-first cultural platform; managed multilingual
+  communications, content architecture, and editorial standards across German,
+  English, Hebrew, and French audiences.
+• Evaluated and shaped AI-assisted content for tone, factual accuracy, and
+  cultural nuance — developing a systematic approach to identifying language
+  quality gaps.
+• Designed content workflows that required consistent judgment calls on
+  ambiguous or nuanced language — directly analogous to AI evaluation rubric
+  application.
+
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+• Developed a multilingual-capable iOS/Android application using React Native
+  (TypeScript) with AI tools as core development partners.
+• Built a Python data pipeline that processes, normalizes, and validates German-
+  language product data — requiring deep attention to text encoding, fuzzy
+  matching logic, and edge-case handling.
+• Designed and iterated on fuzzy text matching algorithms to handle linguistic
+  variants, encoding errors, and ambiguous product names — a workflow structurally
+  similar to LLM output evaluation.
+• Integrated Open Food Facts API; managed data quality and product naming
+  inconsistencies across multiple languages.
+
+Developer / Editor                                             2023 – Present
+samuelberlad.com & operashalem.com                             Remote
+• Built AI-assisted responsive portfolio and blog platforms; evaluated and edited
+  all AI-generated content for accuracy, voice consistency, and readability.
+• Developed a discerning editorial practice for distinguishing high-quality AI
+  outputs from outputs requiring correction or refinement.
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────────
+AI Tools: Claude, ChatGPT, Cursor, Copilot (active daily user and evaluator)
+Languages: Python, TypeScript, React Native
+Data: JSON pipelines, REST APIs, Supabase, GitHub Actions automation
+Domains: Text normalization, fuzzy matching, encoding repair, multilingual data
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
+
+────────────────────────────────────────────────────────────────────────────────
+WHY THIS ROLE
+────────────────────────────────────────────────────────────────────────────────
+As a native English and German speaker with five-language range, I offer the
+linguistic precision Outlier's higher-value evaluation tasks require. My hands-on
+experience judging AI-generated text daily — in development, editorial, and
+operations contexts — means I arrive with a calibrated, systematic approach to
+quality assessment rather than building one from scratch.

@@ -1,0 +1,81 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+WORK AUTHORIZATION
+────────────────────────────────────────────────────────────────────────────────
+Germany / EU (WEU-eligible for Turing engagement)
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES
+────────────────────────────────────────────────────────────────────────────────
+German — Native        English — Native
+Hebrew — Fluent        French — Professional     Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Software developer with demonstrated ability to read, write, and evaluate code
+in real-world production contexts. Built a full-stack mobile application and
+Python data pipeline using AI-assisted development workflows. Comfortable
+evaluating AI-generated code for correctness, efficiency, and edge-case handling.
+Flexible schedule; available 10–40 hours/week with CET overlap.
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+
+  React Native / TypeScript (Mobile App):
+  • Built iOS/Android barcode scanning application with Expo; implemented camera
+    integration, API calls, and result display components.
+  • Designed a TypeScript service layer (KosherService.ts) implementing Jaccard
+    similarity scoring, token-set matching, and confidence-weighted result logic.
+  • Evaluated AI-generated TypeScript for correctness, type safety, and edge-case
+    handling; identified and fixed logic errors in fuzzy matching thresholds.
+
+  Python (Data Pipeline):
+  • Built web scraper (BeautifulSoup, requests) with Pydantic v2 schema
+    enforcement, ftfy text normalization, and MD5-based stable ID generation.
+  • Wrote diff utilities and snapshot management for incremental pipeline updates.
+  • Applied validation scripts to catch data quality regressions automatically.
+  • Evaluated AI-generated Python code for PEP 8 compliance, error handling
+    patterns, and performance characteristics.
+
+  DevOps / Automation:
+  • Configured GitHub Actions for weekly automated pipeline runs with commit-and-
+    push workflow; managed Supabase database integration for barcode cache.
+
+  APIs:
+  • Integrated Open Food Facts API and Supabase REST interface; designed fetch
+    caching and fallback logic.
+
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Managed technical platform operations; evaluated and adopted appropriate
+  software tools for organizational workflows.
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES & TOOLS
+────────────────────────────────────────────────────────────────────────────────
+Languages: Python, TypeScript, JavaScript
+Frameworks: React Native (Expo), Pydantic v2
+Libraries: BeautifulSoup, requests, ftfy, Fuse.js
+DB/APIs: Supabase, Open Food Facts API, GitHub Actions
+AI Tools: Claude, GitHub Copilot, Cursor
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
+
+────────────────────────────────────────────────────────────────────────────────
+NOTE FOR TURING
+────────────────────────────────────────────────────────────────────────────────
+I am not a senior software engineer and do not claim to be. What I offer Turing
+is a developer who has shipped real working code in a production context, uses
+AI tools daily as a development partner, and has developed a calibrated judgment
+for when AI-generated code is correct, plausible-but-wrong, or needs fundamental
+rethinking — which is precisely what LLM code evaluation requires.

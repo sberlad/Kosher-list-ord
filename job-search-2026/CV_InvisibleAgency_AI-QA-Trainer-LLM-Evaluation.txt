@@ -1,0 +1,76 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES
+────────────────────────────────────────────────────────────────────────────────
+German — Native        English — Native
+Hebrew — Fluent        French — Professional     Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Systems-oriented professional with a track record of designing evaluation logic,
+managing data quality pipelines, and working with AI tools as both developer and
+critic. Capable of constructing evaluation rubrics, identifying failure modes in
+AI-generated outputs, and documenting reproducible issues clearly. Brings native
+dual-language fluency and multilingual range to tasks requiring cultural and
+linguistic calibration.
+
+────────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+• Designed and implemented a multi-tiered lookup and evaluation system with seven
+  confidence levels — from exact match through fuzzy match to a rules-based
+  fallback — requiring explicit pass/fail criteria design.
+• Built Python scraping pipeline with data validation, encoding repair (ftfy),
+  and Pydantic v2 schema enforcement — applying QA principles to production data.
+• Identified and documented failure modes in name-matching logic (encoding errors,
+  brand leakage, Chalaw Stam inconsistencies) and iterated systematic fixes.
+• Integrated GitHub Actions automation for weekly pipeline runs; monitored outputs
+  and diff-tracked changes to catch regressions.
+• Actively used AI coding assistants (Claude, Copilot) as core development tools;
+  regularly evaluated, corrected, and improved AI-generated code and logic.
+
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Operated a complex creative organization requiring evaluation of multilingual
+  content for accuracy, tone, and cultural appropriateness across DE/EN/HE/FR.
+• Built content review workflows; applied consistent quality criteria to
+  subjective and ambiguous material — directly applicable to LLM evaluation.
+• Managed cross-functional coordination requiring clear written documentation and
+  structured decision-making processes.
+
+Developer / Editor                                             2023 – Present
+samuelberlad.com & operashalem.com                             Remote
+• Iteratively refined AI-generated website copy, evaluating each output against
+  defined quality, voice, and factual accuracy standards.
+• Developed systematic approach to identifying edge cases, inconsistencies, and
+  hallucinations in AI-generated content.
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────────
+Evaluation: Rubric design, pass/fail criteria, confidence scoring, edge case ID
+AI Tools: Claude, ChatGPT, Cursor, Copilot (active critical user)
+Engineering: Python, TypeScript, React Native, Pydantic, BeautifulSoup
+Data Ops: GitHub Actions, JSON pipelines, Supabase, Open Food Facts API
+Domains: Text normalization, fuzzy matching, multilingual data, encoding repair
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
+
+────────────────────────────────────────────────────────────────────────────────
+MATCH TO ROLE
+────────────────────────────────────────────────────────────────────────────────
+Invisible Agency's QA Trainer spec calls for designing test plans, building
+evaluation rubrics, and capturing reproducible error traces. My work building the
+Kosher Scanner's lookup logic — iterating seven-level confidence scoring with
+explicit pass/fail criteria and diff-based regression tracking — demonstrates
+exactly this kind of structured, systematic evaluation practice applied to
+real-world data.

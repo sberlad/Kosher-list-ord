@@ -1,0 +1,84 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES
+────────────────────────────────────────────────────────────────────────────────
+German — Native        English — Native
+Hebrew — Fluent        French — Professional     Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Detail-oriented professional with a structured approach to reviewing content for
+accuracy, appropriateness, and quality. Experienced in evaluating AI-generated
+outputs for correctness and tone in daily software development work. Multilingual
+background provides strong sensitivity to language nuance, harmful content
+patterns, and cultural context — core competencies for AI safety evaluation.
+
+────────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+• Used AI tools extensively as development partners; developed practiced judgment
+  for identifying when AI outputs are helpful, subtly incorrect, or potentially
+  harmful to end users.
+• Designed a lookup confidence system with explicit user-confirmation gates for
+  ambiguous results — demonstrating experience building human-in-the-loop review
+  workflows analogous to AI safety evaluation pipelines.
+• Reviewed and corrected AI-generated code and documentation daily; maintained
+  high accuracy standards in data that directly affects user decisions.
+• Built automated weekly pipeline with validation step — practical experience with
+  systematic quality assurance at regular cadence.
+
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Managed content review and publishing across multiple languages; maintained
+  quality standards for public-facing material requiring accuracy and cultural
+  sensitivity.
+• Evaluated content for appropriateness across culturally diverse audiences (DE/
+  EN/HE/FR contexts); developed sensitivity to language that is ambiguous,
+  inappropriate, or potentially harmful in specific cultural settings.
+• Applied structured decision criteria consistently to high volumes of content
+  under operational time constraints.
+
+Developer / Editor                                             2023 – Present
+samuelberlad.com & operashalem.com                             Remote
+• Reviewed AI-generated content for publication; caught and corrected factually
+  incorrect, tonally inappropriate, and potentially misleading AI outputs.
+• Developed repeatable personal evaluation workflow applicable to AI safety
+  content review.
+
+────────────────────────────────────────────────────────────────────────────────
+COMPETENCIES
+────────────────────────────────────────────────────────────────────────────────
+• Content review and moderation judgment
+• Harmful and toxic content pattern recognition
+• Structured evaluation rubric application
+• Detail orientation with high accuracy maintenance
+• Cross-cultural sensitivity (DE/EN/HE/FR/IT contexts)
+• Flexible, remote, self-directed work cadence
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────────
+AI Tools: Claude, ChatGPT, Copilot (daily use and critical evaluation)
+Engineering: Python, TypeScript, React Native, Supabase
+Automation: GitHub Actions, REST APIs, JSON data pipelines
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
+
+────────────────────────────────────────────────────────────────────────────────
+MATCH TO ROLE
+────────────────────────────────────────────────────────────────────────────────
+TSMG's evaluator role focuses on preventing AI agents from sharing harmful,
+offensive, or dangerous content. My multilingual background — covering five
+languages and four cultural contexts — allows me to flag harmful content across
+linguistic and cultural registers that monolingual evaluators may miss. My daily
+experience using AI tools critically, combined with structured data QA work,
+makes the transition to rubric-based safety evaluation straightforward.

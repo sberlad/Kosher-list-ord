@@ -1,0 +1,73 @@
+SAMUEL BERLAD
+Berlin, Germany | samuel@samuelberlad.com | samuelberlad.com
+GitHub: github.com/sberlad | LinkedIn: linkedin.com/in/samuelberlad
+
+────────────────────────────────────────────────────────────────────────────────
+LANGUAGES
+────────────────────────────────────────────────────────────────────────────────
+German — Native        English — Native
+Hebrew — Fluent        French — Professional     Italian — Conversational
+
+────────────────────────────────────────────────────────────────────────────────
+PROFILE
+────────────────────────────────────────────────────────────────────────────────
+Technical professional with hands-on experience crafting and evaluating prompts
+for AI systems, building data pipelines, and assessing AI output quality across
+multiple use cases. Native English and German speaker; multilingual range provides
+unusual cross-cultural calibration for prompt engineering work.
+
+────────────────────────────────────────────────────────────────────────────────
+EXPERIENCE
+────────────────────────────────────────────────────────────────────────────────
+AI-Assisted Software Developer (Independent)                   2024 – Present
+Kosher Scanner App — github.com/sberlad/Kosher-list-ord        Remote
+• Used AI tools (Claude, Copilot, Cursor) as core development collaborators;
+  crafted hundreds of specific, structured prompts to generate correct code,
+  documentation, and data transformation logic.
+• Evaluated AI-generated outputs against explicit correctness criteria; iterated
+  prompts to achieve better results — practical prompt engineering workflow.
+• Built a data pipeline with 7-level confidence scoring for product lookup —
+  experience designing and applying explicit quality thresholds to AI-style
+  outputs.
+• Wrote validation scripts and diff utilities to detect quality regressions in
+  pipeline outputs — systematic approach to AI output quality assurance.
+• Integrated multiple APIs (Open Food Facts, Supabase); evaluated and corrected
+  AI suggestions for API integration patterns and error handling.
+
+Founder / Director                                             2020 – Present
+Opera Shalem                                                   Remote / Germany
+• Designed and evaluated AI-assisted content across five languages; developed
+  consistent editorial standards for AI output quality in multilingual contexts.
+• Experience assessing chatbot conversations for naturalness, accuracy, and
+  cultural appropriateness — directly applicable to chatbot conversation
+  evaluation tasks.
+
+Developer / Editor                                             2023 – Present
+samuelberlad.com & operashalem.com                             Remote
+• Iterated AI-generated content with principled edits; developed systematic
+  understanding of how prompt construction affects output quality.
+• Regular experience comparing multiple AI model outputs and selecting the best
+  response — core DataAnnotation task type.
+
+────────────────────────────────────────────────────────────────────────────────
+RELEVANT SKILLS
+────────────────────────────────────────────────────────────────────────────────
+• Prompt crafting and iterative refinement
+• AI output comparison and quality ranking
+• Chatbot conversation evaluation and improvement
+• Data quality assurance and regression detection
+• Python scripting for data transformation and validation
+• TypeScript / React Native development
+• Multilingual text evaluation (DE/EN/HE/FR/IT)
+
+────────────────────────────────────────────────────────────────────────────────
+TECHNICAL SKILLS
+────────────────────────────────────────────────────────────────────────────────
+AI Tools: Claude (API & Claude.ai), ChatGPT, Copilot, Cursor
+Engineering: Python, TypeScript, React Native
+Data: Pydantic v2, JSON, REST APIs, Supabase, GitHub Actions
+
+────────────────────────────────────────────────────────────────────────────────
+EDUCATION
+────────────────────────────────────────────────────────────────────────────────
+[Degree and institution as applicable]
