@@ -571,7 +571,6 @@ if __name__ == "__main__":
     print(f"  Removed  : {merge_stats['removed']}")
 
     save_outputs(merged, scrape_stats, merge_stats)
-```
 
 Key changes from the original:
 - `make_product_id()` - stable hash ID per product
