@@ -1,0 +1,5 @@
+beautifulsoup4>=4.12
+requests>=2.31
+pydantic>=2.7
+ftfy>=6.3
+rapidfuzz>=3.14
