@@ -1,6 +1,6 @@
 # Kosher Scanner
 
-**Tech stack:** React Native (Expo) · TypeScript · Python · GitHub Actions · Supabase · Open Food Facts API
+**Tech stack:** React Native (Expo) · TypeScript · Python · GitHub Actions · IONOS · Open Food Facts API
 
 > **Project goal:** To explore AI-assisted software development workflows while building a practical tool for kosher consumers in Germany.
 
@@ -14,7 +14,7 @@ An iOS & Android app that scans product barcodes and checks them against the ORD
 Barcode scan
 │
 ▼
-Trusted barcode cache (Supabase)   ← checked first; crowd-sourced confirmed matches
+Trusted barcode cache (IONOS)   ← checked first; crowd-sourced confirmed matches
 │  hit → instant result
 │
 ▼
@@ -32,7 +32,7 @@ ORD kosher_list.json               ← cached on device, fetched from GitHub, re
 └─ No match                   → ❌  Not on ORD list
 ```
 
-No backend server is needed for lookups. All kosher list data is served as static JSON from GitHub. Confirmed barcode matches are stored in Supabase (free tier) and shared across users.
+No backend server is needed for lookups. All kosher list data is served as static JSON from GitHub. Confirmed barcode matches are stored in IONOS (free tier) and shared across users.
 
 ---
 
@@ -60,7 +60,7 @@ Kosher-list-ord/
     ├── services/
     │   ├── KosherService.ts    # Core lookup logic: matching, fuzzy scoring, rule eval
     │   ├── OpenFoodFacts.ts    # Open Food Facts API integration
-    │   └── BarcodeConfirmationApi.ts  # Supabase trusted-barcode read/write
+    │   └── BarcodeConfirmationApi.ts  # IONOS trusted-barcode read/write
     └── components/
         └── ResultModal.tsx     # Animated result sheet, distinct UI per match type
 ```
@@ -89,7 +89,7 @@ Priority order — first matching tier wins:
 
 | # | Tier | Condition | Match type |
 |---|------|-----------|------------|
-| 1 | **Trusted barcode** | Supabase has a confirmed `barcode → product_id` | `exact` |
+| 1 | **Trusted barcode** | IONOS has a confirmed `barcode → product_id` | `exact` |
 | 2 | **Exact product** | Normalised name matches ORD product; brand overlaps if known | `exact` |
 | 3 | **Fuzzy / manufacturer product** | Jaccard similarity ≥ 0.78 (same brand) or ≥ 0.56 (any brand) | `manufacturer` / `fuzzy` |
 | 4 | **Manufacturer rule** | Brand overlaps rule manufacturer + keyword/category match | `manufacturer_rule` |
@@ -98,12 +98,12 @@ Priority order — first matching tier wins:
 
 Fuzzy matching uses token-set Jaccard similarity with bonuses for exact brand/name equality. No external fuzzy library is used — matching runs fully offline on the static JSON.
 
-### Barcode confirmation (Supabase)
+### Barcode confirmation (IONOS)
 
 - On a fuzzy or manufacturer match, the user is asked *"Is this the correct product?"*
-- **Confirm** → `barcode → product_id` stored in Supabase and shared with all users
+- **Confirm** → `barcode → product_id` stored in IONOS and shared with all users
 - **Reject** → stored as a negative match
-- On next scan of the same barcode → instant confirmed result from Supabase, no matching needed
+- On next scan of the same barcode → instant confirmed result from IONOS, no matching needed
 
 ---
 
@@ -219,7 +219,7 @@ npx expo start --tunnel   # scan QR with Expo Go
 | GitHub Actions scraper (weekly) | Free |
 | GitHub raw file hosting | Free |
 | Open Food Facts API | Free, no key |
-| Supabase (barcode confirmation cache) | Free tier |
+| IONOS (barcode confirmation cache) | Free tier |
 | Expo / React Native | Free |
 | **Total** | **€0/month** |
 
@@ -231,7 +231,7 @@ npx expo start --tunnel   # scan QR with Expo Go
 - ORD scraper with incremental updates and stable product IDs
 - Rule-aware data model: `product` / `manufacturer_rule` / `generic_rule`
 - Six-tier matching with manufacturer rules and generic rules as explicit tiers
-- Crowd-sourced barcode confirmation via Supabase
+- Crowd-sourced barcode confirmation via IONOS
 - Open Food Facts integration (barcode → product name + image)
 - Animated result modal with distinct UI per match type
 - Versioned snapshots and data-quality validation
