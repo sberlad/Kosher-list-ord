@@ -1,7 +1,9 @@
 type DairyStatus = "milchig" | "parve" | "fleischig" | "unknown";
 type PessachStatus = "kosher_lepessach" | "not_pessach" | "unknown";
 type ProductScope = "product" | "generic_rule";
-type MatchType = "exact" | "fuzzy" | "manufacturer" | "generic_rule" | "none";
+type RecordType = "product" | "manufacturer_rule" | "generic_rule";
+type RuleScope = "category" | "all_products";
+type MatchType = "exact" | "fuzzy" | "manufacturer" | "manufacturer_rule" | "generic_rule" | "none";
 type ResultStatus = "kosher" | "not_kosher" | "unknown";
 
 const KOSHER_LIST_URL =
@@ -10,7 +12,14 @@ const KOSHER_LIST_URL =
 export interface KosherProduct {
   id: string;
   source: "ORD";
+  /** Canonical classification. Added in schema v2; fall back to `scope` for old data. */
+  record_type?: RecordType;
+  /** Kept for backward compatibility. Use `record_type` when possible. */
   scope: ProductScope;
+  /** For rule entries: whether the rule covers a category or all products. */
+  rule_scope?: RuleScope;
+  /** Keywords extracted from the rule name (e.g. ["brot"] for "Alle Brotsorten"). */
+  applies_to_keywords?: string[];
   name: string;
   display_name?: string;
   match_name: string;
@@ -166,6 +175,50 @@ function brandOverlap(a?: string, b?: string): boolean {
   return overlap > 0;
 }
 
+/** Resolve record_type for entries that may predate the schema v2 field. */
+function getRecordType(p: KosherProduct): RecordType {
+  if (p.record_type) return p.record_type;
+  return p.scope === "generic_rule" ? "generic_rule" : "product";
+}
+
+/**
+ * Score how well a manufacturer rule covers the scanned product.
+ * Returns 0 if the rule does not apply.
+ *
+ * Matching logic:
+ *  1. Brand must overlap with the rule's manufacturer.
+ *  2. If rule_scope == "all_products" or no keywords: any product qualifies.
+ *  3. Otherwise: the product name must contain at least one applies_to_keyword
+ *     OR overlap with the rule's ORD categories.
+ */
+function matchManufacturerRule(
+  inputName: string,
+  inputBrand: string,
+  rule: KosherProduct
+): number {
+  if (!inputBrand || !brandOverlap(inputBrand, rule.manufacturer)) return 0;
+
+  const keywords = rule.applies_to_keywords ?? [];
+
+  if (rule.rule_scope === "all_products" || keywords.length === 0) {
+    return 0.85;
+  }
+
+  const inputNorm = normalize(inputName);
+
+  if (keywords.some((kw) => inputNorm.includes(normalize(kw)))) {
+    return 0.85;
+  }
+
+  const catMatch = (rule.categories ?? []).some((cat) => {
+    const catNorm = normalize(cat);
+    return catNorm.length >= 3 && inputNorm.includes(catNorm);
+  });
+  if (catMatch) return 0.75;
+
+  return 0;
+}
+
 function summarizeProduct(product: KosherProduct): MatchedProductSummary {
   return {
     id: product.id,
@@ -244,8 +297,9 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
     return createNoneResult("No product name available for lookup.");
   }
 
-  const productRecords = products.filter((p) => p.scope === "product");
-  const genericRules = products.filter((p) => p.scope === "generic_rule");
+  const productRecords = products.filter((p) => getRecordType(p) === "product");
+  const manufacturerRules = products.filter((p) => getRecordType(p) === "manufacturer_rule");
+  const genericRules = products.filter((p) => getRecordType(p) === "generic_rule");
 
   // 1. Exact product match: exact normalized name + optional exact/overlapping brand
   const exactMatch = productRecords.find((p) => {
@@ -326,7 +380,33 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
     };
   }
 
-  // 4. Generic rule fallback (alle Firmen etc.)
+  // 4. Manufacturer rule — a standing ORD rule for this brand
+  //    (e.g. "Alle Brotsorten" from Kerry Ingredients).
+  //    Only checked when a brand is known and product matching failed.
+  if (inputBrand && manufacturerRules.length > 0) {
+    const ruleCandidates = manufacturerRules
+      .map((r) => ({ rule: r, score: matchManufacturerRule(input.name, input.brand ?? "", r) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score);
+
+    if (ruleCandidates.length > 0) {
+      const best = ruleCandidates[0].rule;
+      const bestScore = ruleCandidates[0].score;
+
+      return {
+        status: "kosher",
+        matchType: "manufacturer_rule",
+        confidence: bestScore,
+        source: "ORD",
+        certificate: best.certificate,
+        matchedProduct: summarizeProduct(best),
+        needsConfirmation: true,
+        reason: best.name,
+      };
+    }
+  }
+
+  // 5. Generic rule fallback (alle Firmen etc.)
   const genericCandidates = genericRules
     .map((p) => ({
       product: p,

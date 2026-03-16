@@ -38,6 +38,11 @@ const STATUS = {
     label: "BRAND / FAMILY MATCH",
     symbol: "◎",
   },
+  manufacturer_rule: {
+    color: "#a78bfa",
+    label: "MANUFACTURER RULE",
+    symbol: "◈",
+  },
   generic_rule: {
     color: GOLD,
     label: "GENERIC ORD RULE",
@@ -236,7 +241,11 @@ export default function ResultModal({
 
             {matched ? (
               <View style={styles.kosherBlock}>
-                {result.matchType !== "exact" ? (
+                {result.matchType === "manufacturer_rule" ? (
+                  <Text style={styles.matchedLabel}>ORD MANUFACTURER RULE</Text>
+                ) : result.matchType === "generic_rule" ? (
+                  <Text style={styles.matchedLabel}>ORD GENERIC RULE</Text>
+                ) : result.matchType !== "exact" ? (
                   <Text style={styles.matchedLabel}>MATCHED TO ORD PRODUCT</Text>
                 ) : null}
 
@@ -260,13 +269,20 @@ export default function ResultModal({
             {(result.matchType === "exact" ||
               result.matchType === "fuzzy" ||
               result.matchType === "manufacturer" ||
+              result.matchType === "manufacturer_rule" ||
               result.matchType === "generic_rule") && (
               <View style={styles.pills}>
-                {result.matchType === "generic_rule" ? (
+                {result.matchType === "manufacturer_rule" ? (
+                  <Pill
+                    label="Manufacturer Rule"
+                    color="#a78bfa"
+                    note="This brand has a standing ORD rule covering this product type — not a specific product listing."
+                  />
+                ) : result.matchType === "generic_rule" ? (
                   <Pill
                     label="Generic ORD Rule"
                     color={GOLD}
-                    note="Applies by category rather than exact product listing."
+                    note="Applies to this product category across all manufacturers — not a specific product listing."
                   />
                 ) : null}
               </View>
