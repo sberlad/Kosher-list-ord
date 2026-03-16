@@ -11,11 +11,13 @@ import {
 import { CameraView, useCameraPermissions } from "expo-camera";
 
 import ResultModal from "../components/ResultModal";
+import SettingsPanel from "../components/SettingsPanel";
 import { lookupByBarcode } from "../services/OpenFoodFacts";
 import {
   lookupProduct,
   loadKosherData,
   getProductById,
+  getPesachAssessment,
   type LookupResult,
 } from "../services/KosherService";
 import {
@@ -50,6 +52,7 @@ export default function HomeScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [settingsPanelVisible, setSettingsPanelVisible] = useState(false);
   const [result, setResult] = useState<ScanResultState>(null);
   const [lastBarcode, setLastBarcode] = useState<string | null>(null);
 
@@ -124,6 +127,7 @@ export default function HomeScreen() {
             confidence: 1,
             source: "ORD",
             certificate: resolved?.certificate,
+            pesachAssessment: getPesachAssessment(resolved),
             reason: `Trusted barcode match (${confirmed.confirmations ?? 0} confirmations).`,
             matchedProduct: resolved
               ? {
@@ -247,7 +251,17 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Kosher Scanner</Text>
+        <View style={styles.headerRow}>
+          <Text style={styles.title}>Kosher Scanner</Text>
+          <Pressable
+            style={styles.gearBtn}
+            onPress={() => setSettingsPanelVisible(true)}
+            accessibilityLabel="Open settings"
+            accessibilityRole="button"
+          >
+            <Text style={styles.gearIcon}>⚙</Text>
+          </Pressable>
+        </View>
         <Text style={styles.subtitle}>
           Scan a product barcode to check it against the ORD list.
         </Text>
@@ -303,6 +317,11 @@ export default function HomeScreen() {
         onConfirmYes={handleConfirmYes}
         onConfirmNo={handleConfirmNo}
       />
+
+      <SettingsPanel
+        visible={settingsPanelVisible}
+        onClose={() => setSettingsPanelVisible(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -324,11 +343,23 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 16,
   },
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 8,
+  },
   title: {
     color: "#f8fafc",
     fontSize: 28,
     fontWeight: "700",
-    marginBottom: 8,
+  },
+  gearBtn: {
+    padding: 6,
+  },
+  gearIcon: {
+    fontSize: 22,
+    color: "#94a3b8",
   },
   subtitle: {
     color: "#cbd5e1",

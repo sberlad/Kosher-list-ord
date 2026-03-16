@@ -1,6 +1,18 @@
 type DairyStatus = "milchig" | "parve" | "fleischig" | "unknown";
 type PessachStatus = "kosher_lepessach" | "not_pessach" | "unknown";
 type ProductScope = "product" | "generic_rule";
+
+/**
+ * Pesach suitability as assessed by the app.
+ * Derived from the ORD `pessach` field; never invented.
+ *
+ * - kosher_lepesach  confirmed kosher for Pesach in ORD data
+ * - kitniyot         kitniyot — reserved for future ORD data; no products
+ *                    are currently classified this way
+ * - not_pesach       confirmed not kosher for Pesach in ORD data
+ * - unknown          ORD does not confirm either way (most products today)
+ */
+export type PesachAssessment = "kosher_lepesach" | "kitniyot" | "not_pesach" | "unknown";
 type RecordType = "product" | "manufacturer_rule" | "generic_rule";
 type RuleScope = "category" | "all_products";
 type MatchType = "exact" | "fuzzy" | "manufacturer" | "manufacturer_rule" | "generic_rule" | "none";
@@ -76,6 +88,8 @@ export interface LookupResult {
   manufacturerProducts?: MatchedProductSummary[];
   /** Open Food Facts product data used as input for the ORD match. */
   offProduct?: OffProductInfo;
+  /** Pesach suitability derived from ORD data. Undefined when no product matched. */
+  pesachAssessment?: PesachAssessment;
 }
 
 let cachedData: KosherData | null = null;
@@ -286,6 +300,20 @@ function genericRuleScore(inputName: string, product: KosherProduct): number {
   return jaccardScore(inputName, genericName) * 0.75;
 }
 
+/**
+ * Derive the Pesach assessment for a matched product.
+ * Only surfaces what the ORD data explicitly states — no halachic inferences.
+ * "kitniyot" is reserved for when the dataset gains that classification.
+ */
+export function getPesachAssessment(
+  product: KosherProduct | null | undefined
+): PesachAssessment {
+  if (!product) return "unknown";
+  if (product.pessach === "kosher_lepessach") return "kosher_lepesach";
+  if (product.pessach === "not_pessach") return "not_pesach";
+  return "unknown";
+}
+
 export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
   const data = await loadKosherData();
   const products = data.products ?? [];
@@ -318,6 +346,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       source: "ORD",
       certificate: exactMatch.certificate,
       matchedProduct: summarizeProduct(exactMatch),
+      pesachAssessment: getPesachAssessment(exactMatch),
     };
   }
 
@@ -352,6 +381,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       ),
       needsConfirmation: bestScore < 0.9,
       reason: bestScore < 0.9 ? "Matched by manufacturer and similar product name." : undefined,
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
@@ -377,6 +407,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       matchedProduct: summarizeProduct(best),
       needsConfirmation: true,
       reason: "Possible ORD match — verify product details.",
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
@@ -402,6 +433,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
         matchedProduct: summarizeProduct(best),
         needsConfirmation: true,
         reason: best.name,
+        pesachAssessment: getPesachAssessment(best),
       };
     }
   }
@@ -427,6 +459,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       certificate: best.certificate,
       matchedProduct: summarizeProduct(best),
       reason: "Matched via generic ORD rule.",
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
