@@ -5,6 +5,9 @@ __pycache__/
 .venv/
 venv/
 
+# Scraper snapshots (generated locally, not committed)
+scraper/snapshots/
+
 # Node / Expo
 KosherScanner/node_modules/
 KosherScanner/.expo/
