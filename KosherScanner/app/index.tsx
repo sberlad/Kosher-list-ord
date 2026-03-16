@@ -164,6 +164,7 @@ export default function HomeScreen() {
           barcode: data,
           name: offProduct.name,
           brand: offProduct.brand,
+          categories: offProduct.categories,
         });
 
         // Attach OFF product info so the modal can display scanned product details
