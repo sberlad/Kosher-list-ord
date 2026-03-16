@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Node / Expo
+KosherScanner/node_modules/
+KosherScanner/.expo/
+KosherScanner/dist/
+
+# OS
+.DS_Store
+Thumbs.db
