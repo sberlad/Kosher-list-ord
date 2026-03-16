@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Scraper snapshots (generated locally, not committed)
+scraper/snapshots/
+
+# Node / Expo
+KosherScanner/node_modules/
+KosherScanner/.expo/
+KosherScanner/dist/
+
+# OS
+.DS_Store
+Thumbs.db

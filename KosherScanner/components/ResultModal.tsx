@@ -16,10 +16,11 @@ interface Props {
   result: LookupResult | null;
   barcode?: string;
   onClose: () => void;
+  onConfirmYes?: () => void;
+  onConfirmNo?: () => void;
 }
 
 const GOLD = "#c9a84c";
-const BG = "#0a0a0f";
 
 const STATUS = {
   exact: {
@@ -36,6 +37,11 @@ const STATUS = {
     color: "#60a5fa",
     label: "BRAND / FAMILY MATCH",
     symbol: "◎",
+  },
+  manufacturer_rule: {
+    color: "#a78bfa",
+    label: "MANUFACTURER RULE",
+    symbol: "◈",
   },
   generic_rule: {
     color: GOLD,
@@ -133,6 +139,8 @@ export default function ResultModal({
   result,
   barcode,
   onClose,
+  onConfirmYes,
+  onConfirmNo,
 }: Props) {
   const slideY = useRef(new Animated.Value(80)).current;
   const opacity = useRef(new Animated.Value(0)).current;
@@ -165,6 +173,7 @@ export default function ResultModal({
 
   const statusConfig = STATUS[result.matchType];
   const matched = result.matchedProduct;
+  const off = result.offProduct;
 
   return (
     <Modal
@@ -212,10 +221,32 @@ export default function ResultModal({
             <InfoBlock label="Source" value={result.source} />
             <InfoBlock label="Barcode" value={barcode} />
 
+            {/* Open Food Facts product info — always show when available */}
+            {off ? (
+              <View style={styles.offBlock}>
+                <Text style={styles.offBlockTitle}>SCANNED PRODUCT</Text>
+                {off.imageUrl ? (
+                  <Image
+                    source={{ uri: off.imageUrl }}
+                    style={styles.offImage}
+                    resizeMode="contain"
+                  />
+                ) : null}
+                <Text style={styles.offName}>{off.name}</Text>
+                {off.brand ? (
+                  <Text style={styles.offBrand}>{off.brand}</Text>
+                ) : null}
+              </View>
+            ) : null}
+
             {matched ? (
               <View style={styles.kosherBlock}>
-                {result.matchType !== "exact" ? (
-                  <Text style={styles.matchedLabel}>MATCHED TO</Text>
+                {result.matchType === "manufacturer_rule" ? (
+                  <Text style={styles.matchedLabel}>ORD MANUFACTURER RULE</Text>
+                ) : result.matchType === "generic_rule" ? (
+                  <Text style={styles.matchedLabel}>ORD GENERIC RULE</Text>
+                ) : result.matchType !== "exact" ? (
+                  <Text style={styles.matchedLabel}>MATCHED TO ORD PRODUCT</Text>
                 ) : null}
 
                 <Text style={styles.kosherName}>{matched.name}</Text>
@@ -229,7 +260,7 @@ export default function ResultModal({
                   <Text style={styles.cert}>Hechsher: {result.certificate}</Text>
                 ) : null}
 
-                {"matchedProduct" in result && matched.categories?.length ? (
+                {matched.categories?.length ? (
                   <Text style={styles.cats}>{matched.categories.join("  ·  ")}</Text>
                 ) : null}
               </View>
@@ -238,13 +269,20 @@ export default function ResultModal({
             {(result.matchType === "exact" ||
               result.matchType === "fuzzy" ||
               result.matchType === "manufacturer" ||
+              result.matchType === "manufacturer_rule" ||
               result.matchType === "generic_rule") && (
               <View style={styles.pills}>
-                {result.matchType === "generic_rule" ? (
+                {result.matchType === "manufacturer_rule" ? (
+                  <Pill
+                    label="Manufacturer Rule"
+                    color="#a78bfa"
+                    note="This brand has a standing ORD rule covering this product type — not a specific product listing."
+                  />
+                ) : result.matchType === "generic_rule" ? (
                   <Pill
                     label="Generic ORD Rule"
                     color={GOLD}
-                    note="Applies by category rather than exact product listing."
+                    note="Applies to this product category across all manufacturers — not a specific product listing."
                   />
                 ) : null}
               </View>
@@ -275,9 +313,28 @@ export default function ResultModal({
             {result.needsConfirmation ? (
               <View style={styles.confirmBox}>
                 <Text style={styles.confirmQ}>
-                  This looks like a likely match, but it should be verified against
-                  the exact product.
+                  Is this the correct product?
                 </Text>
+                <View style={styles.confirmButtons}>
+                  <Pressable
+                    style={[styles.confirmBtn, styles.confirmYesBtn]}
+                    onPress={() => {
+                      onConfirmYes?.();
+                      onClose();
+                    }}
+                  >
+                    <Text style={styles.confirmYesBtnText}>Yes, confirm</Text>
+                  </Pressable>
+                  <Pressable
+                    style={[styles.confirmBtn, styles.confirmNoBtn]}
+                    onPress={() => {
+                      onConfirmNo?.();
+                      onClose();
+                    }}
+                  >
+                    <Text style={styles.confirmNoBtnText}>Not a match</Text>
+                  </Pressable>
+                </View>
               </View>
             ) : null}
 
@@ -386,6 +443,42 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
+  offBlock: {
+    backgroundColor: "#ffffff07",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#ffffff12",
+    padding: 14,
+    marginBottom: 18,
+    alignItems: "center",
+  },
+  offBlockTitle: {
+    color: "#686f79",
+    fontSize: 10,
+    letterSpacing: 1.8,
+    marginBottom: 10,
+    alignSelf: "flex-start",
+  },
+  offImage: {
+    width: 100,
+    height: 100,
+    marginBottom: 10,
+    borderRadius: 8,
+    backgroundColor: "#1a1a24",
+  },
+  offName: {
+    color: "#e2e8f0",
+    fontSize: 15,
+    fontWeight: "600",
+    textAlign: "center",
+    lineHeight: 21,
+  },
+  offBrand: {
+    color: "#8a8f98",
+    fontSize: 13,
+    marginTop: 4,
+    textAlign: "center",
+  },
   kosherBlock: {
     marginBottom: 18,
   },
@@ -476,6 +569,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 16,
     marginBottom: 18,
+    alignItems: "center",
   },
   confirmQ: {
     color: "#d0d5dc",
@@ -483,6 +577,38 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 21,
     letterSpacing: 0.2,
+    marginBottom: 14,
+  },
+  confirmButtons: {
+    flexDirection: "row",
+    gap: 10,
+    width: "100%",
+  },
+  confirmBtn: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  confirmYesBtn: {
+    backgroundColor: "#22c55e22",
+    borderWidth: 1,
+    borderColor: "#22c55e55",
+  },
+  confirmYesBtnText: {
+    color: "#4ade80",
+    fontSize: 14,
+    fontWeight: "700",
+  },
+  confirmNoBtn: {
+    backgroundColor: "#ef444415",
+    borderWidth: 1,
+    borderColor: "#ef444440",
+  },
+  confirmNoBtnText: {
+    color: "#f87171",
+    fontSize: 14,
+    fontWeight: "700",
   },
   noteBox: {
     backgroundColor: "#ffffff07",

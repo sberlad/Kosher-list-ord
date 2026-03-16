@@ -177,6 +177,74 @@ MANUFACTURER_REPLACEMENTS = {
 
 GENERIC_RULE_MANUFACTURERS = {"alle firmen"}
 
+# Regex patterns used to detect manufacturer-specific rule entries.
+# These are entries whose *name* starts with "alle" and describes a category
+# or product-line rule rather than a specific named product.
+_RULE_ALLE_SORTEN = re.compile(r"^alle\s+(\w+)sorten$")
+_RULE_ALLE_PRODUKTE = re.compile(r"^alle\s+(\w+?)produkte?$")
+_RULE_ALLE_WAREN = re.compile(r"^alle\s+(\w+)waren$")
+_RULE_ALLE_ARTEN = re.compile(r"^alle\s+arten\s+von\s+(\w+)")
+_RULE_ALLE_GENERIC = re.compile(r"^alle\b")
+
+
+def classify_record_type(
+    name_normalized: str, manufacturer: str
+) -> tuple[str, str | None, list[str]]:
+    """Return (record_type, rule_scope, applies_to_keywords) for a scraped row.
+
+    record_type:
+      "product"           – a specific named product
+      "manufacturer_rule" – a standing rule for one manufacturer
+                            (e.g. "Alle Brotsorten" from Kerry Ingredients)
+      "generic_rule"      – an all-producers category rule
+                            (manufacturer == "alle Firmen")
+
+    rule_scope:
+      "category"     – applies to a specific product category / keyword
+      "all_products" – applies to all products from that manufacturer
+
+    applies_to_keywords:
+      Extracted salient tokens from the rule name, e.g. ["brot"] for
+      "Alle Brotsorten".  Empty list means the rule has no keyword restriction.
+    """
+    mfr_lower = manufacturer.lower().strip()
+
+    if mfr_lower in GENERIC_RULE_MANUFACTURERS:
+        return "generic_rule", "category", []
+
+    # Only names that *start* with "alle" (word boundary) are rules.
+    if not _RULE_ALLE_GENERIC.match(name_normalized):
+        return "product", None, []
+
+    # "alle Xsorten" → category rule, keyword = X
+    m = _RULE_ALLE_SORTEN.match(name_normalized)
+    if m:
+        kw = m.group(1).strip()
+        return "manufacturer_rule", "category", [kw] if kw else []
+
+    # "alle Xprodukte" / "alle Xprodukt" → all_products if no prefix, else category
+    m = _RULE_ALLE_PRODUKTE.match(name_normalized)
+    if m:
+        kw = m.group(1).strip()
+        if kw:
+            return "manufacturer_rule", "category", [kw]
+        return "manufacturer_rule", "all_products", []
+
+    # "alle Xwaren" → category rule, keyword = X
+    m = _RULE_ALLE_WAREN.match(name_normalized)
+    if m:
+        kw = m.group(1).strip()
+        return "manufacturer_rule", "category", [kw] if kw else []
+
+    # "alle Arten von X …" → category rule, keyword = X
+    m = _RULE_ALLE_ARTEN.match(name_normalized)
+    if m:
+        kw = m.group(1).strip()
+        return "manufacturer_rule", "category", [kw] if kw else []
+
+    # Anything else starting with "alle" → broad all_products rule
+    return "manufacturer_rule", "all_products", []
+
 
 def normalize_text(text: str) -> str:
     text = html.unescape(text or "")
@@ -391,7 +459,14 @@ class ProductModel(BaseModel):
 
     id: str
     source: Literal["ORD"] = "ORD"
+    # Canonical classification field (supersedes `scope`).
+    record_type: Literal["product", "manufacturer_rule", "generic_rule"] = "product"
+    # Kept for backward compatibility with existing consumers that read `scope`.
     scope: Literal["product", "generic_rule"] = "product"
+    # For rule entries: whether the rule covers a specific category or all products.
+    rule_scope: Literal["category", "all_products"] | None = None
+    # Keywords extracted from the rule name (e.g. ["brot"] for "Alle Brotsorten").
+    applies_to_keywords: list[str] = Field(default_factory=list)
     name: str
     display_name: str
     match_name: str
@@ -452,8 +527,8 @@ class ProductModel(BaseModel):
         self.categories = dedupe_preserve(self.categories)
         self.variants = dedupe_preserve([clean_quotes_and_punct(v) for v in self.variants if v])
 
-        if self.manufacturer.lower() in GENERIC_RULE_MANUFACTURERS:
-            self.scope = "generic_rule"
+        # Keep `scope` in sync with `record_type` for backward compatibility.
+        self.scope = "generic_rule" if self.record_type == "generic_rule" else "product"
 
         return self
 
@@ -617,14 +692,19 @@ def parse_row(cells: list, previous_product: dict | None = None) -> tuple[dict |
 
         certificate = " / ".join(dict.fromkeys([c for c in certs if c])).strip(" /")
         manufacturer = clean_manufacturer(raw_manufacturer)
-        scope = "generic_rule" if manufacturer.lower() in GENERIC_RULE_MANUFACTURERS else "product"
+        name_norm = normalize_for_match(name)
+        record_type, rule_scope, applies_to_keywords = classify_record_type(
+            name_norm, manufacturer
+        )
 
         dairy_status, dairy_note = parse_milchig_cell(cells[4] if len(cells) > 4 else None)
         pessach_status, pessach_note = parse_pessach_cell(cells[5] if len(cells) > 5 else None)
 
         product = {
             "source": "ORD",
-            "scope": scope,
+            "record_type": record_type,
+            "rule_scope": rule_scope,
+            "applies_to_keywords": applies_to_keywords,
             "name": name,
             "manufacturer": manufacturer,
             "certificate": certificate,
@@ -782,7 +862,10 @@ def merge_products(scraped: list[dict], existing: dict[str, dict]) -> tuple[list
             changed = False
             fields_to_update = [
                 "source",
+                "record_type",
                 "scope",
+                "rule_scope",
+                "applies_to_keywords",
                 "name",
                 "manufacturer",
                 "raw_name",
@@ -900,11 +983,11 @@ def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) ->
         json.dump(manifest, f, ensure_ascii=False, indent=2)
 
     print(f"✅ Saved manifest      → {manifest_path}")
-        if previous_hash != content_hash:
-            save_snapshot(kosher_list, manifest, diff)
-            print("✅ Content changed — snapshot saved")
-        else:
-            print("ℹ No content change — no snapshot saved")
+    if previous_hash != content_hash:
+        save_snapshot(kosher_list, manifest, diff)
+        print("✅ Content changed — snapshot saved")
+    else:
+        print("ℹ No content change — no snapshot saved")
 
 
 if __name__ == "__main__":

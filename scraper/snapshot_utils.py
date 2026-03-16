@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 SNAPSHOT_DIR = os.path.join(os.path.dirname(__file__), "snapshots")
@@ -32,7 +32,7 @@ def save_snapshot(
 ):
     version = manifest.get("version")
     if not version:
-        version = datetime.utcnow().strftime("%Y-%m-%d")
+        version = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
     snapshot_path = os.path.join(SNAPSHOT_DIR, version)
     os.makedirs(snapshot_path, exist_ok=True)
