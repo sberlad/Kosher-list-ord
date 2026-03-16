@@ -900,11 +900,11 @@ def save_outputs(products: list[dict], scrape_stats: dict, merge_stats: dict) ->
         json.dump(manifest, f, ensure_ascii=False, indent=2)
 
     print(f"✅ Saved manifest      → {manifest_path}")
-        if previous_hash != content_hash:
-            save_snapshot(kosher_list, manifest, diff)
-            print("✅ Content changed — snapshot saved")
-        else:
-            print("ℹ No content change — no snapshot saved")
+    if previous_hash != content_hash:
+        save_snapshot(kosher_list, manifest, diff)
+        print("✅ Content changed — snapshot saved")
+    else:
+        print("ℹ No content change — no snapshot saved")
 
 
 if __name__ == "__main__":
