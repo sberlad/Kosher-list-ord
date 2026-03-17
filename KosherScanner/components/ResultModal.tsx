@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import {
   Animated,
-  Image,
   Modal,
   Pressable,
   ScrollView,
@@ -238,12 +237,7 @@ export default function ResultModal({
   const off = result.offProduct;
 
   return (
-    <Modal
-      visible={visible}
-      animationType="none"
-      transparent
-      onRequestClose={onClose}
-    >
+    <Modal visible={visible} animationType="none" transparent onRequestClose={onClose}>
       <Animated.View style={[styles.overlay, { opacity }]}>
         <Animated.View
           style={[
@@ -281,6 +275,7 @@ export default function ResultModal({
             contentContainerStyle={styles.scrollContent}
           >
             <InfoBlock label="Source" value={result.source} />
+            <InfoBlock label="List" value={result.list} />
             <InfoBlock label="Barcode" value={barcode} />
 
             {/* Open Food Facts product info — always show when available */}
@@ -678,6 +673,42 @@ const styles = StyleSheet.create({
     color: "#f87171",
     fontSize: 14,
     fontWeight: "700",
+  },
+  confirmButtons: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 14,
+    gap: 10,
+  },
+  confirmYes: {
+    flex: 1,
+    backgroundColor: "#22c55e22",
+    borderColor: "#22c55e55",
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 12,
+    alignItems: "center",
+  },
+  confirmYesText: {
+    color: "#22c55e",
+    fontWeight: "700",
+    fontSize: 13,
+    letterSpacing: 1,
+  },
+  confirmNo: {
+    flex: 1,
+    backgroundColor: "#ef444422",
+    borderColor: "#ef444455",
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 12,
+    alignItems: "center",
+  },
+  confirmNoText: {
+    color: "#ef4444",
+    fontWeight: "700",
+    fontSize: 13,
+    letterSpacing: 1,
   },
   noteBox: {
     backgroundColor: "#ffffff07",
