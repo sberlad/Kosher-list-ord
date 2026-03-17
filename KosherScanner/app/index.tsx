@@ -200,7 +200,10 @@ export default function HomeScreen() {
     }
   }, [requestPermission]);
 
+<<<<<<< Updated upstream
   // All hooks must be declared before any conditional return
+=======
+>>>>>>> Stashed changes
   const handleConfirmYes = useCallback(async () => {
     if (!lastBarcode || !result?.matchedProduct?.id) return;
 
