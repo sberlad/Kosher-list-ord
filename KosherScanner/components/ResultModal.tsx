@@ -8,20 +8,16 @@ import {
   Text,
   View,
 } from "react-native";
-import type { LookupResult } from "../services/KosherService";
+import type { LookupResult, PesachAssessment } from "../services/KosherService";
+import { useAppSettings } from "../context/AppSettings";
 
 interface Props {
   visible: boolean;
   result: LookupResult | null;
   barcode?: string;
   onClose: () => void;
-<<<<<<< Updated upstream
   onConfirmYes?: () => void;
   onConfirmNo?: () => void;
-=======
-  onConfirmYes: () => void;
-  onConfirmNo: () => void;
->>>>>>> Stashed changes
 }
 
 const GOLD = "#c9a84c";
@@ -138,6 +134,65 @@ function InfoBlock({
   );
 }
 
+const PESACH_CONFIG: Record<
+  PesachAssessment,
+  { color: string; label: string; note: string }
+> = {
+  kosher_lepesach: {
+    color: "#4ade80",
+    label: "Kosher for Pesach",
+    note: "Listed as kosher le-Pesach in the ORD data.",
+  },
+  kitniyot: {
+    color: "#f59e0b",
+    label: "Kitniyot",
+    note: "This product contains or may contain kitniyot. Suitability depends on your household practice.",
+  },
+  not_pesach: {
+    color: "#ef4444",
+    label: "Not kosher for Pesach",
+    note: "Listed as not suitable for Pesach in the ORD data.",
+  },
+  unknown: {
+    color: "#6b7280",
+    label: "Pesach status unknown",
+    note: "The ORD source does not confirm Pesach status for this product. Verify with the certifying authority or your rabbi.",
+  },
+};
+
+function PesachSection({
+  assessment,
+  kitniyotAllowed,
+}: {
+  assessment: PesachAssessment;
+  kitniyotAllowed: boolean;
+}) {
+  const cfg = PESACH_CONFIG[assessment];
+  const effectiveAssessment =
+    assessment === "kitniyot" && kitniyotAllowed ? "kosher_lepesach" : assessment;
+  const effectiveCfg = PESACH_CONFIG[effectiveAssessment];
+  const displayCfg = assessment === "kitniyot" ? cfg : effectiveCfg;
+
+  return (
+    <View
+      style={[
+        styles.pesachBox,
+        {
+          borderColor: `${displayCfg.color}44`,
+          backgroundColor: `${displayCfg.color}0d`,
+        },
+      ]}
+    >
+      <Text style={styles.pesachTitle}>PESACH MODE</Text>
+      <Text style={[styles.pesachLabel, { color: displayCfg.color }]}>
+        {displayCfg.label}
+        {assessment === "kitniyot" && kitniyotAllowed ? " — permitted (your setting)" : ""}
+      </Text>
+      <Text style={styles.pesachNote}>{displayCfg.note}</Text>
+    </View>
+  );
+}
+
 export default function ResultModal({
   visible,
   result,
@@ -170,6 +225,8 @@ export default function ResultModal({
       }),
     ]).start();
   }, [visible, opacity, slideY]);
+
+  const { pesachMode, kitniyotAllowed } = useAppSettings();
 
   if (!visible || !result) {
     return null;
@@ -266,6 +323,13 @@ export default function ResultModal({
               </View>
             ) : null}
 
+            {pesachMode && result.pesachAssessment !== undefined ? (
+              <PesachSection
+                assessment={result.pesachAssessment}
+                kitniyotAllowed={kitniyotAllowed}
+              />
+            ) : null}
+
             {(result.matchType === "exact" ||
               result.matchType === "fuzzy" ||
               result.matchType === "manufacturer" ||
@@ -313,7 +377,6 @@ export default function ResultModal({
             {result.needsConfirmation ? (
               <View style={styles.confirmBox}>
                 <Text style={styles.confirmQ}>
-<<<<<<< Updated upstream
                   Is this the correct product?
                 </Text>
                 <View style={styles.confirmButtons}>
@@ -334,18 +397,6 @@ export default function ResultModal({
                     }}
                   >
                     <Text style={styles.confirmNoBtnText}>Not a match</Text>
-=======
-                  This looks like a likely match. Is this the correct product?
-                </Text>
-
-                <View style={styles.confirmButtons}>
-                  <Pressable style={styles.confirmYes} onPress={onConfirmYes}>
-                    <Text style={styles.confirmYesText}>YES — CORRECT</Text>
-                  </Pressable>
-
-                  <Pressable style={styles.confirmNo} onPress={onConfirmNo}>
-                    <Text style={styles.confirmNoText}>NO — WRONG PRODUCT</Text>
->>>>>>> Stashed changes
                   </Pressable>
                 </View>
               </View>
@@ -691,6 +742,28 @@ const styles = StyleSheet.create({
     color: "#d1a3a3",
     fontSize: 14,
     lineHeight: 22,
+  },
+  pesachBox: {
+    borderRadius: 10,
+    borderWidth: 1,
+    padding: 14,
+    marginBottom: 18,
+  },
+  pesachTitle: {
+    color: "#686f79",
+    fontSize: 10,
+    letterSpacing: 1.8,
+    marginBottom: 6,
+  },
+  pesachLabel: {
+    fontSize: 15,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+  pesachNote: {
+    color: "#8a8f98",
+    fontSize: 12,
+    lineHeight: 17,
   },
   closeBtn: {
     borderWidth: 1,

@@ -5,6 +5,8 @@ export interface OpenFoodFactsProduct {
   name: string;
   brand?: string;
   imageUrl?: string;
+  /** Product categories from Open Food Facts, e.g. ["Butter", "Dairy products"]. */
+  categories?: string[];
 }
 
 function cleanText(value?: string): string {
@@ -37,7 +39,7 @@ export async function lookupByBarcode(
     const response = await fetch(
       `${OFF_API}/${encodeURIComponent(
         safeBarcode
-      )}.json?fields=product_name,product_name_en,brands,image_front_url,image_url,code`
+      )}.json?fields=product_name,product_name_en,brands,image_front_url,image_url,code,categories`
     );
 
     if (!response.ok) {
@@ -62,11 +64,17 @@ export async function lookupByBarcode(
       return null;
     }
 
+    const categoriesRaw = cleanText(product.categories ?? "");
+    const categories = categoriesRaw
+      ? categoriesRaw.split(",").map((c: string) => cleanText(c)).filter(Boolean)
+      : undefined;
+
     return {
       barcode: cleanText(product.code || safeBarcode),
       name,
       brand: primaryBrand(product.brands),
       imageUrl: cleanText(product.image_front_url || product.image_url) || undefined,
+      categories,
     };
   } catch (error) {
     console.error("OpenFoodFacts lookup failed:", error);

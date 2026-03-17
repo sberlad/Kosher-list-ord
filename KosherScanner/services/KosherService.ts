@@ -1,6 +1,18 @@
 type DairyStatus = "milchig" | "parve" | "fleischig" | "unknown";
 type PessachStatus = "kosher_lepessach" | "not_pessach" | "unknown";
 type ProductScope = "product" | "generic_rule";
+
+/**
+ * Pesach suitability as assessed by the app.
+ * Derived from the ORD `pessach` field; never invented.
+ *
+ * - kosher_lepesach  confirmed kosher for Pesach in ORD data
+ * - kitniyot         kitniyot — reserved for future ORD data; no products
+ *                    are currently classified this way
+ * - not_pesach       confirmed not kosher for Pesach in ORD data
+ * - unknown          ORD does not confirm either way (most products today)
+ */
+export type PesachAssessment = "kosher_lepesach" | "kitniyot" | "not_pesach" | "unknown";
 type RecordType = "product" | "manufacturer_rule" | "generic_rule";
 type RuleScope = "category" | "all_products";
 type MatchType = "exact" | "fuzzy" | "manufacturer" | "manufacturer_rule" | "generic_rule" | "none";
@@ -48,6 +60,8 @@ export interface LookupInput {
   barcode?: string;
   name: string;
   brand?: string;
+  /** Product categories from Open Food Facts, used to improve rule matching. */
+  categories?: string[];
 }
 
 export interface MatchedProductSummary {
@@ -76,6 +90,8 @@ export interface LookupResult {
   manufacturerProducts?: MatchedProductSummary[];
   /** Open Food Facts product data used as input for the ORD match. */
   offProduct?: OffProductInfo;
+  /** Pesach suitability derived from ORD data. Undefined when no product matched. */
+  pesachAssessment?: PesachAssessment;
 }
 
 let cachedData: KosherData | null = null;
@@ -194,6 +210,7 @@ function getRecordType(p: KosherProduct): RecordType {
 function matchManufacturerRule(
   inputName: string,
   inputBrand: string,
+  inputCategories: string[],
   rule: KosherProduct
 ): number {
   if (!inputBrand || !brandOverlap(inputBrand, rule.manufacturer)) return 0;
@@ -206,15 +223,33 @@ function matchManufacturerRule(
 
   const inputNorm = normalize(inputName);
 
+  // Existing: product name contains a rule keyword
   if (keywords.some((kw) => inputNorm.includes(normalize(kw)))) {
     return 0.85;
   }
 
+  // Existing: product name contains a rule category term
   const catMatch = (rule.categories ?? []).some((cat) => {
     const catNorm = normalize(cat);
     return catNorm.length >= 3 && inputNorm.includes(catNorm);
   });
   if (catMatch) return 0.75;
+
+  // Additional: OFF categories match rule keywords or rule categories
+  if (inputCategories.length > 0) {
+    const kwNorms = keywords.map(normalize).filter(Boolean);
+    const ruleCatNorms = (rule.categories ?? []).map(normalize).filter((c) => c.length >= 3);
+
+    const kwCatMatch = kwNorms.some((kw) =>
+      inputCategories.some((c) => c.includes(kw) || kw.includes(c))
+    );
+    if (kwCatMatch) return 0.80;
+
+    const ruleCatMatch = ruleCatNorms.some((rc) =>
+      inputCategories.some((c) => c.includes(rc) || rc.includes(c))
+    );
+    if (ruleCatMatch) return 0.72;
+  }
 
   return 0;
 }
@@ -275,15 +310,62 @@ function scoreCandidate(inputName: string, inputBrand: string, product: KosherPr
   return Math.min(score, 1);
 }
 
-function genericRuleScore(inputName: string, product: KosherProduct): number {
+function genericRuleScore(
+  inputName: string,
+  inputCategories: string[],
+  product: KosherProduct
+): number {
   const genericName = normalize(product.name);
   if (!genericName) return 0;
 
+  // Primary: name-based checks (unchanged)
   if (inputName === genericName) return 0.9;
   if (inputName.includes(genericName)) return 0.72;
   if (genericName.includes(inputName) && inputName.length >= 5) return 0.62;
 
-  return jaccardScore(inputName, genericName) * 0.75;
+  const nameScore = jaccardScore(inputName, genericName) * 0.75;
+
+  // Secondary: OFF category-based checks — handles products whose name alone
+  // doesn't reveal the category (e.g. "Lurpak" won't contain "butter" but
+  // its OFF categories will say "Butter" or "Dairy products").
+  if (inputCategories.length > 0) {
+    const ruleCatNorms = (product.categories ?? []).map(normalize).filter(Boolean);
+
+    for (const cat of inputCategories) {
+      if (!cat) continue;
+
+      // OFF category matches the rule name exactly
+      if (cat === genericName) return 0.85;
+
+      // Substring match between OFF category and rule name
+      if (cat.includes(genericName) || (genericName.includes(cat) && cat.length >= 4)) {
+        return 0.78;
+      }
+
+      // OFF category matches one of the rule's own ORD categories
+      for (const ruleCat of ruleCatNorms) {
+        if (ruleCat.length >= 3 && (cat === ruleCat || cat.includes(ruleCat) || ruleCat.includes(cat))) {
+          return 0.75;
+        }
+      }
+    }
+  }
+
+  return nameScore;
+}
+
+/**
+ * Derive the Pesach assessment for a matched product.
+ * Only surfaces what the ORD data explicitly states — no halachic inferences.
+ * "kitniyot" is reserved for when the dataset gains that classification.
+ */
+export function getPesachAssessment(
+  product: KosherProduct | null | undefined
+): PesachAssessment {
+  if (!product) return "unknown";
+  if (product.pessach === "kosher_lepessach") return "kosher_lepesach";
+  if (product.pessach === "not_pessach") return "not_pesach";
+  return "unknown";
 }
 
 export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
@@ -292,6 +374,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
 
   const inputName = normalize(input.name);
   const inputBrand = normalizeBrand(input.brand);
+  const inputCategories = (input.categories ?? []).map(normalize).filter(Boolean);
 
   if (!inputName) {
     return createNoneResult("No product name available for lookup.");
@@ -318,6 +401,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       source: "ORD",
       certificate: exactMatch.certificate,
       matchedProduct: summarizeProduct(exactMatch),
+      pesachAssessment: getPesachAssessment(exactMatch),
     };
   }
 
@@ -352,6 +436,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       ),
       needsConfirmation: bestScore < 0.9,
       reason: bestScore < 0.9 ? "Matched by manufacturer and similar product name." : undefined,
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
@@ -377,6 +462,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       matchedProduct: summarizeProduct(best),
       needsConfirmation: true,
       reason: "Possible ORD match — verify product details.",
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
@@ -385,7 +471,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
   //    Only checked when a brand is known and product matching failed.
   if (inputBrand && manufacturerRules.length > 0) {
     const ruleCandidates = manufacturerRules
-      .map((r) => ({ rule: r, score: matchManufacturerRule(input.name, input.brand ?? "", r) }))
+      .map((r) => ({ rule: r, score: matchManufacturerRule(input.name, input.brand ?? "", inputCategories, r) }))
       .filter((x) => x.score > 0)
       .sort((a, b) => b.score - a.score);
 
@@ -402,6 +488,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
         matchedProduct: summarizeProduct(best),
         needsConfirmation: true,
         reason: best.name,
+        pesachAssessment: getPesachAssessment(best),
       };
     }
   }
@@ -410,7 +497,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
   const genericCandidates = genericRules
     .map((p) => ({
       product: p,
-      score: genericRuleScore(inputName, p),
+      score: genericRuleScore(inputName, inputCategories, p),
     }))
     .filter((x) => x.score >= 0.6)
     .sort((a, b) => b.score - a.score);
@@ -427,6 +514,7 @@ export async function lookupProduct(input: LookupInput): Promise<LookupResult> {
       certificate: best.certificate,
       matchedProduct: summarizeProduct(best),
       reason: "Matched via generic ORD rule.",
+      pesachAssessment: getPesachAssessment(best),
     };
   }
 
