@@ -276,7 +276,6 @@ export default function ResultModal({
             contentContainerStyle={styles.scrollContent}
           >
             <InfoBlock label="Source" value={result.source} />
-            <InfoBlock label="List" value={result.list} />
             <InfoBlock label="Barcode" value={barcode} />
 
             {/* Open Food Facts product info — always show when available */}
