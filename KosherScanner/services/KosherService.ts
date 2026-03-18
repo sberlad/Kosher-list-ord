@@ -92,6 +92,11 @@ export interface LookupResult {
   offProduct?: OffProductInfo;
   /** Pesach suitability derived from ORD data. Undefined when no product matched. */
   pesachAssessment?: PesachAssessment;
+  /**
+   * Advisory guidance from a non-ORD source (e.g. STAR-K / cRc "no hechsher needed").
+   * Only present when ORD has no match. Kept strictly separate from ORD certification.
+   */
+  advisoryMatch?: import("./AdvisoryService").AdvisoryMatch;
 }
 
 let cachedData: KosherData | null = null;
@@ -310,6 +315,27 @@ function scoreCandidate(inputName: string, inputBrand: string, product: KosherPr
   return Math.min(score, 1);
 }
 
+/**
+ * Negation phrases for generic rule matching.
+ * Maps normalized rule keyword → list of normalized phrases that indicate the
+ * scanned product explicitly LACKS that ingredient.
+ *
+ * Problem this prevents:
+ *   "Almdudler zuckerfrei" normalized → tokens ["almdudler", "zuckerfrei"]
+ *   Rule "Zucker" → genericName "zucker"
+ *   Old code: inputName.includes("zucker") on "almdudler zuckerfrei" → TRUE  (BUG)
+ *   New code: token check → "zucker" not in tokens list              → no match ✓
+ *             negation check → token "zuckerfrei" matches negation    → return 0 ✓
+ */
+const GENERIC_RULE_NEGATIONS: Record<string, string[]> = {
+  zucker: ["zuckerfrei", "zuckerarm", "zuckerreduziert", "ohne zucker", "no sugar", "sugar free", "sugar-free", "unsweetened", "ungesusst"],
+  milch: ["milchfrei", "ohne milch", "laktosefrei", "lactosefrei", "dairy free", "dairy-free", "vegan"],
+  alkohol: ["alkoholfrei", "ohne alkohol", "alcohol free", "alcohol-free", "non-alcoholic", "dealcoholized"],
+  likor: ["alkoholfrei", "ohne alkohol", "alcohol free", "non-alcoholic"],
+  spirituosen: ["alkoholfrei", "ohne alkohol"],
+  fett: ["fettfrei", "fettarm", "0% fett", "fat free", "fat-free", "mager", "entrahmt", "0 fett"],
+};
+
 function genericRuleScore(
   inputName: string,
   inputCategories: string[],
@@ -318,31 +344,70 @@ function genericRuleScore(
   const genericName = normalize(product.name);
   if (!genericName) return 0;
 
-  // Primary: name-based checks (unchanged)
+  const inputTokens = tokens(inputName);
+  const genericTokens = tokens(genericName);
+
+  // --- Negation guard ---
+  // Reject before any positive match if the product name signals absence of the ingredient.
+  // Handles both explicit negation phrases and German "-frei"/"-arm" compound suffixes.
+  const negationPhrases = GENERIC_RULE_NEGATIONS[genericName] ?? [];
+  for (const neg of negationPhrases) {
+    const negNorm = normalize(neg);
+    // Matches negation as a standalone token OR embedded in a compound word
+    if (inputTokens.some((t) => t === negNorm || t.startsWith(negNorm) || t.includes(negNorm)) ||
+        inputName.includes(negNorm)) {
+      return 0;
+    }
+  }
+  // Generic German compound negation: <keyword>frei, <keyword>arm, <keyword>reduziert, <keyword>los
+  for (const gt of genericTokens) {
+    if (inputTokens.some((t) => t === `${gt}frei` || t === `${gt}arm` || t === `${gt}reduziert` || t === `${gt}los`)) {
+      return 0;
+    }
+  }
+
+  // --- Token-aware positive matching ---
+  // (Replaces the old substring check that caused "zuckerfrei" → "zucker" false positives)
+
   if (inputName === genericName) return 0.9;
-  if (inputName.includes(genericName)) return 0.72;
-  if (genericName.includes(inputName) && inputName.length >= 5) return 0.62;
+
+  // All generic rule tokens must appear as WHOLE tokens in the product name.
+  // "zucker" is not a whole token in "zuckerfrei" → correctly blocked.
+  const allGenericTokensPresent = genericTokens.length > 0 &&
+    genericTokens.every((gt) => inputTokens.includes(gt));
+  if (allGenericTokensPresent) {
+    return inputTokens.length <= genericTokens.length + 1 ? 0.80 : 0.72;
+  }
+
+  // Rule name contains all input tokens (input is a sub-concept of the rule)
+  if (inputTokens.length >= 3 && inputTokens.every((it) => genericTokens.includes(it))) {
+    return 0.62;
+  }
 
   const nameScore = jaccardScore(inputName, genericName) * 0.75;
 
-  // Secondary: OFF category-based checks — handles products whose name alone
-  // doesn't reveal the category (e.g. "Lurpak" won't contain "butter" but
-  // its OFF categories will say "Butter" or "Dairy products").
+  // --- Category-based matching ---
+  // Handles products whose name doesn't reveal the category (e.g. "Lurpak" vs "butter").
+  // Category strings come from Open Food Facts and are already normalized.
   if (inputCategories.length > 0) {
     const ruleCatNorms = (product.categories ?? []).map(normalize).filter(Boolean);
 
     for (const cat of inputCategories) {
       if (!cat) continue;
 
-      // OFF category matches the rule name exactly
+      const catTokens = tokens(cat);
+
       if (cat === genericName) return 0.85;
 
-      // Substring match between OFF category and rule name
+      // Token-safe: all generic tokens must be whole tokens in the category
+      if (genericTokens.length > 0 && genericTokens.every((gt) => catTokens.includes(gt))) {
+        return 0.78;
+      }
+
       if (cat.includes(genericName) || (genericName.includes(cat) && cat.length >= 4)) {
         return 0.78;
       }
 
-      // OFF category matches one of the rule's own ORD categories
       for (const ruleCat of ruleCatNorms) {
         if (ruleCat.length >= 3 && (cat === ruleCat || cat.includes(ruleCat) || ruleCat.includes(cat))) {
           return 0.75;

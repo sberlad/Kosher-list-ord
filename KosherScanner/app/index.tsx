@@ -20,6 +20,7 @@ import {
   getPesachAssessment,
   type LookupResult,
 } from "../services/KosherService";
+import { lookupAdvisory } from "../services/AdvisoryService";
 import {
   lookupConfirmedBarcode,
   confirmBarcode,
@@ -168,7 +169,7 @@ export default function HomeScreen() {
         });
 
         // Attach OFF product info so the modal can display scanned product details
-        const enrichedResult: LookupResult = {
+        let enrichedResult: LookupResult = {
           ...kosherResult,
           offProduct: {
             name: offProduct.name,
@@ -176,6 +177,19 @@ export default function HomeScreen() {
             imageUrl: offProduct.imageUrl,
           },
         };
+
+        // When ORD has no match, check advisory "no hechsher needed" guidance.
+        // Advisory results are kept strictly separate from ORD certification.
+        if (kosherResult.matchType === "none") {
+          const advisory = lookupAdvisory({
+            name: offProduct.name,
+            brand: offProduct.brand,
+            categories: offProduct.categories,
+          });
+          if (advisory) {
+            enrichedResult = { ...enrichedResult, advisoryMatch: advisory };
+          }
+        }
 
         setCachedResult(data, enrichedResult);
         openResult(enrichedResult, data);

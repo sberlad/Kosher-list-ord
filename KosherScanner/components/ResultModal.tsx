@@ -10,6 +10,7 @@ import {
   View,
 } from "react-native";
 import type { LookupResult, PesachAssessment } from "../services/KosherService";
+import type { AdvisoryMatch } from "../services/AdvisoryService";
 import { useAppSettings } from "../context/AppSettings";
 
 interface Props {
@@ -190,6 +191,66 @@ function PesachSection({
         {assessment === "kitniyot" && kitniyotAllowed ? " — permitted (your setting)" : ""}
       </Text>
       <Text style={styles.pesachNote}>{displayCfg.note}</Text>
+    </View>
+  );
+}
+
+const ADVISORY_COLOR = "#38bdf8"; // sky-400 — visually distinct from ORD greens/golds
+
+/**
+ * Advisory "no hechsher needed" block.
+ * Rendered only when ORD returns no match and an advisory rule applies.
+ * Prominently shows source and conditions so the user knows this is guidance,
+ * not product-specific certification.
+ */
+function AdvisorySection({ advisory }: { advisory: AdvisoryMatch }) {
+  const rule = advisory.matchedRule;
+  const passoverText =
+    rule.passover === "yes" ? "Generally yes"
+    : rule.passover === "no" ? "Not for Pesach"
+    : rule.passover === "kitniyot" ? "Kitniyot (Ashkenazi restriction)"
+    : "Unknown — verify separately";
+
+  return (
+    <View
+      style={[
+        styles.advisoryBox,
+        { borderColor: `${ADVISORY_COLOR}44`, backgroundColor: `${ADVISORY_COLOR}0d` },
+      ]}
+    >
+      <View style={styles.advisoryHeader}>
+        <Text style={[styles.advisoryBadge, { color: ADVISORY_COLOR }]}>
+          NO HECHSHER NEEDED
+        </Text>
+        <Text style={[styles.advisorySource, { color: `${ADVISORY_COLOR}cc` }]}>
+          per {rule.source}
+        </Text>
+      </View>
+
+      <Text style={styles.advisoryNote}>{rule.note}</Text>
+
+      {rule.conditions ? (
+        <View style={styles.advisoryConditionsBox}>
+          <Text style={styles.advisoryConditionsLabel}>CONDITIONS</Text>
+          <Text style={styles.advisoryConditionsText}>{rule.conditions}</Text>
+        </View>
+      ) : null}
+
+      <View style={styles.advisoryMetaRow}>
+        <Text style={styles.advisoryMetaLabel}>Pesach: </Text>
+        <Text style={styles.advisoryMetaValue}>{passoverText}</Text>
+      </View>
+
+      {rule.country_of_origin_caveat ? (
+        <View style={styles.advisoryMetaRow}>
+          <Text style={styles.advisoryMetaLabel}>Country caveat: </Text>
+          <Text style={styles.advisoryMetaValue}>{rule.country_of_origin_caveat}</Text>
+        </View>
+      ) : null}
+
+      {rule.source_note ? (
+        <Text style={styles.advisorySourceNote}>{rule.source_note}</Text>
+      ) : null}
     </View>
   );
 }
@@ -415,6 +476,11 @@ export default function ResultModal({
                   This product is not currently matched in the ORD dataset.
                 </Text>
               </View>
+            ) : null}
+
+            {/* Advisory "no hechsher needed" guidance — only when ORD has no match */}
+            {result.matchType === "none" && result.advisoryMatch ? (
+              <AdvisorySection advisory={result.advisoryMatch} />
             ) : null}
           </ScrollView>
 
@@ -674,42 +740,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "700",
   },
-  confirmButtons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 14,
-    gap: 10,
-  },
-  confirmYes: {
-    flex: 1,
-    backgroundColor: "#22c55e22",
-    borderColor: "#22c55e55",
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 12,
-    alignItems: "center",
-  },
-  confirmYesText: {
-    color: "#22c55e",
-    fontWeight: "700",
-    fontSize: 13,
-    letterSpacing: 1,
-  },
-  confirmNo: {
-    flex: 1,
-    backgroundColor: "#ef444422",
-    borderColor: "#ef444455",
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 12,
-    alignItems: "center",
-  },
-  confirmNoText: {
-    color: "#ef4444",
-    fontWeight: "700",
-    fontSize: 13,
-    letterSpacing: 1,
-  },
   noteBox: {
     backgroundColor: "#ffffff07",
     borderRadius: 10,
@@ -776,5 +806,72 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "700",
     letterSpacing: 2.5,
+  },
+  advisoryBox: {
+    borderRadius: 12,
+    borderWidth: 1,
+    padding: 16,
+    marginBottom: 18,
+  },
+  advisoryHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  advisoryBadge: {
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 1.4,
+  },
+  advisorySource: {
+    fontSize: 11,
+    fontWeight: "600",
+    letterSpacing: 0.6,
+  },
+  advisoryNote: {
+    color: "#c8d5e2",
+    fontSize: 14,
+    lineHeight: 21,
+    marginBottom: 12,
+  },
+  advisoryConditionsBox: {
+    backgroundColor: "#ffffff08",
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 10,
+  },
+  advisoryConditionsLabel: {
+    color: "#6b7280",
+    fontSize: 10,
+    letterSpacing: 1.4,
+    marginBottom: 4,
+  },
+  advisoryConditionsText: {
+    color: "#b0bbc8",
+    fontSize: 12,
+    lineHeight: 18,
+  },
+  advisoryMetaRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginBottom: 4,
+  },
+  advisoryMetaLabel: {
+    color: "#6b7280",
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  advisoryMetaValue: {
+    color: "#9ca3af",
+    fontSize: 12,
+    flex: 1,
+  },
+  advisorySourceNote: {
+    color: "#6b7280",
+    fontSize: 11,
+    fontStyle: "italic",
+    marginTop: 8,
+    lineHeight: 16,
   },
 });
