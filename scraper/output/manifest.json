@@ -1,9 +1,9 @@
 {
-  "version": "2026-04-06",
-  "generated_at": "2026-04-06T07:19:57.258469+00:00",
+  "version": "2026-04-13",
+  "generated_at": "2026-04-13T07:51:06.495383+00:00",
   "product_count": 1965,
   "source": "https://koscherliste.ordonline.de/koscherliste/",
-  "content_hash": "c6425480bb367867fe942ea0873208077d45f96f03d8e43600c419b475dc345a",
+  "content_hash": "980d195c53d5cc2df91b2b03e28df939c3bad2bc5d3ca2a763f74dfbb0d5ad4e",
   "scrape_stats": {
     "categories_found": 217,
     "categories_scraped": 212,
@@ -19,6 +19,6 @@
   "diff_stats": {
     "added": 0,
     "removed": 0,
-    "changed": 0
+    "changed": 1
   }
 }

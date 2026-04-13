@@ -1,6 +1,6 @@
 {
-  "version": "2026-04-06",
-  "generated_at": "2026-04-06T07:19:57.258469+00:00",
+  "version": "2026-04-13",
+  "generated_at": "2026-04-13T07:51:06.495383+00:00",
   "product_count": 1965,
   "products": [
     {
@@ -8828,8 +8828,8 @@
       "certificate": "",
       "categories": [
         "Milchprodukte",
-        "Jogurt",
         "Jogurt Fruchtjugurth",
+        "Jogurt",
         "Fruchtjugurth"
       ],
       "dairy_status": "milchig",
@@ -29649,26 +29649,6 @@
       "variants": []
     },
     {
-      "id": "5b673a045e6a",
-      "source": "ORD",
-      "record_type": "product",
-      "scope": "product",
-      "applies_to_keywords": [],
-      "name": "Basilikum",
-      "display_name": "Basilikum",
-      "match_name": "basilikum",
-      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb",
-      "certificate": "",
-      "categories": [
-        "Gewürze"
-      ],
-      "dairy_status": "unknown",
-      "pessach": "unknown",
-      "raw_name": "Basilikum 6",
-      "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
-      "variants": []
-    },
-    {
       "id": "c86e917d4039",
       "source": "ORD",
       "record_type": "product",
@@ -29685,6 +29665,26 @@
       "dairy_status": "unknown",
       "pessach": "unknown",
       "raw_name": "Basilikum 15",
+      "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
+      "variants": []
+    },
+    {
+      "id": "5b673a045e6a",
+      "source": "ORD",
+      "record_type": "product",
+      "scope": "product",
+      "applies_to_keywords": [],
+      "name": "Basilikum",
+      "display_name": "Basilikum",
+      "match_name": "basilikum",
+      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb",
+      "certificate": "",
+      "categories": [
+        "Gewürze"
+      ],
+      "dairy_status": "unknown",
+      "pessach": "unknown",
+      "raw_name": "Basilikum 6",
       "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "variants": []
     },
