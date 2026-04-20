@@ -1,6 +1,6 @@
 {
-  "version": "2026-04-13",
-  "generated_at": "2026-04-13T07:51:06.495383+00:00",
+  "version": "2026-04-20",
+  "generated_at": "2026-04-20T07:53:48.097734+00:00",
   "product_count": 1965,
   "products": [
     {
@@ -8828,8 +8828,8 @@
       "certificate": "",
       "categories": [
         "Milchprodukte",
-        "Jogurt Fruchtjugurth",
         "Jogurt",
+        "Jogurt Fruchtjugurth",
         "Fruchtjugurth"
       ],
       "dairy_status": "milchig",
@@ -27850,14 +27850,14 @@
       "variants": []
     },
     {
-      "id": "419aafb6e817",
+      "id": "3007b645ed4b",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Cafe Crema Dolce",
-      "display_name": "Lavazza Blue Cafe Crema Dolce",
-      "match_name": "lavazza blue cafe crema dolce",
+      "name": "Lavazza Blue Dolca",
+      "display_name": "Lavazza Blue Dolca",
+      "match_name": "lavazza blue dolca",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27865,19 +27865,19 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Cafe Crema Dolce",
+      "raw_name": "Lavazza Blue Dolca",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
     {
-      "id": "82f27932cb81",
+      "id": "1f59c2a4d0dc",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Decaffeinato",
-      "display_name": "Lavazza Blue Decaffeinato",
-      "match_name": "lavazza blue decaffeinato",
+      "name": "Lavazza Blue Espresso Intenso",
+      "display_name": "Lavazza Blue Espresso Intenso",
+      "match_name": "lavazza blue espresso intenso",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27885,19 +27885,19 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Decaffeinato",
+      "raw_name": "Lavazza Blue Espresso Intenso",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
     {
-      "id": "ad4d60d952d4",
+      "id": "fd62eb8ddf8d",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Espresso Ricco",
-      "display_name": "Lavazza Blue Espresso Ricco",
-      "match_name": "lavazza blue espresso ricco",
+      "name": "Lavazza Blue Espresso Vigoroso",
+      "display_name": "Lavazza Blue Espresso Vigoroso",
+      "match_name": "lavazza blue espresso vigoroso",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27905,19 +27905,19 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Espresso Ricco",
+      "raw_name": "Lavazza Blue Espresso Vigoroso",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
     {
-      "id": "6ced2360162c",
+      "id": "7e8978cb54d6",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Rotondo",
-      "display_name": "Lavazza Blue Rotondo",
-      "match_name": "lavazza blue rotondo",
+      "name": "Lavazza Blue Very B Magnifico",
+      "display_name": "Lavazza Blue Very B Magnifico",
+      "match_name": "lavazza blue very b magnifico",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27925,7 +27925,7 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Rotondo",
+      "raw_name": "Lavazza Blue Very B Magnifico",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
@@ -42535,26 +42535,26 @@
       "c192c7c44b82"
     ],
     "luigi lavazza": [
+      "1f59c2a4d0dc",
       "26e9e80bca7e",
       "289d97045ad5",
       "30060051bb41",
+      "3007b645ed4b",
       "38167d7e5ad4",
-      "419aafb6e817",
       "49b10bd4272d",
       "53b09764e9f1",
       "53cd7dc8eadc",
-      "6ced2360162c",
-      "82f27932cb81",
+      "7e8978cb54d6",
       "8f27addfedd1",
       "aa27fb7b2600",
-      "ad4d60d952d4",
       "c1880bd5f630",
       "c1e41bb33668",
       "c770d4a932cf",
       "d433e5970e88",
       "d5e8a30dbf3e",
       "d9563035754c",
-      "e53961971368"
+      "e53961971368",
+      "fd62eb8ddf8d"
     ],
     "m-back": [
       "edffd214e6de"
