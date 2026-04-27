@@ -1,6 +1,6 @@
 {
-  "version": "2026-04-20",
-  "generated_at": "2026-04-20T07:53:48.097734+00:00",
+  "version": "2026-04-27",
+  "generated_at": "2026-04-27T08:08:31.685303+00:00",
   "product_count": 1965,
   "products": [
     {
@@ -27850,6 +27850,26 @@
       "variants": []
     },
     {
+      "id": "853a630de05b",
+      "source": "ORD",
+      "record_type": "product",
+      "scope": "product",
+      "applies_to_keywords": [],
+      "name": "Lavazza Blue Delicato",
+      "display_name": "Lavazza Blue Delicato",
+      "match_name": "lavazza blue delicato",
+      "manufacturer": "Luigi LAVAZZA",
+      "certificate": "Rabbiner Hazan",
+      "categories": [
+        "Kaffee"
+      ],
+      "dairy_status": "unknown",
+      "pessach": "unknown",
+      "raw_name": "Lavazza Blue Delicato",
+      "raw_manufacturer": "Luigi LAVAZZA",
+      "variants": []
+    },
+    {
       "id": "3007b645ed4b",
       "source": "ORD",
       "record_type": "product",
@@ -27870,14 +27890,14 @@
       "variants": []
     },
     {
-      "id": "1f59c2a4d0dc",
+      "id": "d4492b8d8c44",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Espresso Intenso",
-      "display_name": "Lavazza Blue Espresso Intenso",
-      "match_name": "lavazza blue espresso intenso",
+      "name": "Lavazza Blue Espresso Tierra",
+      "display_name": "Lavazza Blue Espresso Tierra",
+      "match_name": "lavazza blue espresso tierra",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27885,7 +27905,7 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Espresso Intenso",
+      "raw_name": "Lavazza Blue Espresso Tierra",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
@@ -27906,26 +27926,6 @@
       "dairy_status": "unknown",
       "pessach": "unknown",
       "raw_name": "Lavazza Blue Espresso Vigoroso",
-      "raw_manufacturer": "Luigi LAVAZZA",
-      "variants": []
-    },
-    {
-      "id": "7e8978cb54d6",
-      "source": "ORD",
-      "record_type": "product",
-      "scope": "product",
-      "applies_to_keywords": [],
-      "name": "Lavazza Blue Very B Magnifico",
-      "display_name": "Lavazza Blue Very B Magnifico",
-      "match_name": "lavazza blue very b magnifico",
-      "manufacturer": "Luigi LAVAZZA",
-      "certificate": "Rabbiner Hazan",
-      "categories": [
-        "Kaffee"
-      ],
-      "dairy_status": "unknown",
-      "pessach": "unknown",
-      "raw_name": "Lavazza Blue Very B Magnifico",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
@@ -29649,26 +29649,6 @@
       "variants": []
     },
     {
-      "id": "c86e917d4039",
-      "source": "ORD",
-      "record_type": "product",
-      "scope": "product",
-      "applies_to_keywords": [],
-      "name": "Basilikum",
-      "display_name": "Basilikum",
-      "match_name": "basilikum",
-      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb",
-      "certificate": "",
-      "categories": [
-        "Gewürze"
-      ],
-      "dairy_status": "unknown",
-      "pessach": "unknown",
-      "raw_name": "Basilikum 15",
-      "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
-      "variants": []
-    },
-    {
       "id": "5b673a045e6a",
       "source": "ORD",
       "record_type": "product",
@@ -29685,6 +29665,26 @@
       "dairy_status": "unknown",
       "pessach": "unknown",
       "raw_name": "Basilikum 6",
+      "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
+      "variants": []
+    },
+    {
+      "id": "c86e917d4039",
+      "source": "ORD",
+      "record_type": "product",
+      "scope": "product",
+      "applies_to_keywords": [],
+      "name": "Basilikum",
+      "display_name": "Basilikum",
+      "match_name": "basilikum",
+      "manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb",
+      "certificate": "",
+      "categories": [
+        "Gewürze"
+      ],
+      "dairy_status": "unknown",
+      "pessach": "unknown",
+      "raw_name": "Basilikum 15",
       "raw_manufacturer": "OSTMANN Gewürze Teuto Markenvertrieb GmbH",
       "variants": []
     },
@@ -42535,7 +42535,6 @@
       "c192c7c44b82"
     ],
     "luigi lavazza": [
-      "1f59c2a4d0dc",
       "26e9e80bca7e",
       "289d97045ad5",
       "30060051bb41",
@@ -42544,13 +42543,14 @@
       "49b10bd4272d",
       "53b09764e9f1",
       "53cd7dc8eadc",
-      "7e8978cb54d6",
+      "853a630de05b",
       "8f27addfedd1",
       "aa27fb7b2600",
       "c1880bd5f630",
       "c1e41bb33668",
       "c770d4a932cf",
       "d433e5970e88",
+      "d4492b8d8c44",
       "d5e8a30dbf3e",
       "d9563035754c",
       "e53961971368",
