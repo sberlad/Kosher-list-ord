@@ -1,6 +1,6 @@
 {
-  "version": "2026-05-04",
-  "generated_at": "2026-05-04T08:20:30.681550+00:00",
+  "version": "2026-05-11",
+  "generated_at": "2026-05-11T09:00:38.490849+00:00",
   "product_count": 1965,
   "products": [
     {
@@ -8828,8 +8828,8 @@
       "certificate": "",
       "categories": [
         "Milchprodukte",
-        "Jogurt",
         "Jogurt Fruchtjugurth",
+        "Jogurt",
         "Fruchtjugurth"
       ],
       "dairy_status": "milchig",
@@ -27850,6 +27850,26 @@
       "variants": []
     },
     {
+      "id": "419aafb6e817",
+      "source": "ORD",
+      "record_type": "product",
+      "scope": "product",
+      "applies_to_keywords": [],
+      "name": "Lavazza Blue Cafe Crema Dolce",
+      "display_name": "Lavazza Blue Cafe Crema Dolce",
+      "match_name": "lavazza blue cafe crema dolce",
+      "manufacturer": "Luigi LAVAZZA",
+      "certificate": "Rabbiner Hazan",
+      "categories": [
+        "Kaffee"
+      ],
+      "dairy_status": "unknown",
+      "pessach": "unknown",
+      "raw_name": "Lavazza Blue Cafe Crema Dolce",
+      "raw_manufacturer": "Luigi LAVAZZA",
+      "variants": []
+    },
+    {
       "id": "82f27932cb81",
       "source": "ORD",
       "record_type": "product",
@@ -27870,14 +27890,14 @@
       "variants": []
     },
     {
-      "id": "853a630de05b",
+      "id": "ad4d60d952d4",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Delicato",
-      "display_name": "Lavazza Blue Delicato",
-      "match_name": "lavazza blue delicato",
+      "name": "Lavazza Blue Espresso Ricco",
+      "display_name": "Lavazza Blue Espresso Ricco",
+      "match_name": "lavazza blue espresso ricco",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27885,19 +27905,19 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Delicato",
+      "raw_name": "Lavazza Blue Espresso Ricco",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
     {
-      "id": "d4492b8d8c44",
+      "id": "6ced2360162c",
       "source": "ORD",
       "record_type": "product",
       "scope": "product",
       "applies_to_keywords": [],
-      "name": "Lavazza Blue Espresso Tierra",
-      "display_name": "Lavazza Blue Espresso Tierra",
-      "match_name": "lavazza blue espresso tierra",
+      "name": "Lavazza Blue Rotondo",
+      "display_name": "Lavazza Blue Rotondo",
+      "match_name": "lavazza blue rotondo",
       "manufacturer": "Luigi LAVAZZA",
       "certificate": "Rabbiner Hazan",
       "categories": [
@@ -27905,27 +27925,7 @@
       ],
       "dairy_status": "unknown",
       "pessach": "unknown",
-      "raw_name": "Lavazza Blue Espresso Tierra",
-      "raw_manufacturer": "Luigi LAVAZZA",
-      "variants": []
-    },
-    {
-      "id": "5459697b712d",
-      "source": "ORD",
-      "record_type": "product",
-      "scope": "product",
-      "applies_to_keywords": [],
-      "name": "Lavazza Blue Tierra",
-      "display_name": "Lavazza Blue Tierra",
-      "match_name": "lavazza blue tierra",
-      "manufacturer": "Luigi LAVAZZA",
-      "certificate": "Rabbiner Hazan",
-      "categories": [
-        "Kaffee"
-      ],
-      "dairy_status": "unknown",
-      "pessach": "unknown",
-      "raw_name": "Lavazza Blue Tierra",
+      "raw_name": "Lavazza Blue Rotondo",
       "raw_manufacturer": "Luigi LAVAZZA",
       "variants": []
     },
@@ -42539,19 +42539,19 @@
       "289d97045ad5",
       "30060051bb41",
       "38167d7e5ad4",
+      "419aafb6e817",
       "49b10bd4272d",
       "53b09764e9f1",
       "53cd7dc8eadc",
-      "5459697b712d",
+      "6ced2360162c",
       "82f27932cb81",
-      "853a630de05b",
       "8f27addfedd1",
       "aa27fb7b2600",
+      "ad4d60d952d4",
       "c1880bd5f630",
       "c1e41bb33668",
       "c770d4a932cf",
       "d433e5970e88",
-      "d4492b8d8c44",
       "d5e8a30dbf3e",
       "d9563035754c",
       "e53961971368"
