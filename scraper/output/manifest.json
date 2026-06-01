@@ -1,6 +1,6 @@
 {
-  "version": "2026-05-25",
-  "generated_at": "2026-05-25T09:52:00.700104+00:00",
+  "version": "2026-06-01",
+  "generated_at": "2026-06-01T11:12:04.023471+00:00",
   "product_count": 1965,
   "source": "https://koscherliste.ordonline.de/koscherliste/",
   "content_hash": "c6425480bb367867fe942ea0873208077d45f96f03d8e43600c419b475dc345a",
@@ -19,6 +19,6 @@
   "diff_stats": {
     "added": 0,
     "removed": 0,
-    "changed": 1
+    "changed": 0
   }
 }
